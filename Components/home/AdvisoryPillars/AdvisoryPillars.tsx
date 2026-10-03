@@ -1,4 +1,4 @@
-import brandVector from "../../public/images/Vector.png";
+import brandVector from "../../../public/images/Vector.png";
 import { pillars } from "./Data";
 import PillarCard from "./Pillarcard";
 
