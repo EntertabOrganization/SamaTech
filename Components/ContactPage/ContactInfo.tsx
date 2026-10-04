@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import SectionHeader  from "@/components/shared/SectionHeader";
-import MicroLabel  from "@/components/shared/MicroLabel";
+import SectionHeader  from "@/Components/home/shared/SectionHeader";
+import MicroLabel  from "@/Components/ContactPage/MicroLabel";
 import Image from "next/image";
 import contactImg from '../../public/images/Group 2.png'
 import Link from "next/link";

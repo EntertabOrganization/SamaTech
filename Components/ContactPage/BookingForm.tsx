@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { cn } from "@/components/ui";
-import  MicroLabel  from "@/components/shared/MicroLabel";
+import { cn } from "@/Components/ui";
+import  MicroLabel  from "@/Components/ContactPage/MicroLabel";
 import Calendar from "./Calendar";
 import { Field, FormStatus, MailIcon, SubmitButton, TextArea, TextInput } from "./fields";
 import { useFormSubmit } from "./useFormSubmit";
 
-// Replace with real availability from your backend.
+// Replace with real backend.
 const SLOTS: Array<{ time: string; available: boolean }> = [
   { time: "09:00", available: true },
   { time: "09:30", available: true },

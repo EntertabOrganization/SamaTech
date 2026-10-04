@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState, type KeyboardEvent } from "react";
-import { cn } from "@/components/ui";
+import { cn } from "@/Components/ui";
 import BookingForm from "./BookingForm";
 import MessageForm from "./MessageForm";
 

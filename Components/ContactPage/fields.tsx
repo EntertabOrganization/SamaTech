@@ -4,7 +4,7 @@ import type {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
-import { Icon, cn } from "@/components/ui";
+import { Icon, cn } from "@/Components/ui";
 import type { SubmitStatus } from "./useFormSubmit";
 
 /** Envelope for the email inputs. Not in the icon set yet, so it stays local. */
