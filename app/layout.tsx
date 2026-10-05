@@ -17,7 +17,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata = {
-  title: "Website",
+  title: "Samateches",
   description: "Informative Website",
 };
 
