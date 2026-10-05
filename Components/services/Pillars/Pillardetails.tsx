@@ -127,7 +127,9 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
           }}
         >
           <h2 className="max-w-xs text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-            Tell us the decision you are trying to make.
+            Tell us the decision
+            <br/>
+             you are trying to make.
           </h2>
           <Link
             href="/contact"
