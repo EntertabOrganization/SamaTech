@@ -7,6 +7,8 @@ import Logo from ".././../public/horizontal-logo 1.svg";
 import Image from "next/image";
 import Button from "../ui/Button";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 type NavLink = {
   label: string;
@@ -33,8 +35,12 @@ export default function Navbar() {
         aria-label="Main navigation"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-        {/* Logo (استبدلي الـ SVG ده بـ next/image واللوجو بتاعك) */}
-        <Link href="/" className="flex items-center gap-2" aria-label="Samatechs home">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-2"
+          aria-label="Samatechs home"
+        >
           <Image
             src={Logo}
             alt="Samatechs logo"
@@ -51,7 +57,9 @@ export default function Navbar() {
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={`text-sm transition-colors hover:text-ink-900 ${
-                  isActive(link.href) ? "font-semibold text-ink-900" : "text-ink-500"
+                  isActive(link.href)
+                    ? "font-semibold text-ink-900"
+                    : "text-ink-500"
                 }`}
               >
                 {link.label}
@@ -62,18 +70,19 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 md:flex">
-          {/* <Link
-            href="/ar"
-          >
-            <Button size="sm" variant="outline">العربية</Button>
-          </Link> */}
-          <LanguageSwitcher/>
-          <Link
-            href="/contact"
-          >
-            <Button size="sm">Schedule a consultation
-            <span aria-hidden="true">→</span></Button>
-            
+          <LanguageSwitcher />
+
+          <Link href="/contact">
+            <Button
+              size="sm"
+              className="flex items-center gap-4"
+            >
+              Schedule a consultation
+              <FontAwesomeIcon
+                icon={faArrowRightLong}
+                className="h-4 w-4"
+              />
+            </Button>
           </Link>
         </div>
 
@@ -86,15 +95,30 @@ export default function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 md:hidden"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            {open ? (
+              <path d="M6 6l12 12M18 6L6 18" />
+            ) : (
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            )}
           </svg>
         </button>
       </nav>
 
       {/* Mobile menu */}
       {open && (
-        <div id="mobile-menu" className="border-t border-slate-100 bg-white px-4 pb-5 pt-3 md:hidden">
+        <div
+          id="mobile-menu"
+          className="border-t border-slate-100 bg-white px-4 pb-5 pt-3 md:hidden"
+        >
           <ul className="flex flex-col gap-1">
             {links.map((link) => (
               <li key={link.href}>
@@ -112,20 +136,24 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
           <div className="mt-4 flex flex-col gap-3">
-            {/* <Link
-              href="/ar"
-              onClick={() => setOpen(false)}
-            >
-              <Button variant="outline">العربية</Button>
-            </Link> */}
-            <LanguageSwitcher/>
+            <LanguageSwitcher />
+
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
             >
-              <Button> Schedule a consultation →</Button>
-             
+              <Button
+                size="sm"
+                className="flex items-center gap-4"
+              >
+                Schedule a consultation
+                <FontAwesomeIcon
+                  icon={faArrowRightLong}
+                  className="h-4 w-4"
+                />
+              </Button>
             </Link>
           </div>
         </div>

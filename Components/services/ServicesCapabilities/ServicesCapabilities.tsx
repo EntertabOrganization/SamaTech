@@ -254,7 +254,7 @@ export default function ServicesCapabilities() {
           <br />
           Advisory Model
         </h2>
-        <p className="mt-5 max-w-sm text-lead font-medium leading-relaxed text-ink-500">
+        <p className="mt-5 w-[640px] text-lead font-medium leading-relaxed text-ink-500">
           Our three client-facing advisory pillars draw on four cross-cutting
           areas of expertise, depending on the client&apos;s needs.
         </p>

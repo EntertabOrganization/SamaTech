@@ -69,9 +69,7 @@
   --shadow-brand: 0px 12px 32px 0px #0078FF3D;
 
 
-  /* Fonts */
-  --font-heading: var(--font-montserrat);
-  --font-body: var(--font-quicksand);
+  
 
 
   /* Typography */
@@ -110,4 +108,15 @@
   --tracking-eyebrow: 0.14em;
 }
 
+body {
+  font-family: "Font A", sans-serif;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Font B", sans-serif;
+}

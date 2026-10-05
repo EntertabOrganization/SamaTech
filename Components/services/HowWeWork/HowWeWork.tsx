@@ -213,11 +213,11 @@ export default function HowWeWork() {
               <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" />
               How we work
             </p>
-            <h2 className="mt-4 max-w-md text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl">
+            <h2 className="mt-4 max-w-sm text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl">
               Diagnose, architect, advise through delivery
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-slate-500">
+          <p className="max-w-lg text-sm leading-relaxed text-slate-500">
             Every engagement follows the same discipline, regardless of pillar.
             The sequence is what keeps recommendations executable.
           </p>
@@ -306,7 +306,7 @@ export default function HowWeWork() {
               </span>
               <h3 className="mt-3 text-lg font-semibold">Analytical Rigor</h3>
             </div>
-            <p className="text-xs leading-relaxed text-slate-300 sm:text-caption">
+            <p className="text-xs max-w-130 leading-relaxed text-slate-300 sm:text-caption">
               Our advisory work is grounded in quantitative discipline and
               evidence-based decision frameworks. Depending on engagement scope,
               we incorporate predictive analytics, machine learning-informed

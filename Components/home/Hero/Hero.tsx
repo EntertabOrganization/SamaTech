@@ -21,7 +21,7 @@ export default function Hero() {
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
         {/* Badge */}
-        <span className="inline-flex items-center font-body gap-2 rounded-full border border-blue-haze bg-white/70 px-3 py-1 text-[11px] font-medium text-blue-sovereign backdrop-blur-[14px]">
+        <span className="inline-flex items-center gap-2 rounded-full border border-blue-haze bg-blue-mist px-3 py-1 text-[11px] font-medium text-blue-sovereign backdrop-blur-[14px]">
           <Image src={badgeIcon} alt="Logo" width={12} height={12} />
           Senior-led strategic advisory &amp; analytics
         </span>
@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="pt-6.5 max-w-[745.24px] text-xl font-body font-medium leading-relaxed text-ink-500 sm:text-base">
+        <p className="pt-6.5 w-150 text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
           SAMATECHS advises leadership teams on complex strategic, operational,
           risk, technology, and cross-border challenges—designing
           implementation-ready solutions that strengthen decision-making and
@@ -78,7 +78,7 @@ export default function Hero() {
               ].join(", "),
             }}
           />
-          {/* Narrow dark bands that appear on the right half */}
+
           <div
             aria-hidden="true"
             className="absolute inset-y-0 right-0 w-3/5"
