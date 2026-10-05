@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Logo from ".././../public/horizontal-logo 1.svg";
 import Image from "next/image";
 import Button from "../ui/Button";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 type NavLink = {
   label: string;
@@ -61,11 +62,12 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 md:flex">
-          <Link
+          {/* <Link
             href="/ar"
           >
             <Button size="sm" variant="outline">العربية</Button>
-          </Link>
+          </Link> */}
+          <LanguageSwitcher/>
           <Link
             href="/contact"
           >
@@ -111,12 +113,13 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="mt-4 flex flex-col gap-3">
-            <Link
+            {/* <Link
               href="/ar"
               onClick={() => setOpen(false)}
             >
               <Button variant="outline">العربية</Button>
-            </Link>
+            </Link> */}
+            <LanguageSwitcher/>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
