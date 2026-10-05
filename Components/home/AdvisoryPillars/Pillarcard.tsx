@@ -6,7 +6,7 @@ import type { Pillar } from "./Data";
 export default function PillarCard({ pillar }: { pillar: Pillar }) {
   return (
     <article className="flex flex-col justify-between gap-6.5 rounded-3xl border bg-[#FFFFFF17] border-white/16 p-10 shadow-sm backdrop-blur-[14px]">
-     <div>
+     <div className="flex flex-col gap-6.5">
        <span className="flex h-11 w-11 items-center justify-center rounded-input bg-white/14 text-white">
          <Icon name={pillar.icon} size={22} strokeWidth={1.6} />
        </span>
@@ -14,7 +14,7 @@ export default function PillarCard({ pillar }: { pillar: Pillar }) {
        <h3 className="text-lg font-semibold font-heading leading-snug text-white">
          {pillar.title}
        </h3>
-       <p className="mt-4 text-sm font-medium leading-relaxed font-body text-white">
+       <p className=" text-sm font-medium leading-relaxed font-body text-white">
          {pillar.description}
        </p>
      </div>

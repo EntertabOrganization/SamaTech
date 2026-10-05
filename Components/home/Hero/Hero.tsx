@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="pt-6.5 max-w-[745.24px] text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
+        <p className="pt-6.5 w-150 text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
           SAMATECHS advises leadership teams on complex strategic, operational,
           risk, technology, and cross-border challenges—designing
           implementation-ready solutions that strengthen decision-making and
