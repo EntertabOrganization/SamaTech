@@ -2,6 +2,15 @@ import Link from "next/link";
 import Logo from "../../public/horizontal-logo-white 1.svg";
 import Image from "next/image";
 import BrandFooter from "../../public/images/footer-vector.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  faXTwitter,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+  faSnapchat,
+} from "@fortawesome/free-brands-svg-icons";
 
 interface FooterLink {
   label: string;
@@ -30,7 +39,7 @@ const contactDetails: string[] = [
 const legalLinks: FooterLink[] = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
-  { label: "Cookie Policy", href: "/cookies" },
+  { label: "Confidentiality", href: "/cookies" },
 ];
 
 const iconProps = {
@@ -50,40 +59,35 @@ const socials: { label: string; href: string; icon: React.ReactNode }[] = [
     label: "LinkedIn",
     href: "#",
     icon: (
-      <svg {...iconProps}>
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3" />
-      </svg>
+      <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4" />
     ),
   },
   {
     label: "X",
     href: "#",
     icon: (
-      <svg {...iconProps}>
-        <path d="M4 4l16 16M20 4L4 20" />
-      </svg>
+      <FontAwesomeIcon icon={faXTwitter} className="h-4 w-4" />
     ),
   },
   {
     label: "Instagram",
     href: "#",
     icon: (
-      <svg {...iconProps}>
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <path d="M17.5 6.5v.01" />
-      </svg>
+      <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
     ),
   },
   {
-    label: "Email",
+    label: "Facebook",
     href: "mailto:hello@samatechs.com",
     icon: (
-      <svg {...iconProps}>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="M3 7l9 6 9-6" />
-      </svg>
+      <FontAwesomeIcon icon={faFacebook} className="h-4 w-4" />
+    ),
+  },
+  {
+    label: "Snapchat",
+    href: "mailto:hello@samatechs.com",
+    icon: (
+      <FontAwesomeIcon icon={faSnapchat} className="h-4 w-4" />
     ),
   },
 ];
@@ -97,7 +101,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] text-slate-300">
+    <footer className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] text-slate-300 px-4 sm:px-6 lg:px-27">
       {/* Faint brand rays, bottom-left */}
       <div
   aria-hidden="true"
@@ -114,7 +118,7 @@ export default function Footer() {
 </div>
 
       <div className="relative mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.3fr_1.3fr] lg:gap-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr] lg:gap-12">
           {/* Brand */}
           <div>
             <Image
@@ -123,7 +127,7 @@ export default function Footer() {
               width={200}
               height={40}
             />
-            <p className="mt-4 max-w-68 text-sm leading-relaxed text-slate-400">
+            <p className="mt-4 w-67.5 text-sm leading-relaxed text-slate-400">
               A Saudi-led strategic advisory and analytics firm. Partner-led,
               evidence-based, built for execution.
             </p>
@@ -133,7 +137,7 @@ export default function Footer() {
                   <a
                     href={s.href}
                     aria-label={s.label}
-                    className="flex h-8 w-8 items-center justify-center rounded-md border border-white/15 text-slate-300 transition-colors hover:border-white/40 hover:text-white"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-colors hover:border-white/40 hover:text-white"
                   >
                     {s.icon}
                   </a>
@@ -158,10 +162,10 @@ export default function Footer() {
 
           {/* Focus */}
           <div>
-            <h3 className={columnTitle}>Focus</h3>
+            <h3 className={columnTitle}>Pillars</h3>
             <ul className="mt-4 space-y-3">
               {focusAreas.map((item) => (
-                <li key={item} className="max-w-[14rem] text-sm leading-snug text-slate-300">
+                <li key={item} className="max-w-47 text-sm leading-snug text-slate-300">
                   {item}
                 </li>
               ))}

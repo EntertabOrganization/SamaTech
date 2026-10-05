@@ -7,6 +7,8 @@ import Logo from ".././../public/horizontal-logo 1.svg";
 import Image from "next/image";
 import Button from "../ui/Button";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 type NavLink = {
   label: string;
@@ -71,8 +73,9 @@ export default function Navbar() {
           <Link
             href="/contact"
           >
-            <Button size="sm">Schedule a consultation
-            <span aria-hidden="true">→</span></Button>
+             <Button size="sm" className="flex gap-4 items-center"> Schedule a consultation 
+                  <FontAwesomeIcon icon={faArrowRightLong} className="h-4 w-4" />
+              </Button>
             
           </Link>
         </div>
@@ -113,18 +116,14 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="mt-4 flex flex-col gap-3">
-            {/* <Link
-              href="/ar"
-              onClick={() => setOpen(false)}
-            >
-              <Button variant="outline">العربية</Button>
-            </Link> */}
             <LanguageSwitcher/>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
             >
-              <Button> Schedule a consultation →</Button>
+              <Button size="sm" className="flex gap-4 items-center"> Schedule a consultation 
+                  <FontAwesomeIcon icon={faArrowRightLong} className="h-4 w-4" />
+              </Button>
              
             </Link>
           </div>

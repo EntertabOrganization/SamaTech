@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useSyncExternalStore } from "react";
+import Button from "../ui/Button";
 
 type Language = "en" | "ar";
 
@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
   const language = useSyncExternalStore(
     subscribe,
     getLanguage,
-    getServerSnapshot
+    getServerSnapshot,
   );
 
   const changeLanguage = (lang: Language) => {
@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
 
     // Google Translate
     const select = document.querySelector(
-      ".goog-te-combo"
+      ".goog-te-combo",
     ) as HTMLSelectElement | null;
 
     if (!select) {
@@ -62,20 +62,27 @@ export default function LanguageSwitcher() {
     select.dispatchEvent(
       new Event("change", {
         bubbles: true,
-      })
+      }),
     );
   };
 
   const toggleLanguage = () => {
-    const newLanguage: Language =
-      language === "en" ? "ar" : "en";
+    const newLanguage: Language = language === "en" ? "ar" : "en";
 
     changeLanguage(newLanguage);
   };
 
   return (
-    <button type="button" onClick={toggleLanguage}>
-      {language === "en" ? "العربي" : "English"}
-    </button>
+    <>
+      <Button
+        size="sm"
+        variant="outline"
+        type="button"
+        onClick={toggleLanguage}
+      >
+        {" "}
+        {language === "en" ? "العربي" : "English"}
+      </Button>
+    </>
   );
 }
