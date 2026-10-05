@@ -13,7 +13,7 @@ export default function WhoWeAre() {
             helps organizations clarify complex challenges, quantify root
             causes, and design execution-ready solutions.
           </p>
-          <p className="mt-4 max-w-md text-xs leading-relaxed text-slate-500 sm:text-caption">
+          <p className="mt-4 max-w-117.5 text-xs leading-relaxed text-slate-500 sm:text-caption">
             We operate as a senior-led advisory partner to executive teams and
             boards, specializing in enterprise strategy, performance
             optimization, risk governance, digital transformation, and

@@ -5,7 +5,7 @@ export default function StatementCard({ title, text, icon, tone }: Statement) {
   return (
     <article
       className={cn(
-        "rounded-2xl border p-5",
+        "rounded-2xl border p-10",
         tone === "white"
           ? "border-ink-100 bg-white"
           : "border-[#C9D8EE] bg-[#E3ECF9]",

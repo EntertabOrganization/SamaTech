@@ -20,10 +20,10 @@ export default function StatementBanner() {
       </div>
 
       <div className="relative mx-auto max-w-5xl">
-        <p className="max-w-md text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">
+        <h1 className="w-150 text-h1 font-bold leading-snug tracking-tight text-white sm:text-2xl">
           Transformation begins with clarity, and succeeds through disciplined
           oversight.
-        </p>
+        </h1>
       </div>
     </section>
   );
