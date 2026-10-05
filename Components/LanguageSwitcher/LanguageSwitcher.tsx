@@ -73,16 +73,13 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <>
-      <Button
-        size="sm"
-        variant="outline"
-        type="button"
-        onClick={toggleLanguage}
-      >
-        {" "}
-        {language === "en" ? "العربي" : "English"}
-      </Button>
-    </>
+    <Button
+      size="sm"
+      variant="outline"
+      type="button"
+      onClick={toggleLanguage}
+    >
+      {language === "en" ? "العربي" : "English"}
+    </Button>
   );
 }

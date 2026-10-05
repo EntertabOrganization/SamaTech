@@ -69,9 +69,7 @@
   --shadow-brand: 0px 12px 32px 0px #0078FF3D;
 
 
-  /* Fonts */
-  --font-heading: var(--font-montserrat);
-  --font-body: var(--font-quicksand);
+  
 
 
   /* Typography */
@@ -109,7 +107,6 @@
   /* Letter spacing */
   --tracking-eyebrow: 0.14em;
 }
-
 
 body {
   font-family: "Font A", sans-serif;
