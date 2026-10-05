@@ -1,11 +1,14 @@
-import { cn } from "@/Components/ui";
+
+import { cn } from "../../../lib/cn";
+import MicroLabel from "../../ContactPage/MicroLabel";
 import ShowcaseTabs, {
   type ShowcaseItem,
   type ShowcaseVariant,
 } from "./ShowcaseTabs";
-import { MicroLabel } from "./primitives";
+export type { ShowcaseItem } from "./ShowcaseTabs";
 
-const stackStyles: Record<ShowcaseVariant, { box: string; label: string }> = {
+/** label = class for the visible caption above each visual. null = title only for screen readers. */
+const stackStyles: Record<ShowcaseVariant, { box: string; label: string | null }> = {
   cards: {
     box: "space-y-8 rounded-card border border-[#00000000] bg-white p-5 backdrop-blur-[14px]",
     label: "mb-4",
@@ -14,14 +17,16 @@ const stackStyles: Record<ShowcaseVariant, { box: string; label: string }> = {
     box: "space-y-10 rounded-3xl bg-[#F1F5FB] p-5",
     label: "mb-3",
   },
+  plain: {
+    box: "space-y-5 rounded-3xl bg-[#F1F5FB] p-4",
+    label: null,
+  },
 };
 
 interface ShowcaseProps {
   items: ShowcaseItem[];
-  /** Accessible name of the desktop tab list. */
   label: string;
   variant?: ShowcaseVariant;
-  /** Spacing above the desktop tabs, e.g. "mt-24". */
   tabsClassName?: string;
 }
 
@@ -42,7 +47,11 @@ export default function Showcase({
       <div className={cn("mt-10 lg:hidden", stack.box)}>
         {items.map((item) => (
           <div key={item.id}>
-            <MicroLabel className={stack.label}>{item.title}</MicroLabel>
+            {stack.label === null ? (
+              <h3 className="sr-only">{item.title}</h3>
+            ) : (
+              <MicroLabel className={stack.label}>{item.title}</MicroLabel>
+            )}
             {item.visual}
           </div>
         ))}
@@ -57,3 +66,4 @@ export default function Showcase({
     </>
   );
 }
+
