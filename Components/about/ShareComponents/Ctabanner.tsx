@@ -3,15 +3,12 @@ import Link from "next/link";
 // Relative imports on purpose, so they don't depend on the @/Components casing.
 import Button from "../../ui/Button";
 import { cn } from "../../../lib/cn";
-
+ 
 interface CtaBannerProps {
   title: string;
-  /** Optional paragraph under the title. */
   description?: ReactNode;
-  /** Button text (the arrow is added). */
   label: string;
   href: string;
-  /** Spacing and anything else, e.g. "mt-16". */
   className?: string;
 }
 
@@ -34,7 +31,7 @@ export default function CtaBanner({
       }}
     >
       <div>
-        <h2 className="max-w-xs text-h2 font-heading font-bold leading-tight tracking-tight sm:text-3xl">
+        <h2 className="max-w-[340px] text-h2 font-heading font-bold leading-tight tracking-tight sm:text-3xl">
           {title}
         </h2>
         {description && (
@@ -45,7 +42,7 @@ export default function CtaBanner({
       </div>
 
       <Link href={href}>
-        <Button size="lg">
+        <Button size="lg" variant="inverse">
           {label}
           <span aria-hidden="true">→</span>
         </Button>
