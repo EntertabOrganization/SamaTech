@@ -1,13 +1,14 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
-import { cn } from "@/Components/ui";
-import { MicroLabel } from "./primitives";
+import { cn } from "../../../lib/cn";
+import MicroLabel from "../../ContactPage/MicroLabel";
 
 export interface ShowcaseItem {
   id: string;
   title: string;
-  description: string;
+  /** Shown under the selected tab. Not used by the "plain" variant. */
+  description?: string;
   icon: ReactNode;
   /** Rendered on the server and passed in as an element, so it can stay a server component. */
   visual: ReactNode;
@@ -16,8 +17,9 @@ export interface ShowcaseItem {
 /**
  * cards = list on the left, bordered glass panel on the right.
  * soft  = panel on the left, list on the right with divider rows.
+ * plain = list on the left (title only), soft panel on the right with a text card.
  */
-export type ShowcaseVariant = "cards" | "soft";
+export type ShowcaseVariant = "cards" | "soft" | "plain";
 
 interface ShowcaseTabsProps {
   items: ShowcaseItem[];
@@ -36,12 +38,15 @@ const styles = {
     itemSelected: "border border-ink-100 bg-white shadow-[0px_6px_18px_-6px_#121A231F]",
     itemIdle: "border border-transparent bg-white/40 hover:bg-white/70",
     row: "gap-2.5",
+    iconSelected: "text-blue-pulse",
+    iconIdle: "text-slate-500",
     title: "text-sm font-semibold",
     titleSelected: "text-[#0F1B2D]",
     titleIdle: "text-slate-600",
     description: "mt-2 block pl-6.5 text-xs leading-relaxed text-slate-500",
     panel:
       "flex min-h-80 flex-col rounded-lg border border-[#3B9BFF] bg-white/60 p-6 backdrop-blur-[14px]",
+    panelLabel: true,
     content: "flex flex-1 items-center justify-center pt-4",
   },
   soft: {
@@ -52,12 +57,33 @@ const styles = {
     itemSelected: "rounded-2xl bg-[#E3ECF9] py-4",
     itemIdle: "border-b border-ink-100 py-3.5 hover:bg-slate-50",
     row: "gap-3",
+    iconSelected: "text-blue-pulse",
+    iconIdle: "text-slate-500",
     title: "text-sm font-heading font-semibold",
     titleSelected: "text-ink-900",
     titleIdle: "text-ink-700",
     description: "mt-2 block pl-7 text-xs leading-relaxed text-ink-500",
     panel: "flex min-h-85 flex-col rounded-panel bg-ink-50 p-6",
+    panelLabel: true,
     content: "flex flex-1 items-center pt-4",
+  },
+  plain: {
+    grid: "items-center gap-8 lg:grid-cols-2",
+    panelFirst: false,
+    list: "flex flex-col",
+    item: "px-4 py-3.5 text-left transition-colors",
+    itemSelected: "rounded-2xl bg-[#E3ECF9]",
+    itemIdle: "border-b border-ink-100 hover:bg-white/60",
+    row: "gap-3",
+    iconSelected: "text-blue-sovereign",
+    iconIdle: "text-ink-500",
+    title: "text-sm font-semibold",
+    titleSelected: "text-[#0F1B2D]",
+    titleIdle: "text-slate-600",
+    description: "",
+    panel: "flex min-h-80 flex-col rounded-panel bg-ink-50 p-12",
+    panelLabel: false,
+    content: "flex flex-1 items-center justify-center",
   },
 } as const;
 
@@ -93,7 +119,7 @@ export default function ShowcaseTabs({
             className={cn(s.item, selected ? s.itemSelected : s.itemIdle)}
           >
             <span className={cn("flex items-center", s.row)}>
-              <span className={selected ? "text-blue-pulse" : "text-slate-500"}>
+              <span className={selected ? s.iconSelected : s.iconIdle}>
                 {item.icon}
               </span>
               <span
@@ -102,7 +128,9 @@ export default function ShowcaseTabs({
                 {item.title}
               </span>
             </span>
-            {selected && <span className={s.description}>{item.description}</span>}
+            {selected && item.description && (
+              <span className={s.description}>{item.description}</span>
+            )}
           </button>
         );
       })}
@@ -116,7 +144,7 @@ export default function ShowcaseTabs({
       aria-labelledby={`${uid}-tab-${active.id}`}
       className={s.panel}
     >
-      <MicroLabel>{active.title}</MicroLabel>
+      {s.panelLabel && <MicroLabel>{active.title}</MicroLabel>}
       <div className={s.content}>
         <div className="w-full">{active.visual}</div>
       </div>
