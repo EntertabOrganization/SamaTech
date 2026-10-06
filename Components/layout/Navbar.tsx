@@ -30,7 +30,7 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-ink-100 bg-[#FFFFFFDB] shadow-sm backdrop-blur-[14px] font-body">
+    <header className="sticky top-0 z-50 w-full border-b border-blue-pulse bg-[#FFFFFFDB] shadow-sm backdrop-blur-[14px] font-body">
       <nav
         aria-label="Main navigation"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"

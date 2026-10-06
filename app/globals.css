@@ -109,7 +109,7 @@
 }
 
 body {
-  font-family: "Font A", sans-serif;
+  font-family: var(--font-quicksand), sans-serif;
 }
 
 h1,
@@ -118,5 +118,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Font B", sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
 }
