@@ -40,7 +40,7 @@ export default function AdvisoryPillars() {
               Advisory Pillars
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end">
+          <p className="max-w-90 text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end">
             We combine strategy, decision intelligence, technology, and
             cross-border expertise to help organizations navigate complexity
             from diagnosis through execution.

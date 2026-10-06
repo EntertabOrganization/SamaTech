@@ -13,6 +13,7 @@ const focusAreas: string[] = [
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-6">
+      <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(0,120,255,0.28)_0%,rgba(0,120,255,0)_70%)]" />
       {/* Soft blue glow behind the headline */}
       <div
         aria-hidden="true"
@@ -33,7 +34,7 @@ export default function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="pt-6.5 max-w-[745.24px] text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
+        <p className="pt-6.5 w-150 text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
           SAMATECHS advises leadership teams on complex strategic, operational,
           risk, technology, and cross-border challenges—designing
           implementation-ready solutions that strengthen decision-making and

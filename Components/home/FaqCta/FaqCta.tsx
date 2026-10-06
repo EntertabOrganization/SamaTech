@@ -128,7 +128,7 @@ export default function FaqCta() {
                 <h2 className="mt-4 text-3xl font-heading font-bold tracking-tight text-ink-900">
                   Before you get in touch
                 </h2>
-                <p className="mt-3 max-w-xs font-medium text-body-small leading-relaxed text-ink-500">
+                <p className="mt-3 max-w-105 font-medium text-body-small leading-relaxed text-ink-500">
                   If your question is not here, ask it directly — we answer within
                   one business day.
                 </p>
@@ -151,17 +151,19 @@ export default function FaqCta() {
 
         {/* CTA banner */}
         <div
-          className="mx-auto mt-20 grid max-w-4xl items-center gap-8 rounded-panel p-8 text-white shadow-[0px_24px_50px_-24px_#0078FF99] sm:p-10 md:grid-cols-[1.5fr_1fr]"
+          className="mx-auto mt-20 grid max-w-5xl items-center gap-8 rounded-panel p-8 text-white shadow-[0px_24px_50px_-24px_#0078FF99] sm:p-10 md:grid-cols-[1.5fr_1fr]"
           style={{
             background:
               "linear-gradient(138.71deg, #3393FF 4.61%, #0078FF 56.57%, #005BC2 99.56%)",
           }}
         >
           <div>
-            <h2 className="max-w-2xl text-h1 font-heading font-bold leading-tight tracking-tight sm:text-4xl">
-              Complex challenges require integrated thinking.
+            <h2 className="max-w-sm text-h1 font-heading font-bold leading-tight tracking-tight sm:text-4xl">
+              Complex
+              <br/>
+               challenges require integrated thinking.
             </h2>
-            <p className="mt-5 max-w-md text-lead font-medium leading-relaxed text-white/86">
+            <p className="mt-5 max-w-142.5 text-lead font-medium leading-relaxed text-white/86">
               Whether you are redefining enterprise strategy, strengthening
               governance, exploring AI-enabled transformation, or entering a new
               market, SAMATECHS can help you move from ambiguity to disciplined

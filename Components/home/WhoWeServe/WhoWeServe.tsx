@@ -13,8 +13,9 @@ export default function WhoWeServe() {
         <SectionHeader
           eyebrow="Who we serve"
           title="Leadership teams facing decisions that carry consequence"
-          intro="SAMATECHS works with leadership teams navigating complex strategic, operational, technological, risk, and cross-border challenges. Our senior-led advisory model is particularly suited to organizations that require rigorous analysis, executive alignment, and implementation-ready solutions."
+          className="w-87.5"
         />
+        <p className="mt-5 text-sm font-medium leading-relaxed max-w-122.5">SAMATECHS works with leadership teams navigating complex strategic, operational, technological, risk, and cross-border challenges. Our senior-led advisory model is particularly suited to organizations that require rigorous analysis, executive alignment, and implementation-ready solutions.</p>
 
         <Showcase
           items={audiences}

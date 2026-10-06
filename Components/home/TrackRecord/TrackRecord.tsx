@@ -14,7 +14,7 @@ const experiences: string[] = [
 
 export default function TrackRecord() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-20 sm:px-6 lg:px-75">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-16 sm:px-6 lg:py-20 lg:px-8">
       {/* Faint brand rays, bottom-right, partly cropped */}
        <div
   aria-hidden="true"
@@ -44,7 +44,7 @@ export default function TrackRecord() {
           </p>
         </div>
 
-        <ul className="flex flex-col">
+        <ul className="flex flex-col max-w-100">
           {experiences.map((item, i) => (
             <li
               key={item}

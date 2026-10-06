@@ -1,14 +1,13 @@
 import type { ReactNode } from "react";
-import { cn } from "@/Components/ui";
+import { cn } from "../../../lib/cn";
 
 interface SectionHeaderProps {
   eyebrow: string;
   title: ReactNode;
-  /** Paragraph under the title. */
   intro?: ReactNode;
-  /** Heading level, so each page keeps a single h1. */
+  children?: ReactNode;
   as?: "h1" | "h2";
-  /** light = for light backgrounds, dark = for dark backgrounds. */
+  size?: "md" | "lg";
   tone?: "light" | "dark";
   className?: string;
 }
@@ -16,7 +15,7 @@ interface SectionHeaderProps {
 const tones = {
   light: {
     eyebrow: "text-blue-sovereign",
-    line: "bg-blue-pulse",
+    line: "bg-blue-sovereign",
     title: "text-ink-900",
     intro: "text-ink-500",
   },
@@ -28,11 +27,18 @@ const tones = {
   },
 };
 
+const sizes = {
+  md: "text-3xl sm:text-4xl",
+  lg: "text-4xl sm:text-5xl",
+};
+
 export default function SectionHeader({
   eyebrow,
   title,
   intro,
+  children,
   as: Heading = "h2",
+  size = "md",
   tone = "light",
   className,
 }: SectionHeaderProps) {
@@ -51,7 +57,8 @@ export default function SectionHeader({
       </p>
       <Heading
         className={cn(
-          "mt-4 text-3xl font-bold font-heading leading-tight tracking-tight sm:text-4xl",
+          "mt-4 font-bold font-heading leading-tight tracking-tight",
+          sizes[size],
           t.title,
         )}
       >
@@ -62,6 +69,7 @@ export default function SectionHeader({
           {intro}
         </p>
       )}
+      {children}
     </div>
   );
 }
