@@ -1,10 +1,21 @@
 import PageHeader from "@/Components/dashboard/Layout/PageHeader";
-import StatusTabs from "@/Components/dashboard/shared/StatusTabs";
-import InviteUserCard from "@/Components/dashboard/users/InviteUserCard";
+import Pagination from "@/Components/dashboard/users/Pagination";
+import CreateUserCard from "@/Components/dashboard/users/CreateUserCard";
 import UserList from "@/Components/dashboard/users/UserList";
 import UserRow from "@/Components/dashboard/users/UserRow";
 
-export default function UsersPage() {
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: rawPage } = await searchParams;
+  const page = Math.max(1, Number(rawPage) || 1);
+
+  // TODO(backend): GET /users?page=${page}&limit=20
+  // then totalPages = Math.ceil(total / limit)
+  const totalPages = 1;
+
   return (
     <div className="space-y-6">
       <PageHeader
@@ -15,40 +26,20 @@ export default function UsersPage() {
 
       <div className="grid items-start gap-4 lg:grid-cols-[1.7fr_1fr]">
         <div className="space-y-4">
-          {/* TODO(backend): active from ?status=, and add count to each tab */}
-          <StatusTabs
-            label="Filter by status"
-            active="all"
-            tabs={[
-              { id: "all", label: "All users" },
-              { id: "active", label: "Active" },
-              { id: "invited", label: "Invited" },
-              { id: "deactivated", label: "Deactivated" },
-            ]}
-          />
-
           <UserList>
             {/* TODO(backend): replace these two placeholder rows with users.map(...) */}
             <UserRow
-              href="#"
               name="User name"
               email="name@organization.com"
-              role="Role"
-              status="active"
-              lastActive="Last active"
+              createdAt="Added on"
             />
-            <UserRow
-              href="#"
-              name="User name"
-              email="name@organization.com"
-              role="Role"
-              status="invited"
-              lastActive="Never"
-            />
+            <UserRow name="User name" email="name@organization.com" />
           </UserList>
+
+          <Pagination page={page} totalPages={totalPages} />
         </div>
 
-        <InviteUserCard />
+        <CreateUserCard />
       </div>
     </div>
   );

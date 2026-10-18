@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
 import { Icon, IconButton, cn } from "@/Components/website/ui";
 
@@ -25,11 +26,13 @@ export default function Calendar({
   onChange,
   availableWeekdays = SUNDAY_TO_THURSDAY,
 }: CalendarProps) {
+  const { language } = useLanguage();
+
   // "Today" is read after mount, so the server and the browser can't disagree
   // about which days are in the past (different time zones).
  const initialToday = startOfDay(new Date());
 
-const [today, setToday] = useState<Date>(initialToday);
+const [today] = useState<Date>(initialToday);
 
 const [view, setView] = useState<{ year: number; month: number }>({
   year: initialToday.getFullYear(),
@@ -68,17 +71,17 @@ const [view, setView] = useState<{ year: number; month: number }>({
         <IconButton
           label="Previous month"
           size="sm"
-          icon={<Icon name="chevron-down" size={12} className="rotate-90" />}
+          icon={<Icon name="chevron-down" size={12} className={language === "ar" ? "-rotate-90" : "rotate-90"} />}
           disabled={!canGoPrev}
           onClick={() => shift(-1)}
         />
         <p aria-live="polite" className="text-xs font-semibold text-[#0F1B2D]">
-          {first.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+          {first.toLocaleDateString(language === "ar" ? "ar-SA-u-ca-gregory" : "en-US", { month: "long", year: "numeric" })}
         </p>
         <IconButton
           label="Next month"
           size="sm"
-          icon={<Icon name="chevron-down" size={12} className="-rotate-90" />}
+          icon={<Icon name="chevron-down" size={12} className={language === "ar" ? "rotate-90" : "-rotate-90"} />}
           onClick={() => shift(1)}
         />
       </div>
@@ -89,7 +92,7 @@ const [view, setView] = useState<{ year: number; month: number }>({
             key={day}
             className="pb-2 text-[9px] font-medium uppercase tracking-wider text-slate-400"
           >
-            {day}
+            <Trans>{day}</Trans>
           </span>
         ))}
 
@@ -105,7 +108,7 @@ const [view, setView] = useState<{ year: number; month: number }>({
               type="button"
               disabled={!available}
               aria-pressed={selected}
-              aria-label={date.toLocaleDateString("en-GB", {
+              aria-label={date.toLocaleDateString(language === "ar" ? "ar-SA-u-ca-gregory" : "en-GB", {
                 weekday: "long",
                 day: "numeric",
                 month: "long",

@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { Icon, cn } from "@/Components/website/ui";
 
@@ -26,8 +27,8 @@ export default function ChecklistCard({
       )}
     >
       <div className="flex items-center justify-between gap-3">
-        <p className="text-xs font-semibold text-[#0F1B2D]">{title}</p>
-        {icon && <span className="text-blue-pulse">{icon}</span>}
+        <p className="text-xs font-semibold text-[#0F1B2D]"><Trans>{title}</Trans></p>
+        {icon && <span className="text-blue-pulse"><Trans>{icon}</Trans></span>}
       </div>
 
       <ul className="mt-3">
@@ -37,12 +38,12 @@ export default function ChecklistCard({
             className="flex items-center gap-2.5 border-t border-ink-100 py-2 text-[11px] text-slate-600 first:border-t-0"
           >
             <Icon name="check-circle" size={14} className="shrink-0 text-blue-pulse" />
-            {item}
+            <Trans>{item}</Trans>
           </li>
         ))}
       </ul>
 
-      {footer && <div className="mt-2">{footer}</div>}
+      {footer && <div className="mt-2"><Trans>{footer}</Trans></div>}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import Link from "next/link";
 // Relative imports on purpose, so they don't depend on the @/Components casing.
@@ -31,19 +32,19 @@ export default function CtaBanner({
       }}
     >
       <div>
-        <h2 className="max-w-[340px] text-h2 font-heading font-bold leading-tight tracking-tight sm:text-3xl">
-          {title}
-        </h2>
+        <p className="max-w-87.5 text-h2 font-heading font-bold leading-tight tracking-tight sm:text-3xl">
+          <Trans>{title}</Trans>
+        </p>
         {description && (
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/80">
-            {description}
+            <Trans>{description}</Trans>
           </p>
         )}
       </div>
 
       <Link href={href}>
         <Button size="lg" variant="inverse">
-          {label}
+          <Trans>{label}</Trans>
           <span aria-hidden="true">→</span>
         </Button>
       </Link>

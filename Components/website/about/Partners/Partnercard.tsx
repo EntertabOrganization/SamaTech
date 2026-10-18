@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Image from "next/image";
 import PartnerSocials from "./Partnersocials";
 import type { Partner } from "./Data";
@@ -11,6 +14,8 @@ function initials(name: string): string {
 }
 
 export default function PartnerCard({ partner }: { partner: Partner }) {
+  const { t: translateText, language } = useLanguage();
+
   return (
     <article className="py-10">
       <div className="grid items-center gap-5 md:grid-cols-[14rem_1fr] md:gap-8">
@@ -18,9 +23,10 @@ export default function PartnerCard({ partner }: { partner: Partner }) {
           {partner.photo ? (
             <Image
               src={partner.photo}
-              alt={`Portrait of ${partner.name}`}
+              alt={language === "ar" ? `صورة ${translateText(partner.name)}` : `Portrait of ${partner.name}`}
               fill
               sizes="224px"
+              loading="eager"
               className="object-cover"
             />
           ) : (
@@ -35,20 +41,20 @@ export default function PartnerCard({ partner }: { partner: Partner }) {
 
         <div>
           <h3 className="text-body font-heading font-bold text-ink-900">
-            {partner.name}
+            <Trans>{partner.name}</Trans>
           </h3>
           <p className="mt-1 text-body-small font-bold leading-snug text-blue-sovereign">
-            {partner.role}
+            <Trans>{partner.role}</Trans>
           </p>
           <p className="mt-2 text-caption font-medium text-ink-300">
-            {partner.tagline}
+            <Trans>{partner.tagline}</Trans>
           </p>
           <PartnerSocials partner={partner} />
         </div>
       </div>
 
       <p className="mt-6 text-body font-medium leading-relaxed text-ink-500 sm:text-xs">
-        {partner.bio}
+        <Trans>{partner.bio}</Trans>
       </p>
     </article>
   );

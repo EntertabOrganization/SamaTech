@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,7 +34,7 @@ const faqs: FaqItem[] = [
       "You get the same senior attention as a larger client, with scope and team size matched to the decision you need to make.",
   },
   {
-    question: "Can you support U.S.–GCC expansion end to end?",
+    question: "Can you support U.S.-GCC expansion end to end?",
     answer:
       "Yes. We support market-entry strategy, regulatory and commercial readiness, and stakeholder alignment across the U.S. and GCC.",
   },
@@ -66,9 +67,9 @@ function FaqRow({
           onClick={onToggle}
           aria-expanded={open}
           aria-controls={panelId}
-          className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left text-body font-bold text-ink-900"
+          className="flex w-full items-center justify-between gap-4 px-4 py-3 text-start text-body font-bold text-ink-900"
         >
-          {item.question}
+          <Trans>{item.question}</Trans>
           <svg
             width="14"
             height="14"
@@ -103,7 +104,7 @@ function FaqRow({
       >
         <div className="overflow-hidden">
           <p className="px-4 pb-4 text-body-small font-medium leading-relaxed text-ink-500">
-            {item.answer}
+            <Trans>{item.answer}</Trans>
           </p>
         </div>
       </div>
@@ -112,6 +113,8 @@ function FaqRow({
 }
 
 export default function FaqCta() {
+  const { t: translateText } = useLanguage();
+
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -122,18 +125,18 @@ export default function FaqCta() {
           <div className="flex flex-col justify-between h-full">
             <div>
                 <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
-                  <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" />
+                  <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
                   Common questions
-                </p>
-                <h2 className="mt-4 text-3xl font-heading font-bold tracking-tight text-ink-900">
+                </Trans></p>
+                <h2 className="mt-4 text-3xl font-heading font-bold tracking-tight text-ink-900"><Trans>
                   Before you get in touch
-                </h2>
-                <p className="mt-3 max-w-105 font-medium text-body-small leading-relaxed text-ink-500">
-                  If your question is not here, ask it directly — we answer within
+                </Trans></h2>
+                <p className="mt-3 max-w-105 font-medium text-body-small leading-relaxed text-ink-500"><Trans>
+                  If your question is not here, ask it directly, we answer within
                   one business day.
-                </p>
+                </Trans></p>
             </div>
-            <Image src={SectionImg} alt="Faq visual" />
+            <Image src={SectionImg} alt={translateText("Faq visual")} loading="eager" className="h-auto max-w-full" />
           </div>
 
           {/* Right: accordion */}
@@ -158,25 +161,25 @@ export default function FaqCta() {
           }}
         >
           <div>
-            <h2 className="max-w-sm text-h1 font-heading font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="max-w-sm text-h1 font-heading font-bold leading-tight tracking-tight sm:text-4xl"><Trans>
               Complex
-              <br/>
+              </Trans><br/><Trans>
                challenges require integrated thinking.
-            </h2>
-            <p className="mt-5 max-w-142.5 text-lead font-medium leading-relaxed text-white/86">
+            </Trans></h2>
+            <p className="mt-5 max-w-142.5 text-lead font-medium leading-relaxed text-white/86"><Trans>
               Whether you are redefining enterprise strategy, strengthening
               governance, exploring AI-enabled transformation, or entering a new
               market, SAMATECHS can help you move from ambiguity to disciplined
               action.
-            </p>
+            </Trans></p>
           </div>
 
           <div className="md:justify-self-center">
             <Link
               href="/contact"
             >
-              <Button variant="inverse" size="md">Start a Confidential Conversation
-              <span aria-hidden="true">→</span>
+              <Button variant="inverse" size="md"><Trans>Start a Confidential Conversation
+              </Trans><span aria-hidden="true">→</span>
               </Button>
             </Link>
           </div>

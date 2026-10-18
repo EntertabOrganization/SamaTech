@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 
 import { cn } from "../../../../lib/cn";
 import MicroLabel from "../../ContactPage/MicroLabel";
@@ -48,11 +49,11 @@ export default function Showcase({
         {items.map((item) => (
           <div key={item.id}>
             {stack.label === null ? (
-              <h3 className="sr-only">{item.title}</h3>
+              <h3 className="sr-only"><Trans>{item.title}</Trans></h3>
             ) : (
-              <MicroLabel className={stack.label}>{item.title}</MicroLabel>
+              <MicroLabel className={stack.label}><Trans>{item.title}</Trans></MicroLabel>
             )}
-            {item.visual}
+            <Trans>{item.visual}</Trans>
           </div>
         ))}
       </div>

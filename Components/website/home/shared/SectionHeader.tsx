@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { cn } from "../../../../lib/cn";
 
@@ -45,7 +46,7 @@ export default function SectionHeader({
   const t = tones[tone];
 
   return (
-    <div className={cn("max-w-md", className)}>
+    <div className={cn("max-w-lg", className)}>
       <p
         className={cn(
           "flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider",
@@ -53,7 +54,7 @@ export default function SectionHeader({
         )}
       >
         <span aria-hidden="true" className={cn("h-px w-8", t.line)} />
-        {eyebrow}
+        <Trans>{eyebrow}</Trans>
       </p>
       <Heading
         className={cn(
@@ -62,14 +63,14 @@ export default function SectionHeader({
           t.title,
         )}
       >
-        {title}
+        <Trans>{title}</Trans>
       </Heading>
       {intro && (
         <p className={cn("mt-5 text-sm font-medium leading-relaxed", t.intro)}>
-          {intro}
+          <Trans>{intro}</Trans>
         </p>
       )}
-      {children}
+      <Trans>{children}</Trans>
     </div>
   );
 }

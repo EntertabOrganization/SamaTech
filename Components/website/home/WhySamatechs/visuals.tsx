@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { Icon, cn } from "@/Components/website/ui";
 import { MicroLabel, SmallDot } from "../shared/primitives";
 import ChecklistCard from "../shared/ChecklistCard";
@@ -13,13 +16,13 @@ export function TeamVisual() {
 
   return (
     <div>
-      <MicroLabel tone="default">Engagement team</MicroLabel>
+      <MicroLabel tone="default"><Trans>Engagement team</Trans></MicroLabel>
       <ol className="mt-4 flex flex-col">
         {steps.map((s, i) => {
           const lead = i === 0;
           return (
             <li key={s.title} className="flex flex-col">
-              {i > 0 && <span aria-hidden="true" className="ml-8 h-3 w-px bg-slate-300" />}
+              {i > 0 && <span aria-hidden="true" className="ms-8 h-3 w-px bg-slate-300" />}
               <div
                 className={cn(
                   "flex items-center gap-3 rounded-2xl px-4",
@@ -45,15 +48,15 @@ export function TeamVisual() {
                       lead ? "text-[#0F1B2D]" : "text-slate-500",
                     )}
                   >
-                    {s.title}
+                    <Trans>{s.title}</Trans>
                   </span>
                   {s.subtitle && (
                     <span className="mt-0.5 block text-[10px] leading-snug text-slate-400">
-                      {s.subtitle}
+                      <Trans>{s.subtitle}</Trans>
                     </span>
                   )}
                 </span>
-                {s.tag && <span className="text-[10px] font-medium text-blue-pulse">{s.tag}</span>}
+                {s.tag && <span className="text-[10px] font-medium text-blue-pulse"><Trans>{s.tag}</Trans></span>}
               </div>
             </li>
           );
@@ -81,6 +84,8 @@ export function ExpertiseVisual() {
 
 /** 3) Evidence-based recommendations: root-cause chart */
 export function EvidenceVisual() {
+  const { t: translateText } = useLanguage();
+
   const bars = [
     { label: "A", height: 38 },
     { label: "B", height: 52 },
@@ -92,15 +97,15 @@ export function EvidenceVisual() {
   return (
     <div className="rounded-2xl bg-white p-4 shadow-[0px_8px_20px_-10px_#121A2330]">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold text-[#0F1B2D]">Root-cause contribution</p>
-        <span className="text-[9px] font-medium uppercase tracking-wider text-slate-400">
+        <p className="text-xs font-semibold text-[#0F1B2D]"><Trans>Root-cause contribution</Trans></p>
+        <span className="text-[9px] font-medium uppercase tracking-wider text-slate-400"><Trans>
           Modeled
-        </span>
+        </Trans></span>
       </div>
       <div
         className="mt-4 flex h-24 items-end gap-2"
         role="img"
-        aria-label="Bar chart: cause C contributes most"
+        aria-label={translateText("Bar chart: cause C contributes most")}
       >
         {bars.map((b) => (
           <div key={b.label} className="flex h-full flex-1 flex-col justify-end">
@@ -119,14 +124,14 @@ export function EvidenceVisual() {
       <div className="mt-1.5 flex gap-2">
         {bars.map((b) => (
           <span key={b.label} className="flex-1 text-center text-[9px] text-slate-400">
-            {b.label}
+            <Trans>{b.label}</Trans>
           </span>
         ))}
       </div>
       <p className="mt-3 flex items-center gap-2 rounded-lg bg-[#EAF1FB] px-3 py-2 text-[10px] text-slate-600">
-        <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-blue-pulse" />
+        <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-blue-pulse" /><Trans>
         Primary driver isolated, not assumed.
-      </p>
+      </Trans></p>
     </div>
   );
 }
@@ -141,7 +146,7 @@ export function DeliveryVisual() {
 
   return (
     <ol className="relative flex flex-col gap-3">
-      <span aria-hidden="true" className="absolute bottom-6 left-2.75 top-6 w-px bg-[#C9D8EE]" />
+      <span aria-hidden="true" className="absolute bottom-6 start-2.75 top-6 w-px bg-[#C9D8EE]" />
       {milestones.map((m) => (
         <li key={m.title} className="relative flex items-center gap-3">
           <span
@@ -171,8 +176,8 @@ export function DeliveryVisual() {
             )}
           </span>
           <div className="flex-1 rounded-2xl bg-white px-4 py-3 shadow-[0px_8px_20px_-10px_#121A2330]">
-            <p className="text-xs font-semibold text-[#0F1B2D]">{m.title}</p>
-            <p className="mt-0.5 text-[10px] text-slate-400">{m.subtitle}</p>
+            <p className="text-xs font-semibold text-[#0F1B2D]"><Trans>{m.title}</Trans></p>
+            <p className="mt-0.5 text-[10px] text-slate-400"><Trans>{m.subtitle}</Trans></p>
           </div>
         </li>
       ))}

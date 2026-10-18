@@ -44,10 +44,10 @@ export const pillars: Pillar[] = [
   {
     title: "Digital Transformation & Cross-Border Growth",
     description:
-      "We help organizations design technology-enabled growth strategies and navigate U.S.–GCC market expansion with greater commercial, regulatory, and execution confidence.",
+      "We help organizations design technology-enabled growth strategies and navigate U.S.-GCC market expansion with greater commercial, regulatory, and execution confidence.",
     focusAreas: [
       "Digital transformation roadmaps",
-      "U.S.–GCC market entry strategy",
+      "U.S.-GCC market entry strategy",
       "Regulatory and commercial readiness",
       "Partner and stakeholder alignment",
     ],

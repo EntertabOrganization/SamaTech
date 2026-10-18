@@ -3,7 +3,7 @@ import { messageGrid } from "./MessageList";
 import StatusBadge, { type MessageStatus } from "./StatusBadge";
 
 export interface MessageRowProps {
-  /** Detail page, e.g. `/dashboard/messages/${id}`. */
+  /** Detail page, e.g. `/dashboard/messages/${id}` (id from GET /contact). */
   href: string;
   name: string;
   email: string;
@@ -15,6 +15,7 @@ export interface MessageRowProps {
   preview: string;
   /** Already formatted for display, e.g. "2h ago". */
   receivedAt: string;
+  /** Same value the API returns: "NEW" | "READ" | "RESPONDED". */
   status: MessageStatus;
 }
 

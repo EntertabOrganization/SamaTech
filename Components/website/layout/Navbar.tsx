@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,6 +24,8 @@ const links: NavLink[] = [
 ];
 
 export default function Navbar() {
+  const { t: translateText, language } = useLanguage();
+
   const [open, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
 
@@ -32,25 +35,28 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-blue-pulse bg-[#FFFFFFDB] shadow-sm backdrop-blur-[14px] font-body">
       <nav
-        aria-label="Main navigation"
+        aria-label={translateText("Main navigation")}
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
         {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-2"
-          aria-label="Samatechs home"
+          aria-label={translateText("SAMATECHS home")}
         >
           <Image
             src={Logo}
-            alt="Samatechs logo"
-            width={150}
-            height={50}
+            alt={translateText("SAMATECHS logo")}
+            width={1267}
+            height={289}
+            style={{ width: 150, height: "auto" }}
+            loading="eager"
           />
+          {language === "ar" && <span className="text-xl font-bold text-blue-sovereign">ساماتكس</span>}
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
             <li key={link.href}>
               <Link
@@ -62,23 +68,23 @@ export default function Navbar() {
                     : "text-ink-500"
                 }`}
               >
-                {link.label}
+                <Trans>{link.label}</Trans>
               </Link>
             </li>
           ))}
         </ul>
 
         {/* Desktop actions */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <LanguageSwitcher />
 
           <Link href="/contact">
             <Button
               size="sm"
               className="flex items-center gap-4"
-            >
+            ><Trans>
               Schedule a consultation
-              <FontAwesomeIcon
+              </Trans><FontAwesomeIcon
                 icon={faArrowRightLong}
                 className="h-4 w-4"
               />
@@ -92,8 +98,8 @@ export default function Navbar() {
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 md:hidden"
+          aria-label={translateText(open ? "Close menu" : "Open menu")}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 lg:hidden"
         >
           <svg
             width="22"
@@ -117,7 +123,7 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="border-t border-slate-100 bg-white px-4 pb-5 pt-3 md:hidden"
+          className="border-t border-slate-100 bg-white px-4 pb-5 pt-3 lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             {links.map((link) => (
@@ -131,7 +137,7 @@ export default function Navbar() {
                       : "text-slate-600 hover:bg-slate-50"
                   }`}
                 >
-                  {link.label}
+                  <Trans>{link.label}</Trans>
                 </Link>
               </li>
             ))}
@@ -147,9 +153,9 @@ export default function Navbar() {
               <Button
                 size="sm"
                 className="flex items-center gap-4"
-              >
+              ><Trans>
                 Schedule a consultation
-                <FontAwesomeIcon
+                </Trans><FontAwesomeIcon
                   icon={faArrowRightLong}
                   className="h-4 w-4"
                 />

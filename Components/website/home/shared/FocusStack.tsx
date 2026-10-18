@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { cn } from "@/Components/website/ui";
 import { SmallDot } from "./primitives";
@@ -49,7 +50,7 @@ export default function FocusStack({
             <span className={center ? "text-blue-pulse" : "text-slate-400"}>
               {center ? icon : <SmallDot />}
             </span>
-            {label}
+            <Trans>{label}</Trans>
           </li>
         );
       })}

@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import { cn } from "@/Components/website/ui";
 import type { Statement } from "./Statements";
 
@@ -17,10 +18,10 @@ export default function StatementCard({ title, text, icon, tone }: Statement) {
           tone === "white" ? "bg-[#E3ECF9]" : "bg-white",
         )}
       >
-        {icon}
+        <Trans>{icon}</Trans>
       </span>
-      <h3 className="mt-3 text-h3 font-bold font-heading text-[#0F1B2D]">{title}</h3>
-      <p className="mt-2 text-body font-medium leading-relaxed text-ink-500">{text}</p>
+      <h3 className="mt-3 text-h3 font-bold font-heading text-[#0F1B2D]"><Trans>{title}</Trans></h3>
+      <p className="mt-2 text-body font-medium leading-relaxed text-ink-500"><Trans>{text}</Trans></p>
     </article>
   );
 }

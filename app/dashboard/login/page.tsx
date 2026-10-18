@@ -1,7 +1,6 @@
 "use client";
 
 import type { FormEvent } from "react";
-import Link from "next/link";
 import { AuthBackLink, AuthButton, AuthForm, AuthHeading, AuthShell, EmailField, PasswordField } from "@/Components/dashboard/auth";
 
 
@@ -34,14 +33,7 @@ export default function Page() {
           name="password"
           label="Password"
           placeholder="Enter your password"
-          labelAddon={
-            <Link
-              href="/dashboard/forgot-password"
-              className="rounded text-sm font-medium text-blue-600 outline-none transition hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-blue-500/40"
-            >
-              Forgot password?
-            </Link>
-          }
+         
         />
 
         <label className="flex cursor-pointer items-center gap-2.5 text-sm text-slate-600">

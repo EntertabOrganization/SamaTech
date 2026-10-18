@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { cn } from "@/Components/website/ui";
 
@@ -30,7 +31,7 @@ export function MicroLabel({
         className,
       )}
     >
-      {children}
+      <Trans>{children}</Trans>
     </p>
   );
 }

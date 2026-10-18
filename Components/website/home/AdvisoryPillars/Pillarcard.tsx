@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
 import { Icon } from "@/Components/website/ui";
 import FocusDisclosure from "./Focusdisclosure";
@@ -12,10 +13,10 @@ export default function PillarCard({ pillar }: { pillar: Pillar }) {
        </span>
       
        <h3 className="text-lg font-semibold font-heading leading-snug text-white">
-         {pillar.title}
+         <Trans>{pillar.title}</Trans>
        </h3>
        <p className=" text-sm font-medium leading-relaxed font-body text-white">
-         {pillar.description}
+         <Trans>{pillar.description}</Trans>
        </p>
      </div>
 
@@ -29,7 +30,7 @@ export default function PillarCard({ pillar }: { pillar: Pillar }) {
           href={pillar.href}
           className="group mt-2 flex items-start justify-between gap-3 border-t border-white/15 pt-4 text-xs font-medium text-blue-precision transition-colors hover:text-[#66ADFF]"
         >
-          <span>{pillar.linkLabel}</span>
+          <span><Trans>{pillar.linkLabel}</Trans></span>
           <span
             aria-hidden="true"
             className="mt-0.5 transition-transform group-hover:translate-x-0.5"

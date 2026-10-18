@@ -1,18 +1,27 @@
+
+import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
+import WebsiteLoader from "@/Components/website/layout/WebsiteLoader";
 import Navbar from "@/Components/website/layout/Navbar";
 import Footer from "@/Components/website/layout/Footer";
-import GoogleTranslate from "@/Components/website/GoogleTranslate/GoogleTranslate";
+import { cookies } from "next/headers";
 
-export default function WebsiteLayout({
+export default async function WebsiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const language =
+    (await cookies()).get("samatechs-language")?.value === "ar"
+      ? "ar"
+      : "en";
+
   return (
-    <>
-    <GoogleTranslate/>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
+    <LanguageProvider initialLanguage={language}>
+      <WebsiteLoader>
+        <Navbar />
+        {children}
+        <Footer />
+      </WebsiteLoader>
+    </LanguageProvider>
   );
 }

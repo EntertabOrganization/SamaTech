@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import { cn } from "../../../lib/cn";
 import { Spinner } from "./Icons";
@@ -59,11 +62,13 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) {
+    const { t: translateText } = useLanguage();
+
     return (
       <button
         ref={ref}
         type={type}
-        aria-label={label}
+        aria-label={translateText(label)}
         aria-busy={loading || undefined}
         disabled={disabled || loading}
         className={cn(base, variants[variant], sizes[size], shapes[shape], className)}

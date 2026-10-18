@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
 import badgeIcon from '@/public/images/Container.png'
 // import overlay from '../../public/images/Overlay+Shadow.png'
@@ -11,6 +14,8 @@ const focusAreas: string[] = [
 ];
 
 export default function Hero() {
+  const { t: translateText } = useLanguage();
+
   return (
     <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-6">
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(0,120,255,0.28)_0%,rgba(0,120,255,0)_70%)]" />
@@ -23,35 +28,35 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
         {/* Badge */}
         <span className="inline-flex items-center gap-2 rounded-full border border-blue-haze bg-blue-mist px-3 py-1 text-[11px] font-medium text-blue-sovereign backdrop-blur-[14px]">
-          <Image src={badgeIcon} alt="Logo" width={12} height={12} />
+          <Image src={badgeIcon} alt={translateText("Logo")} width={12} height={12} loading="eager" /><Trans>
           Senior-led strategic advisory &amp; analytics
-        </span>
+        </Trans></span>
 
         {/* Headline */}
-        <h1 className="mt-6 text-4xl font-bold font-heading leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
+        <h1 className="mt-6 text-4xl font-bold font-heading leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl"><Trans>
           Strategic Clarity.
-          <span className="block text-blue-sovereign">Measurable Impact.</span>
+          </Trans><span className="block text-blue-sovereign"><Trans>Measurable Impact.</Trans></span>
         </h1>
 
         {/* Description */}
-        <p className="pt-6.5 w-150 text-xl font-medium leading-relaxed text-ink-500 sm:text-base">
+        <p className="pt-6.5 w-full max-w-150 text-xl font-medium leading-relaxed text-ink-500 sm:text-base"><Trans>
           SAMATECHS advises leadership teams on complex strategic, operational,
-          risk, technology, and cross-border challenges—designing
+          risk, technology, and cross-border challenges, designing
           implementation-ready solutions that strengthen decision-making and
           deliver measurable results.
-        </p>
+        </Trans></p>
 
         {/* CTAs */}
         <div className="pt-9 flex flex-col items-center font-body gap-3 sm:flex-row">
           <Link href="/contact">
-            <Button size="lg">Schedule a Consultation <span aria-hidden="true">→</span></Button>
+            <Button size="lg"><Trans>Schedule a Consultation </Trans><span aria-hidden="true">→</span></Button>
           </Link>
           <Link
             href="/services"
           >
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg"><Trans>
               Explore Our Capabilities
-            </Button>
+            </Trans></Button>
           </Link>
         </div>
 
@@ -60,7 +65,7 @@ export default function Hero() {
           {focusAreas.map((item) => (
             <li key={item} className="flex items-center gap-2">
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-blue-pulse" />
-              {item}
+              <Trans>{item}</Trans>
             </li>
           ))}
         </ul>
@@ -92,12 +97,12 @@ export default function Hero() {
           />
 
           <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-7 sm:bottom-6">
-            <span className="max-w-48 text-left text-lg font-semibold leading-tight text-white sm:text-xl">
+            <span className="max-w-48 text-start text-lg font-semibold leading-tight text-white sm:text-xl"><Trans>
               From ambiguity to disciplined action.
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
+            </Trans></span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80"><Trans>
               Riyadh · KSA
-            </span>
+            </Trans></span>
           </figcaption>
 
 

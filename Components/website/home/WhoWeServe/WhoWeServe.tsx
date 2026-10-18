@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 // import { PatternBackground, SectionHeader, Showcase } from "@/Components/home/shared";
 import PatternBackground from "../shared/PatternBackground";
 import SectionHeader from "../shared/SectionHeader";
@@ -13,9 +14,9 @@ export default function WhoWeServe() {
         <SectionHeader
           eyebrow="Who we serve"
           title="Leadership teams facing decisions that carry consequence"
-          className="w-87.5"
+          className="max-w-85"
         />
-        <p className="mt-5 text-sm font-medium leading-relaxed max-w-122.5">SAMATECHS works with leadership teams navigating complex strategic, operational, technological, risk, and cross-border challenges. Our senior-led advisory model is particularly suited to organizations that require rigorous analysis, executive alignment, and implementation-ready solutions.</p>
+        <p className="mt-5 text-sm font-medium leading-relaxed max-w-125"><Trans>SAMATECHS works with leadership teams navigating complex strategic, operational, technological, risk, and cross-border challenges. Our senior-led advisory model is particularly suited to organizations that require rigorous analysis, executive alignment, and implementation-ready solutions.</Trans></p>
 
         <Showcase
           items={audiences}

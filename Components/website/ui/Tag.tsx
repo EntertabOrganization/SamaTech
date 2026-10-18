@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { cn } from "../../../lib/cn";
 import { Close } from "./Icons";
@@ -26,6 +29,8 @@ export function Tag({
   removeLabel,
   className,
 }: TagProps) {
+  const { t: translateText } = useLanguage();
+
   const labelClasses = "rounded-full";
 
   return (
@@ -46,19 +51,19 @@ export function Tag({
           aria-pressed={selected}
           className={cn(labelClasses, focusRing)}
         >
-          {children}
+          <Trans>{children}</Trans>
         </button>
       ) : (
-        <span>{children}</span>
+        <span><Trans>{children}</Trans></span>
       )}
 
       {onRemove && (
         <button
           type="button"
           onClick={onRemove}
-          aria-label={removeLabel ?? (typeof children === "string" ? `Remove ${children}` : "Remove")}
+          aria-label={translateText(removeLabel ?? (typeof children === "string" ? `Remove ${children}` : "Remove"))}
           className={cn(
-            "-mr-1 flex h-4 w-4 items-center justify-center rounded-full transition-colors [&_svg]:h-2.5 [&_svg]:w-2.5",
+            "-me-1 flex h-4 w-4 items-center justify-center rounded-full transition-colors [&_svg]:h-2.5 [&_svg]:w-2.5",
             selected ? "hover:bg-white/20" : "hover:bg-slate-100",
             focusRing,
           )}

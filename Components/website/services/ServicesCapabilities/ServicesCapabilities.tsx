@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
 
 /* ---------- Icons ---------- */
@@ -57,16 +58,16 @@ function StrategyVisual() {
   ];
   return (
     <div>
-      <p className={tinyCaps}>Strategy board</p>
+      <p className={tinyCaps}><Trans>Strategy board</Trans></p>
       <div className="mt-4 grid grid-cols-3 gap-2.5">
         {columns.map((c) => (
           <div key={c.heading} className="flex flex-col gap-2">
-            <p className={tinyCaps}>{c.heading}</p>
+            <p className={tinyCaps}><Trans>{c.heading}</Trans></p>
             <div className="rounded-lg border border-ink-100 bg-white px-2.5 py-2.5 text-[10px] font-medium text-[#0F1B2D] shadow-[0px_4px_12px_-6px_#121A2326]">
-              {c.primary}
+              <Trans>{c.primary}</Trans>
             </div>
             <div className="rounded-lg border border-[#E6ECF4] bg-white/50 px-2.5 py-2.5 text-[10px] text-slate-400">
-              {c.secondary}
+              <Trans>{c.secondary}</Trans>
             </div>
           </div>
         ))}
@@ -77,6 +78,8 @@ function StrategyVisual() {
 
 /** 2) Decision intelligence: executive dashboard */
 function IntelligenceVisual() {
+  const { t: translateText } = useLanguage();
+
   const bars = [
     { label: "Q1", height: 45 },
     { label: "Q2", height: 60 },
@@ -86,10 +89,10 @@ function IntelligenceVisual() {
   return (
     <div className="rounded-2xl border border-ink-100 bg-white p-4 shadow-[0px_8px_20px_-10px_#121A2330]">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold text-[#0F1B2D]">Executive dashboard</p>
-        <span className="text-[9px] font-medium uppercase tracking-wider text-slate-400">Live</span>
+        <p className="text-xs font-semibold text-[#0F1B2D]"><Trans>Executive dashboard</Trans></p>
+        <span className="text-[9px] font-medium uppercase tracking-wider text-slate-400"><Trans>Live</Trans></span>
       </div>
-      <div className="mt-4 flex h-24 items-end gap-2.5" role="img" aria-label="Bar chart: Q3 is the highest quarter">
+      <div className="mt-4 flex h-24 items-end gap-2.5" role="img" aria-label={translateText("Bar chart: Q3 is the highest quarter")}>
         {bars.map((b) => (
           <div key={b.label} className="flex h-full flex-1 flex-col justify-end">
             <div
@@ -107,7 +110,7 @@ function IntelligenceVisual() {
       <div className="mt-1.5 flex gap-2.5">
         {bars.map((b) => (
           <span key={b.label} className="flex-1 text-center text-[9px] text-slate-400">
-            {b.label}
+            <Trans>{b.label}</Trans>
           </span>
         ))}
       </div>
@@ -116,9 +119,9 @@ function IntelligenceVisual() {
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12.5l4.5 4.5L19 7.5" />
           </svg>
-        </span>
+        </span><Trans>
         Executive decision support
-      </p>
+      </Trans></p>
     </div>
   );
 }
@@ -148,7 +151,7 @@ function TechnologyVisual() {
             <span className={center ? "text-blue-pulse" : "text-slate-400"}>
               {center ? <TechnologyIcon /> : <SmallDot />}
             </span>
-            {item.label}
+            <Trans>{item.label}</Trans>
           </li>
         );
       })}
@@ -164,9 +167,9 @@ function GrowthVisual() {
       <div className="flex items-center gap-2 rounded-full border border-ink-100 bg-white px-5 py-2.5 text-xs font-semibold text-[#0F1B2D] shadow-[0px_6px_18px_-6px_#121A2326]">
         <span className="text-blue-pulse">
           <GrowthIcon />
-        </span>
+        </span><Trans>
         Cross-border expansion
-      </div>
+      </Trans></div>
       <span aria-hidden="true" className="h-3 w-px bg-slate-300" />
       <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-blue-pulse" />
       <span aria-hidden="true" className="h-3 w-px bg-slate-300" />
@@ -176,7 +179,7 @@ function GrowthVisual() {
             key={b}
             className="rounded-lg border border-ink-100 bg-white/80 px-2 py-2.5 text-center text-[10px] text-slate-500"
           >
-            {b}
+            <Trans>{b}</Trans>
           </div>
         ))}
       </div>
@@ -232,6 +235,8 @@ const capabilities: Capability[] = [
 /* ---------- Section ---------- */
 
 export default function ServicesCapabilities() {
+  const { t: translateText } = useLanguage();
+
   const [activeId, setActiveId] = useState<string>(capabilities[0].id);
   const active = capabilities.find((c) => c.id === activeId) ?? capabilities[0];
 
@@ -246,24 +251,24 @@ export default function ServicesCapabilities() {
       <div className="relative mx-auto max-w-5xl">
         {/* Header */}
         <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
-          <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" />
+          <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
           Services &amp; capabilities
-        </p>
-        <h2 className="mt-4 text-display-2 font-heading font-bold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl">
+        </Trans></p>
+        <h2 className="mt-4 text-display-2 font-heading font-bold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl"><Trans>
           An Integrated
-          <br />
+          </Trans><br /><Trans>
           Advisory Model
-        </h2>
-        <p className="mt-5 max-w-160 text-lead font-medium leading-relaxed text-ink-500">
+        </Trans></h2>
+        <p className="mt-5 max-w-160 text-lead font-medium leading-relaxed text-ink-500"><Trans>
           Our three client-facing advisory pillars draw on four cross-cutting
           areas of expertise, depending on the client&apos;s needs.
-        </p>
+        </Trans></p>
 
         {/* Mobile: all four visuals stacked in one card */}
         <div className="mt-10 space-y-10 rounded-3xl border border-white/70 bg-white/50 p-5 backdrop-blur-[14px] lg:hidden">
           {capabilities.map((c) => (
             <div key={c.id}>
-              <p className={`${tinyCaps} mb-3`}>{c.title}</p>
+              <p className={`${tinyCaps} mb-3`}><Trans>{c.title}</Trans></p>
               <c.Visual />
             </div>
           ))}
@@ -277,7 +282,7 @@ export default function ServicesCapabilities() {
             aria-labelledby={`cap-tab-${active.id}`}
             className="flex min-h-80 flex-col rounded-3xl border border-white/70 bg-white/50 p-6 backdrop-blur-[14px]"
           >
-            <p className={tinyCaps}>{active.title}</p>
+            <p className={tinyCaps}><Trans>{active.title}</Trans></p>
             <div className="flex flex-1 items-center pt-4">
               <div className="w-full">
                 <active.Visual />
@@ -288,7 +293,7 @@ export default function ServicesCapabilities() {
           <div
             role="tablist"
             aria-orientation="vertical"
-            aria-label="Cross-cutting areas of expertise"
+            aria-label={translateText("Cross-cutting areas of expertise")}
             className="flex flex-col self-center"
           >
             {capabilities.map((c) => {
@@ -302,21 +307,21 @@ export default function ServicesCapabilities() {
                   aria-selected={selected}
                   aria-controls="capability-panel"
                   onClick={() => setActiveId(c.id)}
-                  className={`px-4 text-left transition-colors ${
+                  className={`px-4 text-start transition-colors ${
                     selected
                       ? "rounded-2xl bg-white py-4 shadow-[0px_6px_18px_-6px_#121A231F]"
                       : "border-b border-ink-100 py-3.5 hover:bg-white/50"
                   }`}
                 >
                   <span className="flex items-center gap-3">
-                    <span className={selected ? "text-blue-sovereign" : "text-slate-500"}>{c.icon}</span>
+                    <span className={selected ? "text-blue-sovereign" : "text-slate-500"}><Trans>{c.icon}</Trans></span>
                     <span className={`text-sm font-semibold ${selected ? "text-ink-900" : "text-slate-600"}`}>
-                      {c.title}
+                      <Trans>{c.title}</Trans>
                     </span>
                   </span>
                   {selected && (
-                    <span className="mt-2 block pl-7 text-xs leading-relaxed text-slate-500">
-                      {c.description}
+                    <span className="mt-2 block ps-7 text-xs leading-relaxed text-slate-500">
+                      <Trans>{c.description}</Trans>
                     </span>
                   )}
                 </button>

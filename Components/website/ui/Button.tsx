@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
 
 type ButtonProps = React.ComponentProps<"button"> & {
@@ -68,7 +69,7 @@ export default function Button({
       )}
       {...props}
     >
-      {children}
+      <Trans>{children}</Trans>
     </button>
   );
 }

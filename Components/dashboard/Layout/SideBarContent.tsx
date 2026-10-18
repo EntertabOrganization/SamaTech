@@ -5,7 +5,7 @@ import SidebarNav from "@/Components/dashboard/Layout/SidebarNav";
 
 export interface CmsUser {
   name: string;
-  role: string;
+  email: string;
 }
 
 interface SidebarContentProps {
@@ -47,7 +47,7 @@ export default function SidebarContent({ user, brand }: SidebarContentProps) {
           </span>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-white">{user.name}</p>
-            <p className="truncate text-[11px] text-slate-400">{user.role}</p>
+            <p className="truncate text-[11px] text-slate-400">{user.email}</p>
           </div>
           {/* TODO: point this at your real logout endpoint. */}
           <form action="/api/auth/logout" method="post">

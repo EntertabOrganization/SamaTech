@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import MobileNav from "./MobileNav";
 import SidebarContent, { type CmsUser } from "./SideBarContent";
 import Topbar from "./Topbar";
+import Link from "next/link";
 
 interface CmsShellProps {
   user: CmsUser;
@@ -15,12 +16,12 @@ export default function CmsShell({ user, brand, children }: CmsShellProps) {
 
   return (
     <div className="min-h-screen bg-ink-50 lg:grid lg:grid-cols-[16rem_1fr]">
-      <a
+      <Link
         href="#cms-main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-60 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-900 focus:shadow-lg"
       >
         Skip to content
-      </a>
+      </Link>
 
       {/* Desktop: fixed sidebar */}
       <aside className="hidden lg:block">

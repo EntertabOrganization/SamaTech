@@ -44,7 +44,7 @@ export const statements: Statement[] = [
   },
   {
     title: "Vision",
-    text: "To be the trusted strategic advisory partner for organizations operating in complex, high-stakes, and cross-border environments—known for clarity of thought, quantitative rigor, and executive-level impact.",
+    text: "To be the trusted strategic advisory partner for organizations operating in complex, high-stakes, and cross-border environments, known for clarity of thought, quantitative rigor, and executive-level impact.",
     icon: <VisionIcon />,
     tone: "blue",
   },

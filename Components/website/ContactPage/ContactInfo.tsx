@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import SectionHeader  from "@/Components/website/home/shared/SectionHeader";
 import MicroLabel  from "@/Components/website/ContactPage/MicroLabel";
@@ -47,8 +50,8 @@ const ClockIcon = () => (
 
 const details: Array<{ label: string; value: string; icon: ReactNode }> = [
   { label: "Address", value: "[Insert Address Here]", icon: <PinIcon /> },
-  { label: "Email", value: "[Insert Contact Email Here]", icon: <MailIcon /> },
-  { label: "Phone", value: "[Insert Phone Number Here]", icon: <PhoneIcon /> },
+  { label: "Email", value: "info@samatechs.com", icon: <MailIcon /> },
+  { label: "Phone", value: "+966 559447225", icon: <PhoneIcon /> },
   { label: "Response time", value: "Within one business day", icon: <ClockIcon /> },
 ];
 
@@ -57,7 +60,7 @@ const details: Array<{ label: string; value: string; icon: ReactNode }> = [
 const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/samatechs",
     icon: (
       <svg {...svgProps}>
         <rect x="3" y="3" width="18" height="18" rx="3" />
@@ -67,7 +70,7 @@ const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
   },
   {
     label: "X",
-    href: "#",
+    href: "https://x.com/samatechs_?s=11&t=s6yTAHsZWSPlFLERGjMrMQ",
     icon: (
       <svg {...svgProps}>
         <path d="M4 4l16 16M20 4L4 20" />
@@ -76,7 +79,7 @@ const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/samatechs/",
     icon: (
       <svg {...svgProps}>
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -87,7 +90,7 @@ const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
   },
   {
     label: "Email",
-    href: "mailto:hello@samatechs.com",
+    href: "info@samatechs.com",
     icon: <MailIcon />,
   },
 ];
@@ -95,9 +98,11 @@ const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
 /* ---------- Component ---------- */
 
 export default function ContactInfo() {
+  const { t: translateText } = useLanguage();
+
   return (
     <div>
-      <Image src={contactImg} alt=''/>
+      <Image src={contactImg} alt="" loading="eager" className="h-auto max-w-full" />
 
       <SectionHeader
         as="h1"
@@ -111,29 +116,29 @@ export default function ContactInfo() {
         {details.map((item) => (
           <div key={item.label} className="flex items-center gap-3 py-3">
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-blue-pulse">
-              {item.icon}
+              <Trans>{item.icon}</Trans>
             </span>
             <div>
               <dt className="text-[9px] font-medium uppercase tracking-wider text-ink-300">
-                {item.label}
+                <Trans>{item.label}</Trans>
               </dt>
-              <dd className="mt-0.5 text-xs font-medium text-ink-900">{item.value}</dd>
+              <dd className="mt-0.5 text-xs font-medium text-ink-900"><Trans>{item.value}</Trans></dd>
             </div>
           </div>
         ))}
       </dl>
 
       <div className="mt-6">
-        <MicroLabel>Follow Samatechs</MicroLabel>
+        <MicroLabel><Trans>Follow SAMATECHS</Trans></MicroLabel>
         <ul className="mt-3 flex gap-2">
           {socials.map((s) => (
             <li key={s.label}>
               <Link
                 href={s.href}
-                aria-label={s.label}
+                aria-label={translateText(s.label)}
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-100 bg-white text-ink-500 transition-colors hover:border-[#9CC3F5] hover:text-blue-pulse"
               >
-                {s.icon}
+                <Trans>{s.icon}</Trans>
               </Link>
             </li>
           ))}

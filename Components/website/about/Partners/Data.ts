@@ -15,7 +15,7 @@ export const partners: Partner[] = [
     name: "Farraj Alghusaib",
     role: "Co-Founder & Managing Partner, Global Strategy & Market Expansion",
     tagline: "17+ years in cross-border growth",
-    bio: "Farraj Alghusaib is an international business executive with over 17 years of experience advising organizations on cross-border growth, strategic partnerships, and U.S.–GCC market expansion. He has built and led ventures across healthcare, education, logistics, and technology, structuring high-impact initiatives and facilitating entry into competitive markets. His experience operating across both regions enables him to advise leadership teams on commercially rigorous, culturally intelligent expansion strategies. Educated in the United States and experienced across global markets, Farraj brings a dual-market perspective grounded in competitive standards and executive-level discipline.",
+    bio: "Farraj Alghusaib is an international business executive with over 17 years of experience advising organizations on cross-border growth, strategic partnerships, and U.S.-GCC market expansion. He has built and led ventures across healthcare, education, logistics, and technology, structuring high-impact initiatives and facilitating entry into competitive markets. His experience operating across both regions enables him to advise leadership teams on commercially rigorous, culturally intelligent expansion strategies. Educated in the United States and experienced across global markets, Farraj brings a dual-market perspective grounded in competitive standards and executive-level discipline.",
     photo: "/Partners/Farraj.jpg",
     linkedin: "#",
     x: "#",

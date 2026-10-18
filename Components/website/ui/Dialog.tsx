@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import { useEffect, useId, useRef, type ReactNode } from "react";
 import { cn } from "../../../lib/cn";
 import { ArrowRight } from "./Icons";
@@ -54,22 +55,22 @@ export function Dialog({
         if (event.target === ref.current) onClose();
       }}
       className={cn(
-        "m-auto w-[calc(100%-2rem)] max-w-lg rounded-panel border-0 bg-white p-0 text-left shadow-[0px_30px_80px_-20px_#0E182366]",
+        "m-auto w-[calc(100%-2rem)] max-w-lg rounded-panel border-0 bg-white p-0 text-start shadow-[0px_30px_80px_-20px_#0E182366]",
         "backdrop:bg-[#0E1823]/60 backdrop:backdrop-blur-[6px]",
         className,
       )}
     >
       <div className="p-8 sm:p-10">
         <h2 id={titleId} className="text-2xl font-bold tracking-tight text-[#0F1B2D]">
-          {title}
+          <Trans>{title}</Trans>
         </h2>
         {description && (
           <p id={descId} className="mt-3 text-sm leading-relaxed text-ink-500">
-            {description}
+            <Trans>{description}</Trans>
           </p>
         )}
-        {children && <div className="mt-5">{children}</div>}
-        {footer && <div className="mt-8">{footer}</div>}
+        {children && <div className="mt-5"><Trans>{children}</Trans></div>}
+        {footer && <div className="mt-8"><Trans>{footer}</Trans></div>}
       </div>
     </dialog>
   );
@@ -99,15 +100,15 @@ export function DialogActions({
         onClick={onCancel}
         className="rounded-full px-1 text-sm font-medium text-blue-pulse transition-colors hover:text-blue-sovereign focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse focus-visible:ring-offset-2"
       >
-        {cancelLabel}
+        <Trans>{cancelLabel}</Trans>
       </button>
       <button
         type="button"
         onClick={onConfirm}
         className="inline-flex items-center gap-2 rounded-full bg-blue-pulse px-6 py-2.5 text-sm font-medium text-white shadow-[0px_10px_24px_-6px_#0078FF8C] transition-colors hover:bg-blue-sovereign focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse focus-visible:ring-offset-2"
       >
-        {confirmLabel}
-        {confirmIcon}
+        <Trans>{confirmLabel}</Trans>
+        <Trans>{confirmIcon}</Trans>
       </button>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 // Relative import on purpose, so it doesn't depend on the @/Components vs @/components casing.
 import { cn } from "../../../lib/cn";
@@ -23,7 +24,7 @@ export default function MicroLabel({
         className,
       )}
     >
-      {children}
+      <Trans>{children}</Trans>
     </p>
   );
 }

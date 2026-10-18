@@ -5,5 +5,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <CmsShell user={{ name: "Admin User", role: "Admin" }}>{children}</CmsShell>;
+  return <CmsShell user={{ name: "Admin User", email: "email" }}>{children}</CmsShell>;
 }
