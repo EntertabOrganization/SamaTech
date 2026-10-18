@@ -12,7 +12,7 @@ import {
   AuthStatus,
   PasswordField,
   authButtonStyles,
-} from "@/Components/auth";
+} from "@/Components/dashboard/auth";
 
 export default function Page() {
   const [done, setDone] = useState(false);

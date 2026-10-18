@@ -2,7 +2,7 @@
 
 import type { FormEvent } from "react";
 import Link from "next/link";
-import { AuthBackLink, AuthButton, AuthForm, AuthHeading, AuthShell, EmailField, PasswordField } from "@/Components/auth";
+import { AuthBackLink, AuthButton, AuthForm, AuthHeading, AuthShell, EmailField, PasswordField } from "@/Components/dashboard/auth";
 
 
 export default function Page() {

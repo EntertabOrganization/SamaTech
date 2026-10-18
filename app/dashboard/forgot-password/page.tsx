@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { MailCheck } from "lucide-react";
-import { AuthBackLink, AuthButton, AuthForm, AuthHeading, AuthShell, AuthStatus, EmailField } from "@/Components/auth";
+import { AuthBackLink, AuthButton, AuthForm, AuthHeading, AuthShell, AuthStatus, EmailField } from "@/Components/dashboard/auth";
 
 
 export default function Page() {

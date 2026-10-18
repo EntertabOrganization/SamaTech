@@ -1,4 +1,4 @@
-import Link from "next/link";
+import StatusTabs from "@/Components/dashboard/shared/StatusTabs";
 import type { MessageStatus } from "./StatusBadge";
 
 export type MessageFilter = "all" | MessageStatus;
@@ -15,15 +15,18 @@ interface MessageFiltersProps {
   activeStatus?: MessageFilter;
   /** Current search text, to keep it in the box after submitting. */
   query?: string;
+  /** Optional chips on the tabs. Leave out until the backend provides them. */
+  counts?: Partial<Record<MessageFilter, number>>;
 }
 
 /**
- * Plain links + a GET form: filtering is just `?status=new&q=text` in the URL.
- * No state and no client JS here, so the backend reads the params on the server.
+ * Filtering is just `?status=new&q=text` in the URL (links + a GET form),
+ * so there is no state and no client JS. The backend reads the params on the server.
  */
 export default function MessageFilters({
   activeStatus = "all",
   query,
+  counts,
 }: MessageFiltersProps) {
   return (
     <form
@@ -35,28 +38,11 @@ export default function MessageFilters({
         <input type="hidden" name="status" value={activeStatus} />
       )}
 
-      <nav
-        aria-label="Filter by status"
-        className="inline-flex w-fit gap-1 rounded-full border border-ink-100 bg-[#F1F5FB] p-1"
-      >
-        {tabs.map((tab) => {
-          const active = tab.id === activeStatus;
-          return (
-            <Link
-              key={tab.id}
-              href={tab.id === "all" ? "?" : `?status=${tab.id}`}
-              aria-current={active ? "true" : undefined}
-              className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse ${
-                active
-                  ? "bg-ink-900 text-white"
-                  : "text-ink-500 hover:text-ink-900"
-              }`}
-            >
-              {tab.label}
-            </Link>
-          );
-        })}
-      </nav>
+      <StatusTabs
+        label="Filter by status"
+        active={activeStatus}
+        tabs={tabs.map((t) => ({ ...t, count: counts?.[t.id] }))}
+      />
 
       <label className="relative block w-full sm:w-72">
         <span className="sr-only">Search messages</span>
