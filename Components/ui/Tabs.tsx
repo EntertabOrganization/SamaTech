@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "../../lib/cn";
 
@@ -40,6 +41,8 @@ export function Tabs({
   fullWidth = false,
   className,
 }: TabsProps) {
+  const { t: translateText, language } = useLanguage();
+
   const uid = useId().replace(/:/g, "");
   const refs = useRef<Array<HTMLButtonElement | null>>([]);
   const firstEnabled = items.find((i) => !i.disabled)?.id ?? items[0]?.id ?? "";
@@ -58,8 +61,10 @@ export function Tabs({
     const position = enabled.findIndex(({ item }) => item.id === current);
     let next = position;
 
-    if (event.key === "ArrowRight") next = (position + 1) % enabled.length;
-    else if (event.key === "ArrowLeft") next = (position - 1 + enabled.length) % enabled.length;
+    const forward = language === "ar" ? "ArrowLeft" : "ArrowRight";
+    const backward = language === "ar" ? "ArrowRight" : "ArrowLeft";
+    if (event.key === forward) next = (position + 1) % enabled.length;
+    else if (event.key === backward) next = (position - 1 + enabled.length) % enabled.length;
     else if (event.key === "Home") next = 0;
     else if (event.key === "End") next = enabled.length - 1;
     else return;
@@ -76,7 +81,7 @@ export function Tabs({
     <div className={className}>
       <div
         role="tablist"
-        aria-label={label}
+        aria-label={translateText(label)}
         onKeyDown={onKeyDown}
         className={cn(
           variant === "pill"
@@ -120,7 +125,7 @@ export function Tabs({
                     ),
               )}
             >
-              {item.label}
+              <Trans>{item.label}</Trans>
             </button>
           );
         })}
@@ -137,7 +142,7 @@ export function Tabs({
             tabIndex={0}
             className={cn("mt-5", focusRing)}
           >
-            {item.content}
+            <Trans>{item.content}</Trans>
           </div>
         ))}
     </div>

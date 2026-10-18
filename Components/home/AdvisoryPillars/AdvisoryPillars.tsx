@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import brandVector from "../../../public/images/Vector.png";
 import { pillars } from "./Data";
 import PillarCard from "./Pillarcard";
@@ -31,20 +32,20 @@ export default function AdvisoryPillars() {
               <span
                 aria-hidden="true"
                 className="h-px w-8 bg-blue-precision font-body"
-              />
+              /><Trans>
               Advisory Pillars
-            </p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl font-heading">
+            </Trans></p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl font-heading"><Trans>
               Three Integrated
-              <br />
+              </Trans><br /><Trans>
               Advisory Pillars
-            </h2>
+            </Trans></h2>
           </div>
-          <p className="max-w-90 text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end">
+          <p className="max-w-90 text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end"><Trans>
             We combine strategy, decision intelligence, technology, and
             cross-border expertise to help organizations navigate complexity
             from diagnosis through execution.
-          </p>
+          </Trans></p>
         </div>
 
         <div className="mt-12 grid items-stretch gap-5 md:grid-cols-3">

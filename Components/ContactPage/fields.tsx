@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type {
   InputHTMLAttributes,
   ReactNode,
@@ -43,7 +44,7 @@ export function Field({
   return (
     <label className={cn("block", className)}>
       <span className="mb-1.5 block text-[10px] font-semibold text-[#0F1B2D]">
-        {label}
+        <Trans>{label}</Trans>
         {required && (
           <span aria-hidden="true" className="text-blue-pulse">
             {" "}
@@ -51,7 +52,7 @@ export function Field({
           </span>
         )}
       </span>
-      {children}
+      <Trans>{children}</Trans>
     </label>
   );
 }
@@ -68,11 +69,11 @@ export function TextInput({
     <span className="relative block">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+        className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-slate-400"
       >
-        {icon}
+        <Trans>{icon}</Trans>
       </span>
-      <input className={cn(control, "h-9 pl-9 pr-3", className)} {...props} />
+      <input className={cn(control, "h-9 ps-9 pe-3", className)} {...props} />
     </span>
   );
 }
@@ -102,21 +103,21 @@ export function SelectInput({
     <span className="relative block">
       <select
         defaultValue=""
-        className={cn(control, "h-9 appearance-none pl-3 pr-8 invalid:text-slate-400", className)}
+        className={cn(control, "h-9 appearance-none ps-3 pe-8 invalid:text-slate-400", className)}
         {...props}
       >
         <option value="" disabled>
-          {placeholder}
+          <Trans>{placeholder}</Trans>
         </option>
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            <Trans>{option}</Trans>
           </option>
         ))}
       </select>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+        className="pointer-events-none absolute end-3 top-1/2 -translate-y-1/2 text-slate-400"
       >
         <Icon name="chevron-down" size={14} />
       </span>
@@ -140,8 +141,8 @@ export function Checkbox({
         {...props}
       />
       <span>
-        <span className="block text-[11px] font-medium text-[#0F1B2D]">{label}</span>
-        {hint && <span className="mt-0.5 block text-[10px] text-slate-400">{hint}</span>}
+        <span className="block text-[11px] font-medium text-[#0F1B2D]"><Trans>{label}</Trans></span>
+        {hint && <span className="mt-0.5 block text-[10px] text-slate-400"><Trans>{hint}</Trans></span>}
       </span>
     </label>
   );
@@ -162,7 +163,7 @@ export function SubmitButton({
       disabled={disabled || loading}
       className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0078FF] px-6 py-3 text-sm font-semibold text-white shadow-[0px_10px_24px_-6px_#0078FF8C] transition-colors hover:bg-[#005BC2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078FF] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
     >
-      {children}
+      <Trans>{children}</Trans>
       {loading ? <Icon name="spinner" size={16} /> : <Icon name="arrow-right" size={16} />}
     </button>
   );
@@ -179,15 +180,15 @@ export function FormStatus({
   if (status === "success") {
     return (
       <p role="status" className="rounded-lg bg-[#E6F6EE] px-3 py-2 text-[11px] text-[#1B7F4B]">
-        {successMessage}
+        <Trans>{successMessage}</Trans>
       </p>
     );
   }
   if (status === "error") {
     return (
-      <p role="alert" className="rounded-lg bg-[#FDECEC] px-3 py-2 text-[11px] text-[#B42318]">
+      <p role="alert" className="rounded-lg bg-[#FDECEC] px-3 py-2 text-[11px] text-[#B42318]"><Trans>
         Something went wrong. Please try again, or email us directly.
-      </p>
+      </Trans></p>
     );
   }
   return null;

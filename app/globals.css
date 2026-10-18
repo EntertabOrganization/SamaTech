@@ -112,6 +112,22 @@ body {
   font-family: var(--font-quicksand), sans-serif;
 }
 
+html[lang="ar"] body,
+html[lang="ar"] :is(h1, h2, h3, h4, h5, h6),
+[lang="ar"] button {
+  font-family: var(--font-arabic), sans-serif;
+  letter-spacing: normal;
+}
+
+html[lang="ar"] :is(h1, h2, h3) {
+  line-height: 1.4;
+}
+
+html[dir="rtl"] .fa-arrow-right-long,
+html[dir="rtl"] .directional-arrow {
+  transform: scaleX(-1);
+}
+
 h1,
 h2,
 h3,

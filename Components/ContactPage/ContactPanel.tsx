@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useState, type KeyboardEvent } from "react";
 import { cn } from "@/Components/ui";
 import BookingForm from "./BookingForm";
@@ -13,6 +14,8 @@ const tabs: Array<{ id: TabId; label: string }> = [
 ];
 
 export default function ContactPanel() {
+  const { t: translateText } = useLanguage();
+
   const uid = useId().replace(/:/g, "");
   const [tab, setTab] = useState<TabId>("message");
 
@@ -28,7 +31,7 @@ export default function ContactPanel() {
     <div className="rounded-3xl border border-ink-100 bg-white p-5 shadow-[0px_30px_60px_-30px_#0B3C8A40] ">
       <div
         role="tablist"
-        aria-label="How would you like to reach us?"
+        aria-label={translateText("How would you like to reach us?")}
         onKeyDown={onKeyDown}
         className="grid grid-cols-2 gap-1 rounded-full border border-ink-100 bg-ink-50 p-1"
       >
@@ -49,7 +52,7 @@ export default function ContactPanel() {
                 selected ? "bg-blue-pulse text-white" : "text-slate-600 hover:text-[#0F1B2D]",
               )}
             >
-              {t.label}
+              <Trans>{t.label}</Trans>
             </button>
           );
         })}

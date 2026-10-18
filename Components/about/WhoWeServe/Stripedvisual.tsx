@@ -1,9 +1,14 @@
+"use client";
+
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
 /** Deep blue vertical streaks, CSS only. Swap for <Image fill /> when the real photo is ready. */
 export default function StripedVisual() {
+  const { t: translateText } = useLanguage();
+
   return (
     <div
       role="img"
-      aria-label="Abstract blue visual"
+      aria-label={translateText("Abstract blue visual")}
       className="relative aspect-square w-full overflow-hidden rounded-3xl shadow-[0px_24px_50px_-24px_#0B3C8A99] md:justify-self-end lg:aspect-[1.05/1]"
     >
       {/* Base: color ramp with a bright blue core */}

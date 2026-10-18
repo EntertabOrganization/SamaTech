@@ -1,85 +1,17 @@
-"use client";
+﻿"use client";
 
-import { useSyncExternalStore } from "react";
 import Button from "../ui/Button";
-
-type Language = "en" | "ar";
-
-const getLanguage = (): Language => {
-  if (typeof window === "undefined") {
-    return "en";
-  }
-
-  const savedLanguage = localStorage.getItem("language");
-
-  return savedLanguage === "ar" ? "ar" : "en";
-};
-
-const subscribe = (callback: () => void) => {
-  window.addEventListener("languagechange", callback);
-
-  return () => {
-    window.removeEventListener("languagechange", callback);
-  };
-};
-
-const getServerSnapshot = (): Language => {
-  return "en";
-};
-
-const changeDirection = (lang: Language) => {
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-};
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 export default function LanguageSwitcher() {
-  const language = useSyncExternalStore(
-    subscribe,
-    getLanguage,
-    getServerSnapshot,
-  );
-
-  const changeLanguage = (lang: Language) => {
-    localStorage.setItem("language", lang);
-
-    changeDirection(lang);
-
-    // Tell React that the language changed
-    window.dispatchEvent(new Event("languagechange"));
-
-    // Google Translate
-    const select = document.querySelector(
-      ".goog-te-combo",
-    ) as HTMLSelectElement | null;
-
-    if (!select) {
-      console.log("Google Translate is not ready yet");
-      return;
-    }
-
-    select.value = lang;
-
-    select.dispatchEvent(
-      new Event("change", {
-        bubbles: true,
-      }),
-    );
-  };
-
-  const toggleLanguage = () => {
-    const newLanguage: Language = language === "en" ? "ar" : "en";
-
-    changeLanguage(newLanguage);
-  };
+  const { language, setLanguage } = useLanguage();
+  const next = language === "en" ? "ar" : "en";
 
   return (
-    <Button
-      size="sm"
-      variant="outline"
-      type="button"
-      onClick={toggleLanguage}
-    >
-      {language === "en" ? "العربي" : "English"}
+    <Button size="sm" variant="outline" type="button" lang={next} dir={next === "ar" ? "rtl" : "ltr"}
+      aria-label={language === "en" ? "Switch to Arabic" : "التبديل إلى الإنجليزية"}
+      onClick={() => setLanguage(next)}>
+      {language === "en" ? "العربية" : "English"}
     </Button>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import { useId, useState, type ReactNode } from "react";
 import { cn } from "../../lib/cn";
 import { Minus, Plus } from "./Icons";
@@ -56,9 +57,9 @@ export function Accordion({
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenId(open ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left text-sm font-medium text-[#0F1B2D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse"
+                className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-start text-sm font-medium text-[#0F1B2D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse"
               >
-                {item.title}
+                <Trans>{item.title}</Trans>
                 <span className="shrink-0 text-blue-pulse">
                   {open ? <Minus /> : <Plus />}
                 </span>
@@ -76,7 +77,7 @@ export function Accordion({
             >
               <div className={cn("overflow-hidden", !open && "invisible")}>
                 <div className="px-5 pb-5 text-caption leading-relaxed text-ink-500">
-                  {item.content}
+                  <Trans>{item.content}</Trans>
                 </div>
               </div>
             </div>

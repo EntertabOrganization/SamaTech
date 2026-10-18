@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "../../lib/cn";
@@ -74,7 +75,7 @@ export function Card({
   const Heading = `h${headingLevel}` as "h2" | "h3" | "h4";
 
   const classes = cn(
-    "flex flex-col rounded-2xl border p-5 text-left",
+    "flex flex-col rounded-2xl border p-5 text-start",
     s.box,
     href &&
       "transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078FF] focus-visible:ring-offset-2",
@@ -90,7 +91,7 @@ export function Card({
             s.iconTile,
           )}
         >
-          {icon}
+          <Trans>{icon}</Trans>
         </span>
       )}
       {kicker && (
@@ -101,14 +102,14 @@ export function Card({
             s.kicker,
           )}
         >
-          {kicker}
+          <Trans>{kicker}</Trans>
         </span>
       )}
       <Heading className={cn("text-sm font-semibold leading-snug", kicker ? "mt-1.5" : icon ? "mt-5" : "", s.title)}>
-        {title}
+        <Trans>{title}</Trans>
       </Heading>
       {children && (
-        <p className={cn("mt-2 text-xs leading-relaxed", s.body)}>{children}</p>
+        <p className={cn("mt-2 text-xs leading-relaxed", s.body)}><Trans>{children}</Trans></p>
       )}
     </>
   );
@@ -116,14 +117,14 @@ export function Card({
   if (href) {
     return (
       <Link href={href} className={classes} style={s.style}>
-        {content}
+        <Trans>{content}</Trans>
       </Link>
     );
   }
 
   return (
     <div className={classes} style={s.style}>
-      {content}
+      <Trans>{content}</Trans>
     </div>
   );
 }

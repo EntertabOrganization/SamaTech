@@ -18,7 +18,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses `next/font` to self-host Montserrat, Quicksand, and Noto Sans Arabic.
+
+## English and Arabic
+
+The navigation language button switches all pages without reloading or clearing form state. Arabic uses a right-to-left layout. The `samatechs-language` cookie remembers the selection for one year and lets the server render the selected language on the next visit.
+
+Arabic copy lives in `lib/i18n/ar.json`, keyed by the English copy. Wrap visible text in the `Trans` component from `lib/i18n/LanguageProvider`. For attributes such as `placeholder`, `alt`, and `aria-label`, use `t` from `useLanguage()` in a client component. Keep form field values and API payloads independent of translated display labels. Calendar dates use a localized Gregorian calendar. No external translation service is loaded.
 
 ## Learn More
 

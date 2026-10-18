@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useState, type ReactNode } from "react";
 import { cn } from "../../../lib/cn";
 import MicroLabel from "../../ContactPage/MicroLabel";
@@ -34,7 +35,7 @@ const styles = {
     grid: "gap-14 lg:grid-cols-2",
     panelFirst: false,
     list: "flex flex-col justify-center gap-3 self-center",
-    item: "rounded-2xl px-4 py-3.5 text-left transition-all",
+    item: "rounded-2xl px-4 py-3.5 text-start transition-all",
     itemSelected: "border border-ink-100 bg-white shadow-[0px_6px_18px_-6px_#121A231F]",
     itemIdle: "border border-transparent bg-white/40 hover:bg-white/70",
     row: "gap-2.5",
@@ -43,7 +44,7 @@ const styles = {
     title: "text-sm font-semibold",
     titleSelected: "text-[#0F1B2D]",
     titleIdle: "text-slate-600",
-    description: "mt-2 block pl-6.5 text-xs leading-relaxed text-slate-500",
+    description: "mt-2 block ps-6.5 text-xs leading-relaxed text-slate-500",
     panel:
       "flex min-h-80 flex-col rounded-lg border border-[#3B9BFF] bg-white/60 p-6 backdrop-blur-[14px]",
     panelLabel: true,
@@ -53,7 +54,7 @@ const styles = {
     grid: "items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]",
     panelFirst: true,
     list: "flex flex-col",
-    item: "px-4 text-left transition-colors",
+    item: "px-4 text-start transition-colors",
     itemSelected: "rounded-2xl bg-[#E3ECF9] py-4",
     itemIdle: "border-b border-ink-100 py-3.5 hover:bg-slate-50",
     row: "gap-3",
@@ -62,7 +63,7 @@ const styles = {
     title: "text-sm font-heading font-semibold",
     titleSelected: "text-ink-900",
     titleIdle: "text-ink-700",
-    description: "mt-2 block pl-7 text-xs leading-relaxed text-ink-500",
+    description: "mt-2 block ps-7 text-xs leading-relaxed text-ink-500",
     panel: "flex min-h-85 flex-col rounded-panel bg-ink-50 p-6",
     panelLabel: true,
     content: "flex flex-1 items-center pt-4",
@@ -71,7 +72,7 @@ const styles = {
     grid: "items-center gap-8 lg:grid-cols-2",
     panelFirst: false,
     list: "flex flex-col",
-    item: "px-4 py-3.5 text-left transition-colors",
+    item: "px-4 py-3.5 text-start transition-colors",
     itemSelected: "rounded-2xl bg-[#E3ECF9]",
     itemIdle: "border-b border-ink-100 hover:bg-white/60",
     row: "gap-3",
@@ -93,6 +94,8 @@ export default function ShowcaseTabs({
   variant = "cards",
   className,
 }: ShowcaseTabsProps) {
+  const { t: translateText } = useLanguage();
+
   const uid = useId().replace(/:/g, "");
   const [activeId, setActiveId] = useState<string>(items[0].id);
   const active = items.find((i) => i.id === activeId) ?? items[0];
@@ -102,7 +105,7 @@ export default function ShowcaseTabs({
     <div
       role="tablist"
       aria-orientation="vertical"
-      aria-label={label}
+      aria-label={translateText(label)}
       className={s.list}
     >
       {items.map((item) => {
@@ -120,16 +123,16 @@ export default function ShowcaseTabs({
           >
             <span className={cn("flex items-center", s.row)}>
               <span className={selected ? s.iconSelected : s.iconIdle}>
-                {item.icon}
+                <Trans>{item.icon}</Trans>
               </span>
               <span
                 className={cn(s.title, selected ? s.titleSelected : s.titleIdle)}
               >
-                {item.title}
+                <Trans>{item.title}</Trans>
               </span>
             </span>
             {selected && item.description && (
-              <span className={s.description}>{item.description}</span>
+              <span className={s.description}><Trans>{item.description}</Trans></span>
             )}
           </button>
         );
@@ -144,9 +147,9 @@ export default function ShowcaseTabs({
       aria-labelledby={`${uid}-tab-${active.id}`}
       className={s.panel}
     >
-      {s.panelLabel && <MicroLabel>{active.title}</MicroLabel>}
+      {s.panelLabel && <MicroLabel><Trans>{active.title}</Trans></MicroLabel>}
       <div className={s.content}>
-        <div className="w-full">{active.visual}</div>
+        <div className="w-full"><Trans>{active.visual}</Trans></div>
       </div>
     </div>
   );
@@ -155,13 +158,13 @@ export default function ShowcaseTabs({
     <div className={cn("hidden lg:grid", s.grid, className)}>
       {s.panelFirst ? (
         <>
-          {panel}
-          {list}
+          <Trans>{panel}</Trans>
+          <Trans>{list}</Trans>
         </>
       ) : (
         <>
-          {list}
-          {panel}
+          <Trans>{list}</Trans>
+          <Trans>{panel}</Trans>
         </>
       )}
     </div>

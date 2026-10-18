@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import { useId, useState } from "react";
 import { Icon, cn } from "@/Components/ui";
 
@@ -23,10 +24,10 @@ export default function FocusDisclosure({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between gap-3 py-3 text-left text-xs font-medium text-ink-100 transition-colors hover:text-white"
-      >
+        className="flex w-full items-center justify-between gap-3 py-3 text-start text-xs font-medium text-ink-100 transition-colors hover:text-white"
+      ><Trans>
         Selected areas of focus
-        <Icon
+        </Trans><Icon
           name="chevron-down"
           size={14}
           strokeWidth={2}
@@ -54,7 +55,7 @@ export default function FocusDisclosure({
                 aria-hidden="true"
                 className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-pulse"
               />
-              {item}
+              <Trans>{item}</Trans>
             </li>
           ))}
         </ul>

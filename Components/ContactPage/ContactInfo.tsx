@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import SectionHeader  from "@/Components/home/shared/SectionHeader";
 import MicroLabel  from "@/Components/ContactPage/MicroLabel";
@@ -95,6 +98,8 @@ const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
 /* ---------- Component ---------- */
 
 export default function ContactInfo() {
+  const { t: translateText } = useLanguage();
+
   return (
     <div>
       <Image src={contactImg} alt=''/>
@@ -111,29 +116,29 @@ export default function ContactInfo() {
         {details.map((item) => (
           <div key={item.label} className="flex items-center gap-3 py-3">
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-blue-pulse">
-              {item.icon}
+              <Trans>{item.icon}</Trans>
             </span>
             <div>
               <dt className="text-[9px] font-medium uppercase tracking-wider text-ink-300">
-                {item.label}
+                <Trans>{item.label}</Trans>
               </dt>
-              <dd className="mt-0.5 text-xs font-medium text-ink-900">{item.value}</dd>
+              <dd className="mt-0.5 text-xs font-medium text-ink-900"><Trans>{item.value}</Trans></dd>
             </div>
           </div>
         ))}
       </dl>
 
       <div className="mt-6">
-        <MicroLabel>Follow Samatechs</MicroLabel>
+        <MicroLabel><Trans>Follow SAMATECHS</Trans></MicroLabel>
         <ul className="mt-3 flex gap-2">
           {socials.map((s) => (
             <li key={s.label}>
               <Link
                 href={s.href}
-                aria-label={s.label}
+                aria-label={translateText(s.label)}
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-100 bg-white text-ink-500 transition-colors hover:border-[#9CC3F5] hover:text-blue-pulse"
               >
-                {s.icon}
+                <Trans>{s.icon}</Trans>
               </Link>
             </li>
           ))}

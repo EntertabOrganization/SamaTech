@@ -68,7 +68,7 @@
 //           const lead = i === 0;
 //           return (
 //             <li key={s.title} className="flex flex-col">
-//               {i > 0 && <span aria-hidden="true" className="ml-8 h-3 w-px bg-slate-300" />}
+//               {i > 0 && <span aria-hidden="true" className="ms-8 h-3 w-px bg-slate-300" />}
 //               <div
 //                 className={`flex items-center gap-3 rounded-2xl px-4 ${
 //                   lead
@@ -360,7 +360,7 @@
 //                   aria-selected={selected}
 //                   aria-controls="commitment-panel"
 //                   onClick={() => setActiveId(c.id)}
-//                   className={`px-4 text-left transition-colors ${
+//                   className={`px-4 text-start transition-colors ${
 //                     selected
 //                       ? "rounded-2xl bg-[#E3ECF9] py-4"
 //                       : "border-b border-ink-100 py-3.5 hover:bg-slate-50"
@@ -375,7 +375,7 @@
 //                     </span>
 //                   </span>
 //                   {selected && (
-//                     <span className="mt-2 block pl-7 text-xs leading-relaxed text-ink-500">
+//                     <span className="mt-2 block ps-7 text-xs leading-relaxed text-ink-500">
 //                       {c.description}
 //                     </span>
 //                   )}
@@ -400,7 +400,7 @@ export default function WhySamatechs() {
       <div className="mx-auto max-w-5xl">
         <SectionHeader
           as="h1"
-          eyebrow="Why Samatechs"
+          eyebrow="Why SAMATECHS"
           title="Five commitments behind every engagement"
         />
 

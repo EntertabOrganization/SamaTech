@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import PartnerCard from "./Partnercard";
 import { disclaimer, partners } from "./Data";
 import PatternBackground from "@/Components/home/shared/PatternBackground";
@@ -23,7 +24,7 @@ export default function Partners() {
         </div>
 
         <p className="max-w-sm border-t border-ink-100 pt-6 text-[9px] leading-relaxed text-slate-400">
-          {disclaimer}
+          <Trans>{disclaimer}</Trans>
         </p>
 
         <CtaBanner

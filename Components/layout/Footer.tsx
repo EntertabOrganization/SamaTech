@@ -1,3 +1,6 @@
+"use client";
+
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
 import Logo from "../../public/horizontal-logo-white 1.svg";
 import Image from "next/image";
@@ -98,6 +101,8 @@ const columnLink =
   "text-sm text-slate-300 transition-colors hover:text-white";
 
 export default function Footer() {
+  const { t: translateText, language } = useLanguage();
+
   const year = new Date().getFullYear();
 
   return (
@@ -123,23 +128,24 @@ export default function Footer() {
           <div>
             <Image
               src={Logo}
-              alt="Samatechs logo"
+              alt={translateText("SAMATECHS logo")}
               width={200}
               height={40}
             />
-            <p className="mt-4 w-67.5 text-sm leading-relaxed text-slate-400">
+            {language === "ar" && <p className="mt-2 text-2xl font-bold text-white">ساماتكس</p>}
+            <p className="mt-4 w-67.5 text-sm leading-relaxed text-slate-400"><Trans>
               A Saudi-led strategic advisory and analytics firm. Partner-led,
               evidence-based, built for execution.
-            </p>
+            </Trans></p>
             <ul className="mt-5 flex gap-2">
               {socials.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}
-                    aria-label={s.label}
+                    aria-label={translateText(s.label)}
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-colors hover:border-white/40 hover:text-white"
                   >
-                    {s.icon}
+                    <Trans>{s.icon}</Trans>
                   </a>
                 </li>
               ))}
@@ -147,13 +153,13 @@ export default function Footer() {
           </div>
 
           {/* Site */}
-          <nav aria-label="Site">
-            <h3 className={columnTitle}>Site</h3>
+          <nav aria-label={translateText("Site")}>
+            <h3 className={columnTitle}><Trans>Site</Trans></h3>
             <ul className="mt-4 space-y-3">
               {siteLinks.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className={columnLink}>
-                    {l.label}
+                    <Trans>{l.label}</Trans>
                   </Link>
                 </li>
               ))}
@@ -162,11 +168,11 @@ export default function Footer() {
 
           {/* Focus */}
           <div>
-            <h3 className={columnTitle}>Pillars</h3>
+            <h3 className={columnTitle}><Trans>Pillars</Trans></h3>
             <ul className="mt-4 space-y-3">
               {focusAreas.map((item) => (
                 <li key={item} className="max-w-47 text-sm leading-snug text-slate-300">
-                  {item}
+                  <Trans>{item}</Trans>
                 </li>
               ))}
             </ul>
@@ -174,11 +180,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className={columnTitle}>Get in touch</h3>
+            <h3 className={columnTitle}><Trans>Get in touch</Trans></h3>
             <ul className="mt-4 space-y-3">
               {contactDetails.map((item) => (
                 <li key={item} className="text-sm text-slate-300">
-                  {item}
+                  <Trans>{item}</Trans>
                 </li>
               ))}
             </ul>
@@ -187,12 +193,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Samatechs. All rights reserved.</p>
+          <p>© <Trans>{year}</Trans><Trans> SAMATECHS. All rights reserved.</Trans></p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalLinks.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="transition-colors hover:text-white">
-                  {l.label}
+                  <Trans>{l.label}</Trans>
                 </Link>
               </li>
             ))}

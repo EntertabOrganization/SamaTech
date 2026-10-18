@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import SectionHeader from "@/Components/home/shared/SectionHeader";
 import TopGlow from "../ShareComponents/Topglow";
 import StripedVisual from "./Stripedvisual";
@@ -8,17 +9,17 @@ export default function WhoWeAre() {
       <TopGlow/>
       <div className="relative mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2 lg:gap-16">
         <SectionHeader eyebrow="About us" title="Who We Are" size="lg">
-          <p className="mt-5 max-w-md text-sm font-medium leading-relaxed text-[#0F1B2D] sm:text-[15px]">
+          <p className="mt-5 max-w-md text-sm font-medium leading-relaxed text-[#0F1B2D] sm:text-[15px]"><Trans>
             SAMATECHS is a boutique strategic advisory and analytics firm that
             helps organizations clarify complex challenges, quantify root
             causes, and design execution-ready solutions.
-          </p>
-          <p className="mt-4 max-w-117.5 text-xs leading-relaxed text-slate-500 sm:text-caption">
+          </Trans></p>
+          <p className="mt-4 max-w-117.5 text-xs leading-relaxed text-slate-500 sm:text-caption"><Trans>
             We operate as a senior-led advisory partner to executive teams and
             boards, specializing in enterprise strategy, performance
             optimization, risk governance, digital transformation, and
             cross-border market expansion between the U.S. and GCC.
-          </p>
+          </Trans></p>
         </SectionHeader>
         <StripedVisual />
       </div>

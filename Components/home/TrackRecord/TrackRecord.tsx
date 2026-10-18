@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 // import { Icon } from "@/components/ui";
 
 import Image from "next/image";
@@ -33,15 +34,15 @@ export default function TrackRecord() {
       <div className="relative mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-precision">
-            <span aria-hidden="true" className="h-px w-8 bg-blue-precision" />
+            <span aria-hidden="true" className="h-px w-8 bg-blue-precision" /><Trans>
             Track record
-          </p>
-          <h2 className="mt-4 max-w-xs text-h1 font-heading font-bold leading-tight tracking-tight text-white sm:text-4xl">
+          </Trans></p>
+          <h2 className="mt-4 max-w-xs text-h1 font-heading font-bold leading-tight tracking-tight text-white sm:text-4xl"><Trans>
             Experience Our Partners Bring
-          </h2>
-          <p className="mt-4 text-body font-medium text-blue-haze">
+          </Trans></h2>
+          <p className="mt-4 text-body font-medium text-blue-haze"><Trans>
             The experience of our partners includes
-          </p>
+          </Trans></p>
         </div>
 
         <ul className="flex flex-col max-w-100">
@@ -53,7 +54,7 @@ export default function TrackRecord() {
               }`}
             >
               <Icon name="check-circle" className="mt-0.5 shrink-0 text-blue-precision" />
-              {item}
+              <Trans>{item}</Trans>
             </li>
           ))}
         </ul>

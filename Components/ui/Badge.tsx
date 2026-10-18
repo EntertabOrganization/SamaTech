@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "../../lib/cn";
 
@@ -58,8 +59,8 @@ export function Badge({
       {showDot && (
         <span aria-hidden="true" className={cn("h-1.5 w-1.5 rounded-full", tones[tone].dot)} />
       )}
-      {icon}
-      {children}
+      <Trans>{icon}</Trans>
+      <Trans>{children}</Trans>
     </span>
   );
 }

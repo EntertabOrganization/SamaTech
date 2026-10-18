@@ -210,5 +210,5 @@ export function Icon({ name, size = 16, solid = false, title, ...rest }: NamedIc
     : {};
   const solidProps = solid ? { fill: "currentColor", fillOpacity: 0.2 } : {};
 
-  return <Component width={size} height={size} {...solidProps} {...a11y} {...rest} />;
+  return <Component className={name === "arrow-right" ? "directional-arrow" : undefined} width={size} height={size} {...solidProps} {...a11y} {...rest} />;
 }

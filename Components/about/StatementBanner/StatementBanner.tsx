@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import Image from "next/image";
 import backgroundVector from "../../../public/images/footer-vector.png";
 
@@ -20,10 +21,10 @@ export default function StatementBanner() {
       </div>
 
       <div className="relative mx-auto max-w-5xl">
-        <h1 className="w-150 text-h1 font-bold leading-snug tracking-tight text-white sm:text-2xl">
+        <h1 className="w-150 text-h1 font-bold leading-snug tracking-tight text-white sm:text-2xl"><Trans>
           Transformation begins with clarity, and succeeds through disciplined
           oversight.
-        </h1>
+        </Trans></h1>
       </div>
     </section>
   );

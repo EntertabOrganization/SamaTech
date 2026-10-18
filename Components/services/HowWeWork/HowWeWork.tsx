@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
 
 /* ---------- Icons ---------- */
@@ -58,14 +59,14 @@ function DiagnoseVisual() {
   ];
   return (
     <div className="flex flex-col items-center">
-      <p className={tinyCaps}>What happens to one problem</p>
+      <p className={tinyCaps}><Trans>What happens to one problem</Trans></p>
       <div className="mt-4 grid w-full grid-cols-2 gap-2">
         {inputs.map((item) => (
           <span
             key={item}
             className="rounded-full border border-ink-100 bg-white/70 px-3 py-1.5 text-center text-[10px] text-slate-500"
           >
-            {item}
+            <Trans>{item}</Trans>
           </span>
         ))}
       </div>
@@ -74,7 +75,7 @@ function DiagnoseVisual() {
         <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#E3ECF9] text-blue-pulse">
           <DiagnoseIcon />
         </span>
-        <span className="text-xs font-semibold text-[#0F1B2D]">Root cause defined</span>
+        <span className="text-xs font-semibold text-[#0F1B2D]"><Trans>Root cause defined</Trans></span>
       </div>
     </div>
   );
@@ -90,21 +91,21 @@ function ArchitectVisual() {
   ];
   return (
     <div>
-      <p className={tinyCaps}>Designed for execution</p>
+      <p className={tinyCaps}><Trans>Designed for execution</Trans></p>
       <div className="mt-4 grid grid-cols-2 gap-2">
         {blocks.map((b) => (
           <div key={b.title} className={`rounded-xl border border-ink-100 bg-white px-3 py-2.5 ${raised}`}>
-            <p className="text-[10px] font-semibold text-[#0F1B2D]">{b.title}</p>
-            <p className="mt-0.5 text-[9px] leading-snug text-slate-400">{b.subtitle}</p>
+            <p className="text-[10px] font-semibold text-[#0F1B2D]"><Trans>{b.title}</Trans></p>
+            <p className="mt-0.5 text-[9px] leading-snug text-slate-400"><Trans>{b.subtitle}</Trans></p>
           </div>
         ))}
       </div>
       <div className="mt-2 flex items-center gap-2.5 rounded-xl border border-ink-100 bg-white px-3 py-2.5 text-[10px] text-slate-600">
         <span className="text-blue-pulse">
           <ArchitectIcon />
-        </span>
+        </span><Trans>
         Clear accountability at every level
-      </div>
+      </Trans></div>
     </div>
   );
 }
@@ -119,7 +120,7 @@ function DeliveryVisual() {
   ];
   return (
     <div>
-      <p className={tinyCaps}>Oversight through delivery</p>
+      <p className={tinyCaps}><Trans>Oversight through delivery</Trans></p>
 
       <ol className="relative mt-5 flex">
         {/* track: grey base, blue for the completed segment (gate 1 → gate 2) */}
@@ -141,7 +142,7 @@ function DeliveryVisual() {
               )}
             </span>
             <span className={`text-[9px] ${g.done ? "font-medium text-[#0F1B2D]" : "text-slate-400"}`}>
-              {g.label}
+              <Trans>{g.label}</Trans>
             </span>
           </li>
         ))}
@@ -152,8 +153,8 @@ function DeliveryVisual() {
           <DeliveryIcon />
         </span>
         <span>
-          <span className="block text-xs font-semibold text-[#0F1B2D]">Course correction at Gate 3</span>
-          <span className="mt-0.5 block text-[10px] text-slate-400">Clear owners for every action</span>
+          <span className="block text-xs font-semibold text-[#0F1B2D]"><Trans>Course correction at Gate 3</Trans></span>
+          <span className="mt-0.5 block text-[10px] text-slate-400"><Trans>Clear owners for every action</Trans></span>
         </span>
       </div>
     </div>
@@ -200,6 +201,8 @@ const steps: Step[] = [
 /* ---------- Section ---------- */
 
 export default function HowWeWork() {
+  const { t: translateText } = useLanguage();
+
   const [activeId, setActiveId] = useState<string>(steps[0].id);
   const active = steps.find((s) => s.id === activeId) ?? steps[0];
 
@@ -210,24 +213,24 @@ export default function HowWeWork() {
         <div className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-14">
           <div>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-sovereign">
-              <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" />
+              <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
               How we work
-            </p>
-            <h2 className="mt-4 max-w-sm text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl">
+            </Trans></p>
+            <h2 className="mt-4 max-w-sm text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl"><Trans>
               Diagnose, architect, advise through delivery
-            </h2>
+            </Trans></h2>
           </div>
-          <p className="max-w-lg text-sm leading-relaxed text-slate-500">
+          <p className="max-w-lg text-sm leading-relaxed text-slate-500"><Trans>
             Every engagement follows the same discipline, regardless of pillar.
             The sequence is what keeps recommendations executable.
-          </p>
+          </Trans></p>
         </div>
 
         {/* Mobile: all three visuals stacked in one card */}
         <div className="mt-10 space-y-10 rounded-3xl bg-[#F1F5FB] p-5 lg:hidden">
           {steps.map((s) => (
             <div key={s.id}>
-              <p className={`${tinyCaps} mb-3`}>{s.title}</p>
+              <p className={`${tinyCaps} mb-3`}><Trans>{s.title}</Trans></p>
               <s.Visual />
             </div>
           ))}
@@ -238,7 +241,7 @@ export default function HowWeWork() {
           <div
             role="tablist"
             aria-orientation="vertical"
-            aria-label="How we work"
+            aria-label={translateText("How we work")}
             className="flex flex-col"
           >
             {steps.map((s) => {
@@ -252,21 +255,21 @@ export default function HowWeWork() {
                   aria-selected={selected}
                   aria-controls="how-panel"
                   onClick={() => setActiveId(s.id)}
-                  className={`px-4 text-left transition-colors ${
+                  className={`px-4 text-start transition-colors ${
                     selected
                       ? "rounded-2xl bg-[#E3ECF9] py-4"
                       : "border-b border-ink-100 py-3.5 hover:bg-slate-50"
                   }`}
                 >
                   <span className="flex items-center gap-3">
-                    <span className={selected ? "text-blue-pulse" : "text-slate-500"}>{s.icon}</span>
+                    <span className={selected ? "text-blue-pulse" : "text-slate-500"}><Trans>{s.icon}</Trans></span>
                     <span className={`text-sm font-semibold ${selected ? "text-[#0F1B2D]" : "text-slate-600"}`}>
-                      {s.title}
+                      <Trans>{s.title}</Trans>
                     </span>
                   </span>
                   {selected && (
-                    <span className="mt-2 block pl-7 text-xs leading-relaxed text-slate-500">
-                      {s.description}
+                    <span className="mt-2 block ps-7 text-xs leading-relaxed text-slate-500">
+                      <Trans>{s.description}</Trans>
                     </span>
                   )}
                 </button>
@@ -280,7 +283,7 @@ export default function HowWeWork() {
             aria-labelledby={`how-tab-${active.id}`}
             className="flex min-h-75 flex-col rounded-3xl bg-[#F1F5FB] p-6"
           >
-            <p className={tinyCaps}>{active.title}</p>
+            <p className={tinyCaps}><Trans>{active.title}</Trans></p>
             <div className="flex flex-1 items-center pt-4">
               <div className="w-full">
                 <active.Visual />
@@ -304,9 +307,9 @@ export default function HowWeWork() {
               <span className="text-[#66ADFF]">
                 <GaugeIcon />
               </span>
-              <h3 className="mt-3 text-lg font-semibold">Analytical Rigor</h3>
+              <h3 className="mt-3 text-lg font-semibold"><Trans>Analytical Rigor</Trans></h3>
             </div>
-            <p className="text-xs max-w-130 leading-relaxed text-slate-300 sm:text-caption">
+            <p className="text-xs max-w-130 leading-relaxed text-slate-300 sm:text-caption"><Trans>
               Our advisory work is grounded in quantitative discipline and
               evidence-based decision frameworks. Depending on engagement scope,
               we incorporate predictive analytics, machine learning-informed
@@ -314,7 +317,7 @@ export default function HowWeWork() {
               Sigma diagnostics, and executive dashboard architecture to
               strengthen decision quality in complex, high-accountability
               environments.
-            </p>
+            </Trans></p>
           </div>
         </div>
       </div>

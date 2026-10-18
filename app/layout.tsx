@@ -1,8 +1,15 @@
-import { Montserrat, Quicksand } from "next/font/google";
+import { Montserrat, Quicksand, Noto_Sans_Arabic } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "../Components/layout/Navbar";
 import Footer from "../Components/layout/Footer";
-import GoogleTranslate from "@/Components/GoogleTranslate/GoogleTranslate";
+import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
+
+const arabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  display: "swap",
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -17,24 +24,26 @@ const quicksand = Quicksand({
 });
 
 export const metadata = {
-  title: "Samateches",
-  description: "Informative Website",
+  title: "SAMATECHS | ساماتكس",
+  description: "Strategic advisory and analytics | الاستشارات الاستراتيجية والتحليلات",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const language = (await cookies()).get("samatechs-language")?.value === "ar" ? "ar" : "en";
   return (
-    <html lang="en">
+    <html lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
       <body
-        className={`${montserrat.variable} ${quicksand.variable}`}
+        className={`${montserrat.variable} ${quicksand.variable} ${arabic.variable}`}
       >
-        <GoogleTranslate/>
+        <LanguageProvider initialLanguage={language}>
         <Navbar/>
         {children}
         <Footer/>
+        </LanguageProvider>
       </body>
     </html>
   );
