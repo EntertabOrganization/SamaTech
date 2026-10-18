@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
         {/* Badge */}
         <span className="inline-flex items-center gap-2 rounded-full border border-blue-haze bg-blue-mist px-3 py-1 text-[11px] font-medium text-blue-sovereign backdrop-blur-[14px]">
-          <Image src={badgeIcon} alt={translateText("Logo")} width={12} height={12} /><Trans>
+          <Image src={badgeIcon} alt={translateText("Logo")} width={12} height={12} loading="eager" /><Trans>
           Senior-led strategic advisory &amp; analytics
         </Trans></span>
 

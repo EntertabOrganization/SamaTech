@@ -102,7 +102,7 @@ export default function ContactInfo() {
 
   return (
     <div>
-      <Image src={contactImg} alt=''/>
+      <Image src={contactImg} alt="" loading="eager" className="h-auto max-w-full" />
 
       <SectionHeader
         as="h1"

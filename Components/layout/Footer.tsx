@@ -45,18 +45,6 @@ const legalLinks: FooterLink[] = [
   { label: "Confidentiality", href: "/cookies" },
 ];
 
-const iconProps = {
-  width: 16,
-  height: 16,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  "aria-hidden": true,
-};
-
 const socials: { label: string; href: string; icon: React.ReactNode }[] = [
   {
     label: "LinkedIn",
@@ -116,7 +104,8 @@ export default function Footer() {
     src={BrandFooter}
     alt=""
     fill
-    priority
+    loading="eager"
+    sizes="440px"
     quality={100}
     className="object-contain object-bottom-left"
   />
@@ -129,8 +118,10 @@ export default function Footer() {
             <Image
               src={Logo}
               alt={translateText("SAMATECHS logo")}
-              width={200}
-              height={40}
+              width={1267}
+              height={289}
+              style={{ width: 200, height: "auto" }}
+              loading="eager"
             />
             {language === "ar" && <p className="mt-2 text-2xl font-bold text-white">ساماتكس</p>}
             <p className="mt-4 w-67.5 text-sm leading-relaxed text-slate-400"><Trans>

@@ -2,6 +2,7 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import type { FormEvent } from "react";
+import { sendContactMessage } from "@/lib/api";
 import {
   Checkbox,
   Field,
@@ -24,12 +25,22 @@ const AREAS = [
 export default function MessageForm() {
   const { t: translateText } = useLanguage();
 
-  const { status, submit } = useFormSubmit("/api/contact");
+  const { status, errorMessage, submit } = useFormSubmit(sendContactMessage);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const ok = await submit(Object.fromEntries(new FormData(form).entries()));
+    const data = new FormData(form);
+    const text = (field: string) => String(data.get(field) ?? "").trim();
+
+    const ok = await submit({
+      name: text("name"),
+      email: text("email"),
+      organization: text("organization") || undefined,
+      jobTitle: text("jobTitle") || undefined,
+      service: text("area") || undefined,
+      message: text("message"),
+    });
     if (ok) form.reset();
   };
 
@@ -41,18 +52,19 @@ export default function MessageForm() {
 
       <div className="grid gap-3 sm:grid-cols-2">
         <Field label="Name" required>
-          <TextInput name="name" required autoComplete="name" placeholder={translateText("Full name")} />
+          <TextInput name="name" required maxLength={200} autoComplete="name" placeholder={translateText("Full name")} />
         </Field>
         <Field label="Organization">
-          <TextInput name="organization" autoComplete="organization" placeholder={translateText("Organization")} />
+          <TextInput name="organization" maxLength={200} autoComplete="organization" placeholder={translateText("Organization")} />
         </Field>
         <Field label="Job title">
-          <TextInput name="jobTitle" autoComplete="organization-title" placeholder={translateText("Job title")} />
+          <TextInput name="jobTitle" maxLength={200} autoComplete="organization-title" placeholder={translateText("Job title")} />
         </Field>
         <Field label="Email" required>
           <TextInput
             name="email"
             type="email"
+            maxLength={254}
             required
             autoComplete="email"
             placeholder={translateText("name@organization.com")}
@@ -68,6 +80,7 @@ export default function MessageForm() {
       <Field label="Message" required>
         <TextArea
           name="message"
+          maxLength={5000}
           rows={5}
           required
           placeholder={translateText("What are you trying to decide, and by when?")}
@@ -86,6 +99,7 @@ export default function MessageForm() {
       <FormStatus
         status={status}
         successMessage="Thank you. We will reply within one business day."
+        errorMessage={errorMessage}
       />
 
       <p className="text-[10px] text-slate-400"><Trans>Fields marked * are required.</Trans></p>

@@ -25,7 +25,8 @@ export default function TrackRecord() {
     src={BrandFooter}
     alt=""
     fill
-    priority
+    loading="eager"
+    sizes="440px"
     quality={100}
     className="object-contain object-bottom-left"
   />

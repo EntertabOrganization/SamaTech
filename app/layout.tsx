@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../Components/layout/Navbar";
 import Footer from "../Components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
+import WebsiteLoader from "@/Components/layout/WebsiteLoader";
 
 const arabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
@@ -40,9 +41,11 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${quicksand.variable} ${arabic.variable}`}
       >
         <LanguageProvider initialLanguage={language}>
-        <Navbar/>
-        {children}
-        <Footer/>
+          <WebsiteLoader>
+            <Navbar />
+            {children}
+            <Footer />
+          </WebsiteLoader>
         </LanguageProvider>
       </body>
     </html>

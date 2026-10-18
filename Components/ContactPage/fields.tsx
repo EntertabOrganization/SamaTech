@@ -173,9 +173,11 @@ export function SubmitButton({
 export function FormStatus({
   status,
   successMessage,
+  errorMessage = "Something went wrong. Please try again, or email us directly.",
 }: {
   status: SubmitStatus;
   successMessage: string;
+  errorMessage?: string;
 }) {
   if (status === "success") {
     return (
@@ -186,9 +188,9 @@ export function FormStatus({
   }
   if (status === "error") {
     return (
-      <p role="alert" className="rounded-lg bg-[#FDECEC] px-3 py-2 text-[11px] text-[#B42318]"><Trans>
-        Something went wrong. Please try again, or email us directly.
-      </Trans></p>
+      <p role="alert" className="rounded-lg bg-[#FDECEC] px-3 py-2 text-[11px] text-[#B42318]">
+        <Trans>{errorMessage}</Trans>
+      </p>
     );
   }
   return null;

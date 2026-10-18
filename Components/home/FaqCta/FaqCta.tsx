@@ -136,7 +136,7 @@ export default function FaqCta() {
                   one business day.
                 </Trans></p>
             </div>
-            <Image src={SectionImg} alt={translateText("Faq visual")} />
+            <Image src={SectionImg} alt={translateText("Faq visual")} loading="eager" className="h-auto max-w-full" />
           </div>
 
           {/* Right: accordion */}

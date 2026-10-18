@@ -26,6 +26,7 @@ export default function PartnerCard({ partner }: { partner: Partner }) {
               alt={language === "ar" ? `صورة ${translateText(partner.name)}` : `Portrait of ${partner.name}`}
               fill
               sizes="224px"
+              loading="eager"
               className="object-cover"
             />
           ) : (

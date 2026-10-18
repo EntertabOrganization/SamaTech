@@ -47,8 +47,10 @@ export default function Navbar() {
           <Image
             src={Logo}
             alt={translateText("SAMATECHS logo")}
-            width={150}
-            height={50}
+            width={1267}
+            height={289}
+            style={{ width: 150, height: "auto" }}
+            loading="eager"
           />
           {language === "ar" && <span className="text-xl font-bold text-blue-sovereign">ساماتكس</span>}
         </Link>

@@ -14,7 +14,8 @@ export default function StatementBanner() {
           src={backgroundVector}
           alt=""
           fill
-          priority
+          loading="eager"
+          sizes="200px"
           quality={100}
           className="object-contain object-bottom-left"
         />
