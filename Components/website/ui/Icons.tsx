@@ -3,6 +3,7 @@ import type { ComponentType, ReactNode, SVGProps } from "react";
 import LineChartIcon from '@/public/images/LineChart (1).png'
 import TargetIcon from '@/public/images/target.png'
 import shieldcheckIcon from '@/public/images/shield-check.png'
+import close from '@/public/images/close.png'
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -148,9 +149,12 @@ export const Minus = (p: IconProps) => (
 );
 
 export const Close = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M6 6l12 12M18 6L6 18" />
-  </Svg>
+  <Image
+    src={close}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 export const TrendingUp = (p: IconProps) => (

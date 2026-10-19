@@ -7,9 +7,9 @@ import SectionHeader from "@/Components/website/home/shared/SectionHeader";
 
 export default function MissionVisionWhy() {
   return (
-    <section className="relative overflow-hidden bg-[#F5F8FD] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden bg-[#F5F8FD] px-4 py-16 sm:px-6 lg:px-85 lg:py-28">
       <PatternBackground src="/pattern.svg" size="auto" opacityClassName="opacity-100" />
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto">
         {/* Mission & Vision */}
         <div className="grid gap-4 md:grid-cols-2">
           {statements.map((s) => (
@@ -18,7 +18,7 @@ export default function MissionVisionWhy() {
         </div>
 
         {/* Why SAMATECHS */}
-        <div className="mt-20 lg:mt-28">
+        <div className="mt-20 lg:pt-28">
           <SectionHeader eyebrow="Differentiators" title="Why SAMATECHS" />
           <Showcase
             items={differentiators}

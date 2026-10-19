@@ -7,7 +7,7 @@ import CtaBanner from "../ShareComponents/Ctabanner";
 
 export default function Partners() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFD] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden bg-[#F8FAFD]  px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <PatternBackground src="/pattern.svg" size="auto" opacityClassName="opacity-100" />
 
       <div className="relative mx-auto max-w-5xl">
@@ -15,6 +15,7 @@ export default function Partners() {
           <SectionHeader
             eyebrow="Our founders"
             title="Three managing partners, one advisory model"
+            className="max-w-120"
           />
         </header>
         <div className="divide-y divide-ink-100">

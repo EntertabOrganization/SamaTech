@@ -4,7 +4,7 @@ import backgroundVector from "@/public/images/footer-vector.png";
 
 export default function StatementBanner() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-12 sm:px-6 sm:py-14 lg:px-85 lg:py-24">
       {/* Faint brand rays, right side, partly cropped */}
       <div
         aria-hidden="true"
@@ -21,8 +21,8 @@ export default function StatementBanner() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-5xl">
-        <h1 className="w-150 text-h1 font-bold leading-snug tracking-tight text-white sm:text-2xl"><Trans>
+      <div className="relative ">
+        <h1 className=" font-['Montserrat'] text-[35px] font-bold leading-13.75 tracking-[-0.44px] text-white"><Trans>
           Transformation begins with clarity, and succeeds through disciplined
           oversight.
         </Trans></h1>

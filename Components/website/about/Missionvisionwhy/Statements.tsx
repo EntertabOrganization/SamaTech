@@ -1,4 +1,7 @@
 import type { ReactNode } from "react";
+import Mission from '@/public/images/Mission.png'
+import Vision from '@/public/images/Vision.png'
+import Image from "next/image";
 
 // Neither icon has an equivalent in the ui icon set yet, so both stay local.
 const svgProps = {
@@ -14,18 +17,21 @@ const svgProps = {
 };
 
 const MissionIcon = () => (
-  <svg {...svgProps}>
-    <path d="M12 3l8 4-8 4-8-4 8-4z" />
-    <path d="M4 12l8 4 8-4" />
-    <path d="M4 17l8 4 8-4" />
-  </svg>
+  <Image
+    src={Mission}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 const VisionIcon = () => (
-  <svg {...svgProps}>
-    <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />
-    <circle cx="12" cy="11" r="2" />
-  </svg>
+  <Image
+    src={Vision}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 export interface Statement {
