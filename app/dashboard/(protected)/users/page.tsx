@@ -1,8 +1,9 @@
 import PageHeader from "@/Components/dashboard/Layout/PageHeader";
 import Pagination from "@/Components/dashboard/users/Pagination";
-import CreateUserCard from "@/Components/dashboard/users/UserStateCard";
+// import UserStateCard from "@/Components/dashboard/users/UserStateCard";
 import UserList from "@/Components/dashboard/users/UserList";
 import UserRow from "@/Components/dashboard/users/UserRow";
+import UserStatusCard from "@/Components/dashboard/users/UserStateCard";
 
 export default async function UsersPage({
   searchParams,
@@ -39,7 +40,11 @@ export default async function UsersPage({
           <Pagination page={page} totalPages={totalPages} />
         </div>
 
-        <CreateUserCard />
+        <UserStatusCard
+          userId="{user.id}"
+          userName="{user.name}"
+          status="active"
+        />
       </div>
     </div>
   );
