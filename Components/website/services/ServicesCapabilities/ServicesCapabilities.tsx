@@ -2,46 +2,47 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
+import Strategy from '@/public/images/StrategyIcon.png'
+import Technology from '@/public/images/Technology.png'
+import Intelligence from '@/public/images/Intelligence.png'
+import Growth from '@/public/images/Growth.png'
+import Image from "next/image";
 
 /* ---------- Icons ---------- */
 
-const iconProps = {
-  width: 16,
-  height: 16,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  "aria-hidden": true,
-};
+
 
 const StrategyIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="12" cy="12" r="9" />
-    <circle cx="12" cy="12" r="4.5" />
-    <circle cx="12" cy="12" r="1" fill="currentColor" />
-  </svg>
+  <Image
+    src={Strategy}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const IntelligenceIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
+  <Image
+    src={Intelligence}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const TechnologyIcon = () => (
-  <svg {...iconProps}>
-    <path d="M12 3l8 4-8 4-8-4 8-4z" />
-    <path d="M4 12l8 4 8-4" />
-    <path d="M4 17l8 4 8-4" />
-  </svg>
+  <Image
+    src={Technology}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const GrowthIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
-  </svg>
+  <Image
+    src={Growth}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const SmallDot = () => <span className="h-1.5 w-1.5 rounded-full bg-current" />;
 
@@ -241,25 +242,25 @@ export default function ServicesCapabilities() {
   const active = capabilities.find((c) => c.id === activeId) ?? capabilities[0];
 
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E7EEF9] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E7EEF9] px-4 py-16 sm:px-6 lg:px-85 lg:py-20">
       {/* Soft blue glow at the top */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 -top-65 h-130 w-240 max-w-[160vw] -translate-x-1/2 bg-[radial-gradient(closest-side,#BCD8FF_0%,rgba(188,216,255,0)_100%)]"
       />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto pt-22 px-8 pb-18">
         {/* Header */}
         <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
           <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
           Services &amp; capabilities
         </Trans></p>
-        <h2 className="mt-4 text-display-2 font-heading font-bold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl"><Trans>
+        <h2 className="mt-4 text-display-2 max-w-[733.32px] lg:pr-66.25 font-heading font-bold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl"><Trans>
           An Integrated
           </Trans><br /><Trans>
           Advisory Model
         </Trans></h2>
-        <p className="mt-5 max-w-160 text-lead font-medium leading-relaxed text-ink-500"><Trans>
+        <p className="mt-5 max-w-174.25 lg:pr-6 text-lead font-medium leading-relaxed text-ink-500"><Trans>
           Our three client-facing advisory pillars draw on four cross-cutting
           areas of expertise, depending on the client&apos;s needs.
         </Trans></p>

@@ -2,7 +2,7 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
-import badgeIcon from '@/public/images/Container.png'
+import badgeIcon from '@/public/images/StrategyIcon.png'
 // import overlay from '../../public/images/Overlay+Shadow.png'
 import Image from "next/image";
 import Button from "../../ui/Button";

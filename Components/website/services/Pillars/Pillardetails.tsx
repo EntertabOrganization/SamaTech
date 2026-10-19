@@ -20,7 +20,7 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
 
   return (
     <section
-      className="relative overflow-hidden bg-[#F8FAFD] px-4 pb-20 pt-6 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-[#F8FAFD] px-4 pb-20 pt-6 sm:px-6 lg:px-85 lg:pt-22 lg:pb-28"
       style={{ backgroundImage: "url('/pattern.svg')", backgroundRepeat: "repeat" }}
     >
       {/* Light fade so the pattern stays behind the content */}
@@ -29,7 +29,7 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
         className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#F8FAFD]/60 via-[#F8FAFD]/30 to-[#F8FAFD]/60"
       />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto">
         {/* Pillar tabs */}
         <nav aria-label={translateText("Advisory pillars")} className="flex justify-center overflow-x-auto pb-1">
           <ul className="inline-flex gap-1 rounded-full border border-ink-100 bg-white/70 p-1 backdrop-blur-[14px]">
@@ -60,7 +60,7 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
             <span aria-hidden="true" className="h-px w-8 bg-blue-pulse" /><Trans>
             Pillar </Trans><Trans>{pillar.number}</Trans>
           </p>
-          <h1 className="mt-4 max-w-md text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl">
+          <h1 className="mt-4 max-w-110 lg:pr-20 text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl">
             <Trans>{pillar.title}</Trans>
           </h1>
         </header>
@@ -98,15 +98,15 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
             </ul>
           </div>
 
-          <aside className="rounded-2xl bg-linear-to-b from-ink-900 to-[#1A2736] p-5 shadow-[0px_16px_40px_-20px_#121A2399]">
+          <aside className="rounded-2xl max-w-78.25 bg-linear-to-b from-ink-900 to-[#1A2736] p-9.5 shadow-[0px_16px_40px_-20px_#121A2399]">
             <h2 className="text-[10px] font-semibold uppercase tracking-wider text-blue-pulse"><Trans>
               Typical outcomes
             </Trans></h2>
-            <ul className="mt-4">
+            <ul className="mt-4 max-w-53.25">
               {pillar.outcomes.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 border-t border-white/10 py-2.5 text-[10px] font-medium uppercase leading-snug tracking-wider text-slate-200 first:border-t-0"
+                  className="flex items-start mt-3.25 gap-2.5 border-t border-white/10 py-2.5 text-[10px] font-medium uppercase leading-snug tracking-wider text-slate-200 first:border-t-0"
                 >
                   <span aria-hidden="true" className="mt-1.5 h-px w-2.5 shrink-0 bg-blue-pulse" />
                   <Trans>{item}</Trans>
@@ -115,7 +115,7 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
             </ul>
             <Link
               href="/contact"
-              className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0F1B2D] transition-colors hover:bg-slate-100"
+              className="mt-4 flex max-w-53.25 items-center justify-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0F1B2D] transition-colors hover:bg-slate-100"
             ><Trans>
               Discuss this pillar
               </Trans><span aria-hidden="true">→</span>

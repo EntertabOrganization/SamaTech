@@ -2,46 +2,45 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
+import Delivery from '@/public/images/Delivery.png'
+import Architect from '@/public/images/Architect.png'
+import Gauge from '@/public/images/Gauge.png'
+import Search from '@/public/images/Search.png'
+import Image from "next/image";
 
 /* ---------- Icons ---------- */
 
-const iconProps = {
-  width: 16,
-  height: 16,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  "aria-hidden": true,
-};
-
 const DiagnoseIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="11" cy="11" r="6" />
-    <path d="M20 20l-4.2-4.2" />
-  </svg>
+  <Image
+    src={Search}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const ArchitectIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="6" cy="12" r="2" />
-    <circle cx="18" cy="6" r="2" />
-    <circle cx="18" cy="18" r="2" />
-    <path d="M8 11l8-4M8 13l8 4" />
-  </svg>
+  <Image
+    src={Architect}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const DeliveryIcon = () => (
-  <svg {...iconProps}>
-    <path d="M7 18h10a4 4 0 0 0 .5-7.97A5.5 5.5 0 0 0 7 8.5 4.8 4.8 0 0 0 7 18z" />
-  </svg>
+  <Image
+    src={Delivery}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 const GaugeIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M4 17a8 8 0 1 1 16 0" />
-    <path d="M12 17l4-5" />
-    <path d="M3 17h2M19 17h2" />
-  </svg>
+  <Image
+    src={Gauge}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 /* ---------- Visuals ---------- */
@@ -207,8 +206,8 @@ export default function HowWeWork() {
   const active = steps.find((s) => s.id === activeId) ?? steps[0];
 
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto max-w-5xl">
+    <section className="bg-white px-4 py-16 sm:px-6 lg:px-85 lg:pt-28 lg:pb-24">
+      <div className="mx-auto px-8">
         {/* Header */}
         <div className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-14">
           <div>
@@ -216,7 +215,7 @@ export default function HowWeWork() {
               <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
               How we work
             </Trans></p>
-            <h2 className="mt-4 max-w-sm text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl"><Trans>
+            <h2 className="mt-4 max-w-lg text-3xl font-bold leading-tight tracking-tight text-[#0F1B2D] sm:text-4xl"><Trans>
               Diagnose, architect, advise through delivery
             </Trans></h2>
           </div>
@@ -227,7 +226,7 @@ export default function HowWeWork() {
         </div>
 
         {/* Mobile: all three visuals stacked in one card */}
-        <div className="mt-10 space-y-10 rounded-3xl bg-[#F1F5FB] p-5 lg:hidden">
+        <div className="mt-10 space-y-10 rounded-3xl bg-[#F1F5FB] pt-5 lg:hidden">
           {steps.map((s) => (
             <div key={s.id}>
               <p className={`${tinyCaps} mb-3`}><Trans>{s.title}</Trans></p>
@@ -237,7 +236,7 @@ export default function HowWeWork() {
         </div>
 
         {/* Desktop: list + panel */}
-        <div className="mt-14 hidden items-center gap-8 lg:grid lg:grid-cols-2">
+        <div className="mt-14 hidden items-center gap-8 lg:pt-8 lg:grid lg:grid-cols-2">
           <div
             role="tablist"
             aria-orientation="vertical"
