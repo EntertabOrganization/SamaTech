@@ -2,11 +2,12 @@ import { Trans } from "@/lib/i18n/LanguageProvider";
 import brandVector from "@/public/images/Vector.png";
 import { pillars } from "./Data";
 import PillarCard from "./Pillarcard";
+import PatternBackground from "../shared/PatternBackground";
 
 export default function AdvisoryPillars() {
   return (
     <section
-      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-85 lg:py-40"
       style={{
         backgroundImage: [
           "radial-gradient(60% 55% at 58% 30%, #0078ff47 0%, rgba(0, 120, 255, 0) 70%)",
@@ -15,7 +16,7 @@ export default function AdvisoryPillars() {
         ].join(", "),
       }}
     >
-      <div
+      {/* <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
@@ -23,9 +24,10 @@ export default function AdvisoryPillars() {
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
         }}
-      />
+      /> */}
+      <PatternBackground variant="dark" glow />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto flex flex-col gap-14">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-end lg:gap-16">
           <div>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-precision">

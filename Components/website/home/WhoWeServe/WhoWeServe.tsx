@@ -7,14 +7,14 @@ import { audiences } from "./audiences";
 
 export default function WhoWeServe() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 px-4 py-16 sm:px-6 lg:py-20 lg:px-8">
+    <section className="relative overflow-hidden bg-ink-50 px-4 py-16 sm:px-6 lg:py-20 lg:px-85">
       <PatternBackground />
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto px-8">
         <SectionHeader
           eyebrow="Who we serve"
           title="Leadership teams facing decisions that carry consequence"
-          className="max-w-85"
+          className="max-w-95"
         />
         <p className="mt-5 text-sm font-medium leading-relaxed max-w-125"><Trans>SAMATECHS works with leadership teams navigating complex strategic, operational, technological, risk, and cross-border challenges. Our senior-led advisory model is particularly suited to organizations that require rigorous analysis, executive alignment, and implementation-ready solutions.</Trans></p>
 

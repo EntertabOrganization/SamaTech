@@ -1,6 +1,6 @@
 import PageHeader from "@/Components/dashboard/Layout/PageHeader";
 import Pagination from "@/Components/dashboard/users/Pagination";
-import CreateUserCard from "@/Components/dashboard/users/CreateUserCard";
+import CreateUserCard from "@/Components/dashboard/users/UserStateCard";
 import UserList from "@/Components/dashboard/users/UserList";
 import UserRow from "@/Components/dashboard/users/UserRow";
 

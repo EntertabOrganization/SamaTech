@@ -1,4 +1,8 @@
+import Image from "next/image";
 import type { ComponentType, ReactNode, SVGProps } from "react";
+import LineChartIcon from '@/public/images/LineChart (1).png'
+import TargetIcon from '@/public/images/target.png'
+import shieldcheckIcon from '@/public/images/shield-check.png'
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -25,12 +29,13 @@ function Svg({ children, ...props }: IconProps & { children: ReactNode }) {
 
 /* ---------- Individual icons ---------- */
 
-export const Target = (p: IconProps) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="9" />
-    <circle cx="12" cy="12" r="4.5" />
-    <circle cx="12" cy="12" r="1" fill="currentColor" />
-  </Svg>
+export const Target = () => (
+  <Image
+    src={TargetIcon}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 export const Search = (p: IconProps) => (
@@ -64,13 +69,14 @@ export const Gauge = (p: IconProps) => (
   </Svg>
 );
 
-export const LineChart = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M4 19V5M4 19h16" />
-    <path d="M8 15l3-4 3 2 5-6" />
-  </Svg>
+export const LineChart = () => (
+  <Image
+    src={LineChartIcon}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
-
 export const Globe = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="12" r="9" />
@@ -84,11 +90,13 @@ export const Shield = (p: IconProps) => (
   </Svg>
 );
 
-export const ShieldCheck = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />
-    <path d="M9 12l2 2 4-4" />
-  </Svg>
+export const ShieldCheck = () => (
+  <Image
+    src={shieldcheckIcon}
+    alt="Line chart"
+    width={24}
+    height={24}
+  />
 );
 
 export const Users = (p: IconProps) => (

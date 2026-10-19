@@ -15,7 +15,7 @@ const experiences: string[] = [
 
 export default function TrackRecord() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-16 sm:px-6 lg:py-20 lg:px-8">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-16 sm:px-6 lg:py-20 lg:px-85">
       {/* Faint brand rays, bottom-right, partly cropped */}
        <div
   aria-hidden="true"
@@ -32,7 +32,7 @@ export default function TrackRecord() {
   />
 </div>
 
-      <div className="relative mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="relative mx-auto grid px-8 gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-precision">
             <span aria-hidden="true" className="h-px w-8 bg-blue-precision" /><Trans>

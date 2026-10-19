@@ -36,7 +36,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-blue-pulse bg-[#FFFFFFDB] shadow-sm backdrop-blur-[14px] font-body">
       <nav
         aria-label={translateText("Main navigation")}
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-16 gap-20 justify-center items-center  px-4 sm:px-6 lg:px-8"
       >
         {/* Logo */}
         <Link
@@ -55,43 +55,45 @@ export default function Navbar() {
           {language === "ar" && <span className="text-xl font-bold text-blue-sovereign">ساماتكس</span>}
         </Link>
 
-        {/* Desktop links */}
-        <ul className="hidden items-center gap-8 lg:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={`text-sm transition-colors hover:text-ink-900 ${
-                  isActive(link.href)
-                    ? "font-semibold text-ink-900"
-                    : "text-ink-500"
-                }`}
-              >
-                <Trans>{link.label}</Trans>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop actions */}
-        <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSwitcher />
-
-          <Link href="/contact">
-            <Button
-              size="sm"
-              className="flex items-center gap-4"
-            ><Trans>
-              Schedule a consultation
-              </Trans><FontAwesomeIcon
-                icon={faArrowRightLong}
-                className="h-4 w-4"
-              />
-            </Button>
-          </Link>
-        </div>
-
+       <div className="flex justify-end gap-[245.5] w-310">
+         {/* Desktop links */}
+         <ul className="hidden items-center gap-8 lg:flex ">
+           {links.map((link) => (
+             <li key={link.href}>
+               <Link
+                 href={link.href}
+                 aria-current={isActive(link.href) ? "page" : undefined}
+                 className={`text-sm transition-colors hover:text-ink-900 ${
+                   isActive(link.href)
+                     ? "font-semibold text-ink-900"
+                     : "text-ink-500"
+                 }`}
+               >
+                 <Trans>{link.label}</Trans>
+               </Link>
+             </li>
+           ))}
+         </ul>
+        
+         {/* Desktop actions */}
+         <div className="hidden items-center gap-3 lg:flex">
+           <LanguageSwitcher />
+        
+           <Link href="/contact">
+             <Button
+               size="sm"
+               className="flex items-center gap-4"
+             ><Trans>
+               Schedule a consultation
+               </Trans><FontAwesomeIcon
+                 icon={faArrowRightLong}
+                 className="h-4 w-4"
+               />
+             </Button>
+           </Link>
+         </div>
+        
+       </div>
         {/* Mobile toggle */}
         <button
           type="button"

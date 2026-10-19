@@ -5,12 +5,13 @@ import { commitments } from "./commitments";
 
 export default function WhySamatechs() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto max-w-5xl">
+    <section className="bg-white px-4 py-16 sm:px-6 lg:px-85 lg:py-20">
+      <div className="mx-auto px-8">
         <SectionHeader
           as="h1"
           eyebrow="Why SAMATECHS"
           title="Five commitments behind every engagement"
+          className="max-w-130"
         />
 
         <Showcase

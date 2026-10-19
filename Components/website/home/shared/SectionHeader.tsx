@@ -46,7 +46,7 @@ export default function SectionHeader({
   const t = tones[tone];
 
   return (
-    <div className={cn("max-w-lg", className)}>
+    <div className={cn( className)}>
       <p
         className={cn(
           "flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider",

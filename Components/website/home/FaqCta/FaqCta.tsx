@@ -118,8 +118,8 @@ export default function FaqCta() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-ink-50 px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+    <section className="bg-ink-50 px-4 py-20 sm:px-6 lg:px-50">
+      <div className="mx-auto">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + visual */}
           <div className="flex flex-col justify-between h-full">
@@ -154,7 +154,7 @@ export default function FaqCta() {
 
         {/* CTA banner */}
         <div
-          className="mx-auto mt-20 grid max-w-5xl items-center gap-8 rounded-panel p-8 text-white shadow-[0px_24px_50px_-24px_#0078FF99] sm:p-10 md:grid-cols-[1.5fr_1fr]"
+          className="mx-auto mt-20 grid max-w-294 items-center gap-8 rounded-panel p-8 text-white shadow-[0px_24px_50px_-24px_#0078FF99] sm:p-10 md:grid-cols-[1.5fr_1fr]"
           style={{
             background:
               "linear-gradient(138.71deg, #3393FF 4.61%, #0078FF 56.57%, #005BC2 99.56%)",
@@ -166,7 +166,7 @@ export default function FaqCta() {
               </Trans><br/><Trans>
                challenges require integrated thinking.
             </Trans></h2>
-            <p className="mt-5 max-w-142.5 text-lead font-medium leading-relaxed text-white/86"><Trans>
+            <p className="mt-5 max-w-149 text-lead font-medium leading-relaxed text-white/86"><Trans>
               Whether you are redefining enterprise strategy, strengthening
               governance, exploring AI-enabled transformation, or entering a new
               market, SAMATECHS can help you move from ambiguity to disciplined

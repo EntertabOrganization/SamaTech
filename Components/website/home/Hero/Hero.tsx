@@ -17,7 +17,7 @@ export default function Hero() {
   const { t: translateText } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-6">
+    <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 sm:px-6 sm:pb-20 lg:px-85">
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(0,120,255,0.28)_0%,rgba(0,120,255,0)_70%)]" />
       {/* Soft blue glow behind the headline */}
       <div
@@ -25,7 +25,7 @@ export default function Hero() {
         className="pointer-events-none absolute left-1/2 -top-60 h-135 w-240 max-w-225 -translate-x-1/2 bg-[radial-gradient(closest-side,#BCD8FF_0%,rgba(188,216,255,0)_100%)]"
       />
 
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center lg:px-8 pt-26">
         {/* Badge */}
         <span className="inline-flex items-center gap-2 rounded-full border border-blue-haze bg-blue-mist px-3 py-1 text-[11px] font-medium text-blue-sovereign backdrop-blur-[14px]">
           <Image src={badgeIcon} alt={translateText("Logo")} width={12} height={12} loading="eager" /><Trans>
@@ -33,7 +33,7 @@ export default function Hero() {
         </Trans></span>
 
         {/* Headline */}
-        <h1 className="mt-6 text-4xl font-bold font-heading leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl"><Trans>
+        <h1 className="mt-6 text-4xl font-bold font-heading pt-7 leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl"><Trans>
           Strategic Clarity.
           </Trans><span className="block text-blue-sovereign"><Trans>Measurable Impact.</Trans></span>
         </h1>
@@ -71,7 +71,7 @@ export default function Hero() {
         </ul>
 
         {/* Visual card */}
-        <figure className="relative mt-12 aspect-[2.4/1] min-h-55 w-full overflow-hidden rounded-3xl shadow-lg sm:mt-14">
+        <figure className="relative mt-18 aspect-[2.4/1] min-h-55 w-full overflow-hidden rounded-3xl shadow-lg sm:mt-14">
           {/* Base: left-to-right fade from muted mauve to near-black, with wide vertical bands */}
           <div
             aria-hidden="true"
