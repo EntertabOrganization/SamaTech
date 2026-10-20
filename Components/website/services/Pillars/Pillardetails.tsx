@@ -20,7 +20,7 @@ export default function PillarDetail({ slug }: PillarDetailProps) {
 
   return (
     <section
-      className="relative overflow-hidden bg-[#F8FAFD] px-4 pb-20 pt-6 sm:px-6 lg:px-85 lg:pt-22 lg:pb-28"
+      className="relative overflow-hidden bg-[#F8FAFD] px-4 pb-20 pt-6 sm:px-6 lg:px-50 2xl:px-85 lg:pt-22 lg:pb-28"
       style={{ backgroundImage: "url('/pattern.svg')", backgroundRepeat: "repeat" }}
     >
       {/* Light fade so the pattern stays behind the content */}

@@ -242,7 +242,7 @@ export default function ServicesCapabilities() {
   const active = capabilities.find((c) => c.id === activeId) ?? capabilities[0];
 
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E7EEF9] px-4 py-16 sm:px-6 lg:px-85 lg:py-20">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E7EEF9] px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-20">
       {/* Soft blue glow at the top */}
       <div
         aria-hidden="true"

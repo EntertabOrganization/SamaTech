@@ -17,7 +17,7 @@ export default function Hero() {
   const { t: translateText } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 sm:px-6 sm:pb-20 lg:px-85">
+    <section className="relative overflow-hidden bg-gradient-mist px-4 pb-16 sm:px-6 sm:pb-20 lg:px-50 2xl:px-85">
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(0,120,255,0.28)_0%,rgba(0,120,255,0)_70%)]" />
       {/* Soft blue glow behind the headline */}
       <div

@@ -7,7 +7,7 @@ import SectionHeader from "@/Components/website/home/shared/SectionHeader";
 
 export default function MissionVisionWhy() {
   return (
-    <section className="relative overflow-hidden bg-[#F5F8FD] px-4 py-16 sm:px-6 lg:px-85 lg:py-28">
+    <section className="relative overflow-hidden bg-[#F5F8FD] px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-28">
       <PatternBackground src="/pattern.svg" size="auto" opacityClassName="opacity-100" />
       <div className="relative mx-auto">
         {/* Mission & Vision */}

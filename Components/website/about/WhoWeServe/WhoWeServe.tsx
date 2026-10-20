@@ -5,7 +5,7 @@ import StripedVisual from "./Stripedvisual";
 
 export default function WhoWeAre() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#EAF1FB] px-4 py-16 sm:px-6 lg:px-85 lg:py-24">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#EAF1FB] px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-24">
       <TopGlow/>
       <div className="relative mx-auto grid items-center gap-10 md:grid-cols-2 lg:gap-16">
         <SectionHeader eyebrow="About us" title="Who We Are" size="lg">

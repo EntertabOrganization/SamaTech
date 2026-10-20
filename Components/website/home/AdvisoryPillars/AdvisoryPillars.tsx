@@ -7,7 +7,7 @@ import PatternBackground from "../shared/PatternBackground";
 export default function AdvisoryPillars() {
   return (
     <section
-      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-85 lg:py-40"
+      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-50 2xl:px-85 lg:py-40"
       style={{
         backgroundImage: [
           "radial-gradient(60% 55% at 58% 30%, #0078ff47 0%, rgba(0, 120, 255, 0) 70%)",

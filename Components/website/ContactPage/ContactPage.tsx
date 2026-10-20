@@ -3,7 +3,7 @@ import ContactPanel from "./ContactPanel";
 
 export default function Contact() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E4ECF7] px-4  sm:px-6 lg:px-85">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E4ECF7] px-4  sm:px-6 lg:px-50 2xl:px-85">
       {/* Soft blue glow at the top */}
       <div
         aria-hidden="true"

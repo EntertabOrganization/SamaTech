@@ -5,7 +5,7 @@ import { commitments } from "./commitments";
 
 export default function WhySamatechs() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 lg:px-85 lg:py-20">
+    <section className="bg-white px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-20">
       <div className="mx-auto px-8">
         <SectionHeader
           as="h1"

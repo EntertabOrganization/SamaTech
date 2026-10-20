@@ -7,7 +7,7 @@ import { audiences } from "./audiences";
 
 export default function WhoWeServe() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 px-4 py-16 sm:px-6 lg:py-20 lg:px-85">
+    <section className="relative overflow-hidden bg-ink-50 px-4 py-16 sm:px-6 lg:py-20 lg:px-50 2xl:px-85">
       <PatternBackground />
 
       <div className="relative mx-auto px-8">

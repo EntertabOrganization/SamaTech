@@ -118,7 +118,7 @@ export default function FaqCta() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-ink-50 px-4 py-20 sm:px-6 lg:px-50">
+    <section className="bg-ink-50 px-4 py-20 sm:px-6 lg:px-10">
       <div className="mx-auto">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + visual */}

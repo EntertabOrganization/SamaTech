@@ -4,7 +4,7 @@ import backgroundVector from "@/public/images/footer-vector.png";
 
 export default function StatementBanner() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-12 sm:px-6 sm:py-14 lg:px-85 lg:py-24">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] px-4 py-12 sm:px-6 sm:py-14 lg:px-50 2xl:px-85 lg:py-24">
       {/* Faint brand rays, right side, partly cropped */}
       <div
         aria-hidden="true"
