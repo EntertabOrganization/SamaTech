@@ -73,7 +73,7 @@ export function TextInput({
       >
         <Trans>{icon}</Trans>
       </span>
-      <input className={cn(control, "h-9 ps-9 pe-3", className)} {...props} />
+      <input className={cn(control, "h-9 ps-9 px-4", className)} {...props} />
     </span>
   );
 }

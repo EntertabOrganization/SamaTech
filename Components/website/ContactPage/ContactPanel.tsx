@@ -28,7 +28,7 @@ export default function ContactPanel() {
   };
 
   return (
-    <div className="rounded-3xl border border-ink-100 bg-white p-5 shadow-[0px_30px_60px_-30px_#0B3C8A40] ">
+    <div className="rounded-3xl max-w-125 p-11.25 border flex flex-col gap-4.5 border-ink-100 bg-white  shadow-[0px_30px_60px_-30px_#0B3C8A40] ">
       <div
         role="tablist"
         aria-label={translateText("How would you like to reach us?")}
@@ -57,6 +57,7 @@ export default function ContactPanel() {
           );
         })}
       </div>
+      <div className="w-full border-t pt-5 border-ink-100"></div>
 
       <div
         role="tabpanel"

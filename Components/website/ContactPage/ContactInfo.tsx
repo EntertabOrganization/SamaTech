@@ -7,6 +7,14 @@ import MicroLabel  from "@/Components/website/ContactPage/MicroLabel";
 import Image from "next/image";
 import contactImg from '@/public/images/Group 2.png'
 import Link from "next/link";
+import {
+  faXTwitter,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+  faSnapchat,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* ---------- Local icons (not in the icon set yet) ---------- */
 
@@ -57,41 +65,41 @@ const details: Array<{ label: string; value: string; icon: ReactNode }> = [
 
 // The design shows five icons. These are the same four as the footer;
 // add the fifth network here.
-const socials: Array<{ label: string; href: string; icon: ReactNode }> = [
+const socials: { label: string; href: string; icon: React.ReactNode }[] = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/samatechs",
     icon: (
-      <svg {...svgProps}>
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3" />
-      </svg>
+      <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4" />
     ),
   },
   {
     label: "X",
     href: "https://x.com/samatechs_?s=11&t=s6yTAHsZWSPlFLERGjMrMQ",
     icon: (
-      <svg {...svgProps}>
-        <path d="M4 4l16 16M20 4L4 20" />
-      </svg>
+      <FontAwesomeIcon icon={faXTwitter} className="h-4 w-4" />
     ),
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/samatechs/",
     icon: (
-      <svg {...svgProps}>
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <path d="M17.5 6.5v.01" />
-      </svg>
+      <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
     ),
   },
   {
-    label: "Email",
-    href: "info@samatechs.com",
-    icon: <MailIcon />,
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61592819443552",
+    icon: (
+      <FontAwesomeIcon icon={faFacebook} className="h-4 w-4" />
+    ),
+  },
+  {
+    label: "Snapchat",
+    href: "https://www.snapchat.com/add/samatechs",
+    icon: (
+      <FontAwesomeIcon icon={faSnapchat} className="h-4 w-4" />
+    ),
   },
 ];
 
@@ -102,11 +110,11 @@ export default function ContactInfo() {
 
   return (
     <div>
-      <Image src={contactImg} alt="" loading="eager" className="h-auto max-w-full" />
+      <Image src={contactImg} alt="" loading="eager" className="max-h-[220px] max-w-full" />
 
       <SectionHeader
         as="h1"
-        className="mt-8"
+        className="mt-8 max-w-95"
         eyebrow="Contact"
         title="Start a confidential conversation"
         intro="Whether you are evaluating a strategic initiative, entering a new market, strengthening governance, or exploring AI-enabled transformation, we welcome a confidential conversation about your objectives and challenges."
@@ -115,7 +123,7 @@ export default function ContactInfo() {
       <dl className="mt-8 divide-y divide-ink-100 border-y border-ink-100">
         {details.map((item) => (
           <div key={item.label} className="flex items-center gap-3 py-3">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-blue-pulse">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[12px] bg-white text-blue-sovereign">
               <Trans>{item.icon}</Trans>
             </span>
             <div>
