@@ -20,6 +20,26 @@ const InstitutionIcon = () => (
     <path d="M3 21h18" />
   </svg>
 );
+const GroupIcon = () => (
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="10" r="2.7" />
+    <path d="M7.5 19c0-2.6 2-4.5 4.5-4.5s4.5 1.9 4.5 4.5" />
+    <circle cx="5.5" cy="7" r="2" />
+    <path d="M2.5 14.5c0-1.6 1.2-2.8 3-2.8" />
+    <circle cx="18.5" cy="7" r="2" />
+    <path d="M21.5 14.5c0-1.6-1.2-2.8-3-2.8" />
+  </svg>
+);
 
 export const audiences: ShowcaseItem[] = [
   {
@@ -27,7 +47,7 @@ export const audiences: ShowcaseItem[] = [
     title: "Executive and Governance Leaders",
     description:
       "Boards, CEOs, executive leadership teams, strategy offices, risk leaders, and transformation offices.",
-    icon: <Icon name="users" strokeWidth={1.8} />,
+    icon: <GroupIcon />,
     visual: <ExecutiveDiagram />,
   },
   {

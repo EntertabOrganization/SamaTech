@@ -2,47 +2,80 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
-import Strategy from '@/public/images/StrategyIcon.png'
-import Technology from '@/public/images/Technology.png'
-import Intelligence from '@/public/images/Intelligence.png'
-import Growth from '@/public/images/Growth.png'
-import Image from "next/image";
-
 /* ---------- Icons ---------- */
 
 
 
 const StrategyIcon = () => (
-  <Image
-    src={Strategy}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M20.5 12A8.5 8.5 0 1 1 12 3.5" />
+    <path d="M16.5 12A4.5 4.5 0 1 1 12 7.5" />
+    <path d="M12 12l8-8" />
+    <path d="M16 4h4v4" />
+  </svg>
 );
 const IntelligenceIcon = () => (
-  <Image
-    src={Intelligence}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <rect x="5" y="5" width="14" height="14" rx="2" />
+    <rect x="9" y="9" width="6" height="6" rx="1" />
+    <path d="M9 2v3M15 2v3M9 19v3M15 19v3" />
+    <path d="M2 9h3M2 15h3M19 9h3M19 15h3" />
+  </svg>
 );
 const TechnologyIcon = () => (
-  <Image
-    src={Technology}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3L3 8l9 5 9-5-9-5z" />
+    <path d="M3 12.5l9 5 9-5" />
+    <path d="M3 17l9 5 9-5" />
+  </svg>
 );
 const GrowthIcon = () => (
-  <Image
-    src={Growth}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <path d="M5.5 5.5c3 1.5 4.5 4 4.5 6.5s-1.5 5-4.5 6.5" />
+    <path d="M18.5 5.5c-3 1.5-4.5 4-4.5 6.5s1.5 5 4.5 6.5" />
+    <path d="M3.5 10c3 .8 5.500 1 8.500 1s5.500-.2 8.500-1" />
+  </svg>
 );
 const SmallDot = () => <span className="h-1.5 w-1.5 rounded-full bg-current" />;
 

@@ -140,7 +140,7 @@ export default function FaqCta() {
           </div>
 
           {/* Right: accordion */}
-          <div className="space-y-2.5">
+          <div className="space-y-3 2xl:space-y-5">
             {faqs.map((item, i) => (
               <FaqRow
                 key={item.question}

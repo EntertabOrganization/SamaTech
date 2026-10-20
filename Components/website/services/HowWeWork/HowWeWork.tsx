@@ -2,37 +2,66 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
-import Delivery from '@/public/images/Delivery.png'
-import Architect from '@/public/images/Architect.png'
 import Gauge from '@/public/images/Gauge.png'
-import Search from '@/public/images/Search.png'
 import Image from "next/image";
 
 /* ---------- Icons ---------- */
 
 const DiagnoseIcon = () => (
-  <Image
-    src={Search}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="11" cy="11" r="7" />
+    <path d="M20.5 20.5L16 16" />
+  </svg>
 );
 const ArchitectIcon = () => (
-  <Image
-    src={Architect}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <rect x="2" y="9" width="6" height="6" rx="1.2" />
+    <rect x="15" y="3" width="6" height="6" rx="1.2" />
+    <rect x="15" y="15" width="6" height="6" rx="1.2" />
+    <path d="M8 12h3.5" />
+    <path d="M11.5 6v12" />
+    <path d="M11.5 6H15" />
+    <path d="M11.5 18H15" />
+  </svg>
 );
 const DeliveryIcon = () => (
-  <Image
-    src={Delivery}
-    alt="Line chart"
-    width={24}
-    height={24}
-  />
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 18a9 9 0 1 1 18 0" />
+    <path d="M12 18l4.5-5.5" />
+    <path d="M4 18h2" />
+    <path d="M18 18h2" />
+    <path d="M12 7.5v1.5" />
+  </svg>
 );
 const GaugeIcon = () => (
   <Image
