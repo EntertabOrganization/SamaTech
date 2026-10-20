@@ -3,6 +3,7 @@
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
 import Gauge from '@/public/images/Gauge.png'
+import AnalyticBg from '@/public/images/AnalyticalRigorBackGround.png'
 import Image from "next/image";
 
 /* ---------- Icons ---------- */
@@ -321,33 +322,41 @@ export default function HowWeWork() {
         </div>
 
         {/* Analytical Rigor band */}
-        <div
-          className="relative mt-14 overflow-hidden rounded-2xl p-7 text-white sm:p-9 lg:mt-16"
-          style={{
-            background: [
-              "repeating-linear-gradient(90deg, rgba(0, 120, 255, 0) 0 12px, rgba(0, 120, 255, 0.22) 12px 16px)",
-              "linear-gradient(90deg, #0A1628 0%, #0B2A5B 45%, #081426 100%)",
-            ].join(", "),
-          }}
-        >
-          <div className="grid gap-6 md:grid-cols-[0.8fr_2fr] md:items-center md:gap-10">
-            <div>
-              <span className="text-[#66ADFF]">
-                <GaugeIcon />
-              </span>
-              <h3 className="mt-3 text-lg font-semibold"><Trans>Analytical Rigor</Trans></h3>
-            </div>
-            <p className="text-xs max-w-130 leading-relaxed text-slate-300 sm:text-caption"><Trans>
-              Our advisory work is grounded in quantitative discipline and
-              evidence-based decision frameworks. Depending on engagement scope,
-              we incorporate predictive analytics, machine learning-informed
-              insights, Monte Carlo simulation, risk quantification, Lean Six
-              Sigma diagnostics, and executive dashboard architecture to
-              strengthen decision quality in complex, high-accountability
-              environments.
-            </Trans></p>
-          </div>
-        </div>
+<div
+  className="relative mt-14 overflow-hidden rounded-2xl p-7 text-white sm:p-9 lg:mt-16"
+  style={{
+    background: "linear-gradient(90deg, #0A1628 0%, #0B2A5B 45%, #081426 100%)",
+  }}
+>
+  {/* Background image (من فيجما: 1176×1350، top -217.54px، opacity 1) */}
+  <Image
+    src={AnalyticBg}
+    alt=""
+    aria-hidden="true"
+    fill
+    sizes="100vw"
+    className="pointer-events-none select-none object-cover object-center"
+  />
+
+  {/* المحتوى لازم يبقى فوق الصورة */}
+  <div className="relative z-10 grid gap-6 md:grid-cols-[0.8fr_2fr] md:items-center md:gap-10">
+    <div>
+      <span className="text-[#66ADFF]">
+        <GaugeIcon />
+      </span>
+      <h3 className="mt-3 text-lg font-semibold"><Trans>Analytical Rigor</Trans></h3>
+    </div>
+    <p className="text-xs max-w-130 leading-relaxed text-slate-300 sm:text-caption"><Trans>
+      Our advisory work is grounded in quantitative discipline and
+      evidence-based decision frameworks. Depending on engagement scope,
+      we incorporate predictive analytics, machine learning-informed
+      insights, Monte Carlo simulation, risk quantification, Lean Six
+      Sigma diagnostics, and executive dashboard architecture to
+      strengthen decision quality in complex, high-accountability
+      environments.
+    </Trans></p>
+  </div>
+</div>
       </div>
     </section>
   );
