@@ -123,7 +123,7 @@ export default function FaqCta() {
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + visual */}
           <div className="flex flex-col justify-between h-full">
-            <div>
+            <div className="flex flex-col px-8 gap-[18px]">
                 <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
                   <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
                   Common questions
@@ -140,7 +140,7 @@ export default function FaqCta() {
           </div>
 
           {/* Right: accordion */}
-          <div className="space-y-3 2xl:space-y-5">
+          <div className="space-y-5">
             {faqs.map((item, i) => (
               <FaqRow
                 key={item.question}
@@ -179,7 +179,7 @@ export default function FaqCta() {
               href="/contact"
             >
               <Button variant="inverse" size="md"><Trans>Start a Confidential Conversation
-              </Trans><span aria-hidden="true">→</span>
+              </Trans><span aria-hidden="true" className="ml-1.5">→</span>
               </Button>
             </Link>
           </div>

@@ -18,7 +18,7 @@ const GLOWS = [
 export default function AdvisoryPillars() {
   return (
     <section
-      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-[#0A1521] px-4 py-20 sm:px-6 lg:px-50 2xl:px-85"
       style={BACKGROUND_IMAGE ? undefined : { backgroundImage: GLOWS }}
     >
       {/* Background group from the design: the photo, then the dark gradient on top of it */}
@@ -47,8 +47,8 @@ export default function AdvisoryPillars() {
         }}
       />
 
-      <div className="relative mx-auto max-w-5xl">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-end lg:gap-16">
+      <div className="relative mx-auto flex flex-col gap-[56px]">
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-end lg:gap-[64px]">
           <div>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-precision">
               <span
@@ -63,14 +63,14 @@ export default function AdvisoryPillars() {
               Advisory Pillars
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end">
+          <p className="2xl:max-w-[588px] lg:max-w-[390px] text-sm leading-relaxed font-medium font-body text-white lg:justify-self-end">
             We combine strategy, decision intelligence, technology, and
             cross-border expertise to help organizations navigate complexity
             from diagnosis through execution.
           </p>
         </div>
 
-        <div className="mt-12 grid items-stretch gap-5 md:grid-cols-3">
+        <div className="mt-12 grid items-stretch gap-[24px] md:grid-cols-3">
           {pillars.map((pillar) => (
             <PillarCard key={pillar.title} pillar={pillar} />
           ))}

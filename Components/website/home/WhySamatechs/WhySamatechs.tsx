@@ -6,7 +6,7 @@ import { commitments } from "./commitments";
 export default function WhySamatechs() {
   return (
     <section className="bg-white px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-20">
-      <div className="mx-auto px-8">
+      <div className="mx-auto px-8 flex flex-col gap-[51.99px]">
         <SectionHeader
           as="h1"
           eyebrow="Why SAMATECHS"
@@ -18,7 +18,7 @@ export default function WhySamatechs() {
           items={commitments}
           label="Our commitments"
           variant="soft"
-          tabsClassName="mt-12"
+          tabsClassName="mt-12 flex gap-[48px]"
         />
       </div>
     </section>
