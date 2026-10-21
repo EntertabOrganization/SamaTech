@@ -275,14 +275,14 @@ export default function ServicesCapabilities() {
   const active = capabilities.find((c) => c.id === activeId) ?? capabilities[0];
 
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#F4F8FD] to-[#E7EEF9] px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-20">
+    <section className="relative overflow-hidden bg-linear-to-b from-[#FFFFFF] to-[#E9F0F9] px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:py-20">
       {/* Soft blue glow at the top */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 -top-65 h-130 w-240 max-w-[160vw] -translate-x-1/2 bg-[radial-gradient(closest-side,#BCD8FF_0%,rgba(188,216,255,0)_100%)]"
       />
 
-      <div className="relative mx-auto pt-22 px-8 pb-18">
+      <div className="relative mx-auto pt-22 px-8 pb-18 flex flex-col gap-[22px]">
         {/* Header */}
         <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
           <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>

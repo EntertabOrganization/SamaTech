@@ -148,7 +148,7 @@ export const Minus = (p: IconProps) => (
   </Svg>
 );
 
-export const Close = (p: IconProps) => (
+export const Close = () => (
   <Image
     src={close}
     alt="Line chart"

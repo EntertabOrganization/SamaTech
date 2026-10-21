@@ -237,9 +237,9 @@ export default function HowWeWork() {
 
   return (
     <section className="bg-white px-4 py-16 sm:px-6 lg:px-50 2xl:px-85 lg:pt-28 lg:pb-24">
-      <div className="mx-auto px-8">
+      <div className="mx-auto px-8 flex flex-col gap-[24px]">
         {/* Header */}
-        <div className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-14">
+        <div className="grid gap-5 lg:grid-cols-2 lg:items-end 2xl:gap-14">
           <div>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider text-blue-sovereign">
               <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
@@ -249,7 +249,7 @@ export default function HowWeWork() {
               Diagnose, architect, advise through delivery
             </Trans></h2>
           </div>
-          <p className="max-w-lg text-sm leading-relaxed text-slate-500"><Trans>
+          <p className="lg:max-w-[520px] 2xl:max-w-[556px] text-sm leading-relaxed text-slate-500"><Trans>
             Every engagement follows the same discipline, regardless of pillar.
             The sequence is what keeps recommendations executable.
           </Trans></p>

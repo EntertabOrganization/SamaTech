@@ -1,7 +1,15 @@
-
-import { cookies } from "next/headers";
 import { Montserrat, Quicksand, Noto_Sans_Arabic } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
+import Navbar from "../Components/website/layout/Navbar";
+import Footer from "../Components/website/layout/Footer";
+import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
+
+const arabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  display: "swap",
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -15,38 +23,27 @@ const quicksand = Quicksand({
   weight: ["500", "700"],
 });
 
-const arabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
-  variable: "--font-arabic",
-  display: "swap",
-});
-
 export const metadata = {
   title: "SAMATECHS | ساماتكس",
-  description:
-    "Strategic advisory and analytics | الاستشارات الاستراتيجية والتحليلات",
+  description: "Strategic advisory and analytics | الاستشارات الاستراتيجية والتحليلات",
 };
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const cookieStore = await cookies();
-  const language =
-    cookieStore.get("samatechs-language")?.value === "ar"
-      ? "ar"
-      : "en";
-
+}) {
+  const language = (await cookies()).get("samatechs-language")?.value === "ar" ? "ar" : "en";
   return (
-    <html
-      lang={language}
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
+    <html lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
       <body
         className={`${montserrat.variable} ${quicksand.variable} ${arabic.variable}`}
       >
+        <LanguageProvider initialLanguage={language}>
+        <Navbar/>
         {children}
+        <Footer/>
+        </LanguageProvider>
       </body>
     </html>
   );
