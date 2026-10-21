@@ -1,8 +1,11 @@
 "use client";
 
 import { Trans } from "@/lib/i18n/LanguageProvider";
+import Image from "next/image";
 import { useId, useState } from "react";
-import { Icon, cn } from "@/Components/website/ui";
+import { cn } from "@/Components/website/ui";
+import ChevronIcon from "@/public/figma/chevron-down.svg";
+import CheckIcon from "@/public/figma/check-blue.svg";
 
 interface FocusDisclosureProps {
   items: string[];
@@ -17,22 +20,25 @@ export default function FocusDisclosure({
   const [open, setOpen] = useState<boolean>(defaultOpen);
   const panelId = useId();
 
+  // mt-auto pins the toggle to the bottom of shorter (closed) cards
   return (
-    <div className="border-t border-ink-100 pt-4">
+    <div className="mt-auto">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between gap-3 py-3 text-start text-xs font-medium text-ink-100 transition-colors hover:text-white"
-      ><Trans>
-        Selected areas of focus
-        </Trans><Icon
-          name="chevron-down"
-          size={14}
-          strokeWidth={2}
+        className="flex w-full cursor-pointer items-center justify-between gap-3 border-t border-ink-100 pt-4 text-start text-body-small font-bold text-white"
+      >
+        <Trans>Selected areas of focus</Trans>
+        {/* The Figma icons are drawn upside down and flipped back with -scale-y-100 */}
+        <Image
+          src={ChevronIcon}
+          alt=""
+          width={16}
+          height={16}
           className={cn(
-            "shrink-0 transition-transform duration-200",
+            "shrink-0 -scale-y-100 transition-transform duration-200",
             open && "rotate-180",
           )}
         />
@@ -45,16 +51,16 @@ export default function FocusDisclosure({
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >
-        <ul className="overflow-hidden">
-          {items.map((item) => (
+        <ul className="flex flex-col gap-2.5 overflow-hidden">
+          {items.map((item, index) => (
             <li
               key={item}
-              className="flex gap-2.5 pb-2.5 text-xs leading-snug text-slate-400"
+              className={cn(
+                "flex gap-2.5 text-body-small font-medium leading-[1.6] text-white",
+                index === 0 && "mt-6.5",
+              )}
             >
-              <span
-                aria-hidden="true"
-                className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-pulse"
-              />
+              <Image src={CheckIcon} alt="" width={14} height={14} className="mb-1.25 mt-0.5 size-3.5 shrink-0 -scale-y-100" />
               <Trans>{item}</Trans>
             </li>
           ))}

@@ -51,13 +51,13 @@ export default function HeroVisual({
   location = "Riyadh · KSA",
 }: HeroVisualProps) {
   return (
-    <figure className="relative mt-12 aspect-[1176/440] min-h-[220px] w-full overflow-hidden rounded-[28px] bg-[#FFFFFF01] shadow-[0px_20px_48px_0px_#121A231A] sm:mt-14">
+    <figure className="relative aspect-[1176/440] min-h-[220px] w-full overflow-hidden rounded-card shadow-lg">
       {IMAGE ? (
         <Image
           src={IMAGE}
           alt=""
           fill
-          sizes="(min-width: 1024px) 1024px, 100vw"
+          sizes="(min-width: 1240px) 1176px, 100vw"
           className="object-cover"
         />
       ) : (
@@ -80,11 +80,11 @@ export default function HeroVisual({
         className="pointer-events-none absolute inset-0 rounded-[28px] bg-[#FFFFFF01] shadow-[inset_0px_0px_0px_1px_#FFFFFF1A]"
       />
 
-      <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-7 sm:bottom-6">
-        <span className="max-w-[12rem] text-left text-lg font-semibold leading-tight text-white sm:text-xl">
+      <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-9 sm:bottom-8">
+        <span className="max-w-[317.77px] text-start font-heading text-xl font-bold leading-[1.2] tracking-[-0.01em] text-white sm:text-h3">
           {caption}
         </span>
-        <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
+        <span className="whitespace-nowrap text-[13px] font-bold uppercase leading-[21.45px] tracking-[0.14em] text-blue-haze">
           {location}
         </span>
       </figcaption>

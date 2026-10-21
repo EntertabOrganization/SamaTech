@@ -3,7 +3,8 @@
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useState, type ReactNode } from "react";
 import { cn } from "../../../../lib/cn";
-import MicroLabel from "../../ContactPage/MicroLabel";
+import ContactMicroLabel from "../../ContactPage/MicroLabel";
+import { MicroLabel } from "./primitives";
 
 export interface ShowcaseItem {
   id: string;
@@ -19,8 +20,10 @@ export interface ShowcaseItem {
  * cards = list on the left, bordered glass panel on the right.
  * soft  = panel on the left, list on the right with divider rows.
  * plain = list on the left (title only), soft panel on the right with a text card.
+ * capabilities = panel on the left, list on the right with a white selected card.
+ * steps = list on the left with a tinted selected card, soft panel on the right.
  */
-export type ShowcaseVariant = "cards" | "soft" | "plain";
+export type ShowcaseVariant = "cards" | "soft" | "plain" | "capabilities" | "steps";
 
 interface ShowcaseTabsProps {
   items: ShowcaseItem[];
@@ -31,60 +34,96 @@ interface ShowcaseTabsProps {
 }
 
 const styles = {
-  cards: {
-    grid: "gap-14 lg:grid-cols-2",
+  steps: {
+    grid: "min-h-[589px] items-center gap-12 lg:grid-cols-2",
     panelFirst: false,
-    list: "flex flex-col justify-center gap-3 self-center",
-    item: "rounded-2xl px-4 py-3.5 text-start transition-all",
-    itemSelected: "border border-ink-100 bg-white shadow-[0px_6px_18px_-6px_#121A231F]",
-    itemIdle: "border border-transparent bg-white/40 hover:bg-white/70",
-    row: "gap-2.5",
-    iconSelected: "text-blue-pulse",
-    iconIdle: "text-slate-500",
-    title: "text-sm font-semibold",
-    titleSelected: "text-[#0F1B2D]",
-    titleIdle: "text-slate-600",
-    description: "mt-2 block ps-6.5 text-xs leading-relaxed text-slate-500",
-    panel:
-      "flex min-h-80 flex-col rounded-lg border border-[#3B9BFF] bg-white/60 p-6 backdrop-blur-[14px]",
-    panelLabel: true,
-    content: "flex flex-1 items-center justify-center pt-4",
-  },
-  soft: {
-    grid: "items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]",
-    panelFirst: true,
-    list: "flex flex-col",
-    item: "px-4 text-start transition-colors",
-    itemSelected: "rounded-2xl bg-[#E3ECF9] py-4",
-    itemIdle: "border-b border-ink-100 py-3.5 hover:bg-slate-50",
-    row: "gap-3",
-    iconSelected: "text-blue-pulse",
-    iconIdle: "text-slate-500",
-    title: "text-sm font-heading font-semibold",
-    titleSelected: "text-ink-900",
-    titleIdle: "text-ink-700",
-    description: "mt-2 block ps-7 text-xs leading-relaxed text-ink-500",
-    panel: "flex min-h-85 flex-col rounded-panel bg-ink-50 p-6",
-    panelLabel: true,
-    content: "flex flex-1 items-center pt-4",
-  },
-  plain: {
-    grid: "items-center gap-8 lg:grid-cols-2",
-    panelFirst: false,
-    list: "flex flex-col",
-    item: "px-4 py-3.5 text-start transition-colors",
-    itemSelected: "rounded-2xl bg-[#E3ECF9]",
-    itemIdle: "border-b border-ink-100 hover:bg-white/60",
-    row: "gap-3",
+    list: "flex flex-col gap-2",
+    item: "rounded-card border-b px-6.5 py-6 text-start transition-colors",
+    itemSelected: "border-transparent bg-blue-mist",
+    itemIdle: "border-ink-100 hover:bg-ink-50",
+    row: "gap-3.5",
     iconSelected: "text-blue-sovereign",
     iconIdle: "text-ink-500",
-    title: "text-sm font-semibold",
-    titleSelected: "text-[#0F1B2D]",
-    titleIdle: "text-slate-600",
+    title: "font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em]",
+    titleSelected: "text-ink-900",
+    titleIdle: "text-ink-700",
+    description: "mt-[9px] block max-w-[454.35px] ps-8.75 text-body-small font-medium leading-[1.65] text-ink-500",
+    panel: "flex min-h-[460px] flex-col justify-center overflow-hidden rounded-panel bg-ink-50 py-8",
+    panelLabel: true,
+    content: "flex flex-col gap-3.5 p-12",
+  },
+  capabilities: {
+    grid: "min-h-[475px] items-center gap-12 lg:grid-cols-2",
+    panelFirst: true,
+    list: "flex flex-col gap-1.5",
+    item: "rounded-card border-b px-6 py-5 text-start transition-colors",
+    itemSelected: "border-transparent bg-white",
+    itemIdle: "border-ink-100 hover:bg-white/50",
+    row: "gap-3.5",
+    iconSelected: "text-blue-sovereign",
+    iconIdle: "text-ink-500",
+    title: "font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em]",
+    titleSelected: "text-ink-900",
+    titleIdle: "text-ink-700",
+    description: "mt-[7px] block max-w-[420.7px] ps-8.5 text-body-small font-medium leading-[1.65] text-ink-500",
+    panel: "flex min-h-[398px] flex-col justify-center overflow-hidden rounded-panel bg-ink-50 py-8",
+    panelLabel: true,
+    content: "flex flex-col gap-3.5 p-11",
+  },
+  cards: {
+    grid: "min-h-[670px] items-center gap-12 lg:grid-cols-2",
+    panelFirst: false,
+    list: "flex flex-col gap-2",
+    item: "rounded-card border-b px-6.5 py-6 text-start transition-colors",
+    itemSelected: "border-transparent bg-white",
+    itemIdle: "border-ink-100 bg-[#F1F4F8] hover:bg-white/70",
+    row: "gap-3.5",
+    iconSelected: "text-blue-sovereign",
+    iconIdle: "text-ink-500",
+    title: "font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em]",
+    titleSelected: "text-ink-900",
+    titleIdle: "text-ink-700",
+    description: "mt-[9px] block max-w-[437.5px] ps-8.75 text-body-small font-medium leading-[1.65] text-ink-500",
+    panel:
+      "flex min-h-[466px] flex-col justify-center overflow-hidden rounded-input border border-blue-pulse bg-[#F1F4F8] py-8",
+    panelLabel: true,
+    content: "flex flex-col gap-3.5 p-12",
+  },
+  soft: {
+    grid: "min-h-[656px] items-center gap-12 lg:grid-cols-2",
+    panelFirst: true,
+    list: "flex flex-col gap-2",
+    item: "rounded-card border-b px-6.5 py-6 text-start transition-colors",
+    itemSelected: "border-transparent bg-blue-mist",
+    itemIdle: "border-ink-100 hover:bg-ink-50",
+    row: "gap-3.5",
+    iconSelected: "text-blue-sovereign",
+    iconIdle: "text-ink-500",
+    title: "font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em]",
+    titleSelected: "text-ink-900",
+    titleIdle: "text-ink-700",
+    description: "mt-[9px] block max-w-[437.5px] ps-8.75 text-body-small font-medium leading-[1.65] text-ink-500",
+    panel: "flex min-h-[520px] flex-col justify-center overflow-hidden rounded-panel bg-ink-50 py-8",
+    panelLabel: true,
+    content: "flex flex-col gap-3.5 p-14",
+  },
+  plain: {
+    grid: "min-h-[589px] items-center gap-12 lg:grid-cols-2",
+    panelFirst: false,
+    list: "flex flex-col gap-2",
+    item: "rounded-card border-b px-6.5 py-6 text-start transition-colors",
+    itemSelected: "border-transparent bg-blue-mist",
+    itemIdle: "border-ink-100 hover:bg-ink-50",
+    row: "gap-3.5",
+    iconSelected: "text-blue-sovereign",
+    iconIdle: "text-ink-500",
+    title: "font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em]",
+    titleSelected: "text-ink-900",
+    titleIdle: "text-ink-700",
     description: "",
-    panel: "flex min-h-80 flex-col rounded-panel bg-ink-50 p-12",
+    panel: "flex min-h-[483px] flex-col justify-center overflow-hidden rounded-panel bg-ink-50",
     panelLabel: false,
-    content: "flex flex-1 items-center justify-center",
+    content: "flex flex-1 items-center justify-center p-12",
   },
 } as const;
 
@@ -147,10 +186,19 @@ export default function ShowcaseTabs({
       aria-labelledby={`${uid}-tab-${active.id}`}
       className={s.panel}
     >
-      {s.panelLabel && <MicroLabel><Trans>{active.title}</Trans></MicroLabel>}
-      <div className={s.content}>
-        <div className="w-full"><Trans>{active.visual}</Trans></div>
-      </div>
+      {variant !== "plain" ? (
+        <div className={s.content}>
+          <MicroLabel><Trans>{active.title}</Trans></MicroLabel>
+          <div className="w-full"><Trans>{active.visual}</Trans></div>
+        </div>
+      ) : (
+        <>
+          {s.panelLabel && <ContactMicroLabel><Trans>{active.title}</Trans></ContactMicroLabel>}
+          <div className={s.content}>
+            <div className="w-full"><Trans>{active.visual}</Trans></div>
+          </div>
+        </>
+      )}
     </div>
   );
 

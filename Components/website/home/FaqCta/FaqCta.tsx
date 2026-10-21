@@ -4,8 +4,10 @@ import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useId, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import SectionImg from '@/public/images/Group 2.png'
-import Button from "../../ui/Button";
+import FaqImage from "@/public/figma/faq-image.png";
+import PlusIcon from "@/public/figma/plus-16.svg";
+import MinusIcon from "@/public/figma/minus-16.svg";
+import ArrowIcon from "@/public/figma/arrow-dark-19.svg";
 
 interface FaqItem {
   question: string;
@@ -34,7 +36,7 @@ const faqs: FaqItem[] = [
       "You get the same senior attention as a larger client, with scope and team size matched to the decision you need to make.",
   },
   {
-    question: "Can you support U.S.-GCC expansion end to end?",
+    question: "Can you support U.S.–GCC expansion end to end?",
     answer:
       "Yes. We support market-entry strategy, regulatory and commercial readiness, and stakeholder alignment across the U.S. and GCC.",
   },
@@ -44,6 +46,9 @@ const faqs: FaqItem[] = [
       "Every conversation and engagement is treated as confidential, and we agree on confidentiality terms before any sensitive material is shared.",
   },
 ];
+
+const FAQ_IMAGE_OVERLAY =
+  "linear-gradient(158.77deg, rgba(18, 26, 35, 0.9) 0%, rgba(18, 26, 35, 0.78) 46%, rgba(18, 26, 35, 0.95) 100%)";
 
 function FaqRow({
   item,
@@ -59,7 +64,11 @@ function FaqRow({
   const buttonId = `faq-button-${uid}`;
 
   return (
-    <div className="rounded-lg border border-ink-100 bg-white shadow-sm">
+    <div
+      className={`overflow-hidden rounded-media border bg-white transition-colors ${
+        open ? "border-blue-haze" : "border-ink-100"
+      }`}
+    >
       <h3>
         <button
           type="button"
@@ -67,30 +76,10 @@ function FaqRow({
           onClick={onToggle}
           aria-expanded={open}
           aria-controls={panelId}
-          className="flex w-full items-center justify-between gap-4 px-4 py-3 text-start text-body font-bold text-ink-900"
+          className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-start font-body text-body font-bold leading-[1.25] text-ink-900"
         >
           <Trans>{item.question}</Trans>
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#0078FF"
-            strokeWidth="2"
-            strokeLinecap="round"
-            aria-hidden="true"
-            className="shrink-0"
-          >
-            <path d="M5 12h14" />
-            {/* vertical stroke fades out when open, turning + into − */}
-            <path
-              d="M12 5v14"
-              className={`origin-center transition-all duration-200 ${
-                open ? "scale-y-0 opacity-0" : "scale-y-100 opacity-100"
-              }`}
-              style={{ transformBox: "fill-box" }}
-            />
-          </svg>
+          <Image src={open ? MinusIcon : PlusIcon} alt="" width={16} height={16} className="shrink-0 -scale-y-100" />
         </button>
       </h3>
 
@@ -103,7 +92,7 @@ function FaqRow({
         }`}
       >
         <div className="overflow-hidden">
-          <p className="px-4 pb-4 text-body-small font-medium leading-relaxed text-ink-500">
+          <p className="max-w-[538.5px] px-6 pb-5.5 text-body-small font-medium leading-[1.65] text-ink-500">
             <Trans>{item.answer}</Trans>
           </p>
         </div>
@@ -118,29 +107,37 @@ export default function FaqCta() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-ink-50 px-4 py-20 sm:px-6 lg:px-10">
-      <div className="mx-auto">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+    <>
+      <section className="bg-ink-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-[1502px] items-start gap-10 lg:grid-cols-[minmax(0,808fr)_minmax(0,694fr)] lg:gap-0">
           {/* Left: intro + visual */}
-          <div className="flex flex-col justify-between h-full">
-            <div className="flex flex-col px-8 gap-[18px]">
-                <p className="flex items-center gap-3 text-eyebrow font-bold uppercase tracking-wider text-blue-sovereign">
-                  <span aria-hidden="true" className="h-px w-8 bg-blue-sovereign" /><Trans>
-                  Common questions
-                </Trans></p>
-                <h2 className="mt-4 text-3xl font-heading font-bold tracking-tight text-ink-900"><Trans>
-                  Before you get in touch
-                </Trans></h2>
-                <p className="mt-3 max-w-105 font-medium text-body-small leading-relaxed text-ink-500"><Trans>
-                  If your question is not here, ask it directly, we answer within
-                  one business day.
-                </Trans></p>
+          <div className="flex h-full flex-col justify-between gap-10 lg:min-h-[522px]">
+            <div className="flex flex-col gap-4.5 sm:px-8">
+              <p className="flex items-center gap-3.25 text-eyebrow font-bold uppercase leading-[1.2] tracking-eyebrow text-blue-sovereign">
+                <span aria-hidden="true" className="h-px w-10 bg-blue-pulse" />
+                <Trans>Common questions</Trans>
+              </p>
+              <h2 className="font-heading text-3xl font-bold leading-h2 tracking-[-0.01em] text-ink-900 lg:text-h2">
+                <Trans>Before you get in touch</Trans>
+              </h2>
+              <p className="max-w-[460px] text-body-small font-medium leading-[1.65] text-ink-500">
+                <Trans>If your question is not here, ask it directly — we answer within one business day.</Trans>
+              </p>
             </div>
-            <Image src={SectionImg} alt={translateText("Faq visual")} loading="eager" className="h-auto max-w-full" />
+            <div className="relative aspect-[723/338.77] w-full overflow-hidden rounded-3xl lg:w-[89.5%]">
+              <Image
+                src={FaqImage}
+                alt={translateText("Faq visual")}
+                fill
+                sizes="(min-width: 1024px) 723px, 100vw"
+                className="object-cover"
+              />
+              <div aria-hidden="true" className="absolute inset-0 opacity-50" style={{ background: FAQ_IMAGE_OVERLAY }} />
+            </div>
           </div>
 
           {/* Right: accordion */}
-          <div className="space-y-5">
+          <div className="flex flex-col gap-3">
             {faqs.map((item, i) => (
               <FaqRow
                 key={item.question}
@@ -151,40 +148,38 @@ export default function FaqCta() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA banner */}
-        <div
-          className="mx-auto mt-20 grid max-w-294 items-center gap-8 rounded-panel p-8 text-white shadow-[0px_24px_50px_-24px_#0078FF99] sm:p-10 md:grid-cols-[1.5fr_1fr]"
-          style={{
-            background:
-              "linear-gradient(138.71deg, #3393FF 4.61%, #0078FF 56.57%, #005BC2 99.56%)",
-          }}
-        >
-          <div>
-            <h2 className="max-w-sm text-h1 font-heading font-bold leading-tight tracking-tight sm:text-4xl"><Trans>
-              Complex
-              </Trans><br/><Trans>
-               challenges require integrated thinking.
-            </Trans></h2>
-            <p className="mt-5 max-w-149 text-lead font-medium leading-relaxed text-white/86"><Trans>
-              Whether you are redefining enterprise strategy, strengthening
-              governance, exploring AI-enabled transformation, or entering a new
-              market, SAMATECHS can help you move from ambiguity to disciplined
-              action.
-            </Trans></p>
+      {/* CTA banner */}
+      <section className="bg-ink-50 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-28">
+        <div className="mx-auto grid max-w-294 items-center gap-8 rounded-panel bg-gradient-mark p-8 text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] sm:p-10 lg:min-h-[430.55px] lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14 lg:px-16 lg:py-18">
+          <div className="flex flex-col gap-5">
+            <h2 className="max-w-[717px] font-heading text-3xl font-bold leading-h1 tracking-[-0.01em] sm:text-4xl lg:text-h1">
+              <Trans>Complex</Trans>
+              <br />
+              <Trans>challenges require integrated thinking.</Trans>
+            </h2>
+            <p className="max-w-[649px] text-base font-medium leading-[1.55] text-white/86 lg:text-lead">
+              <Trans>
+                Whether you are redefining enterprise strategy, strengthening
+                governance, exploring AI-enabled transformation, or entering a new
+                market, SAMATECHS can help you move from ambiguity to disciplined
+                action.
+              </Trans>
+            </p>
           </div>
 
-          <div className="md:justify-self-center">
+          <div className="flex lg:justify-end">
             <Link
               href="/contact"
+              className="inline-flex h-14 items-center gap-2 rounded-full bg-white px-8 text-base font-bold tracking-[0.16px] text-ink-900 transition-colors hover:bg-ink-50"
             >
-              <Button variant="inverse" size="md"><Trans>Start a Confidential Conversation
-              </Trans><span aria-hidden="true" className="ml-1.5">→</span>
-              </Button>
+              <Trans>Start a Confidential Conversation</Trans>
+              <Image src={ArrowIcon} alt="" width={19} height={19} className="directional-arrow" />
             </Link>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

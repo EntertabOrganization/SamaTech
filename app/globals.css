@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* inline: the next/font variables live on <body>, so they must resolve where the utility is used */
+@theme inline {
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-quicksand), sans-serif;
+}
+
 @theme {
   /* Colors */
   --color-blue-sovereign: #005BC2;
@@ -186,11 +192,14 @@ html[dir="rtl"] .directional-arrow {
   transform: scaleX(-1);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-montserrat), sans-serif;
+/* In the base layer, so font utilities (e.g. font-body) on headings still win. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-montserrat), sans-serif;
+  }
 }

@@ -1,4 +1,5 @@
 import { Trans } from "@/lib/i18n/LanguageProvider";
+import Image from "next/image";
 import type {
   InputHTMLAttributes,
   ReactNode,
@@ -6,51 +7,35 @@ import type {
   TextareaHTMLAttributes,
 } from "react";
 import { Icon, cn } from "@/Components/website/ui";
+import MailIconSrc from "@/public/figma/input-mail.svg";
+import ChevronIcon from "@/public/figma/select-chevron.svg";
+import ArrowIcon from "@/public/figma/hero-arrow.svg";
 import type { SubmitStatus } from "./useFormSubmit";
 
-/** Envelope for the email inputs. Not in the icon set yet, so it stays local. */
+/** Envelope for the email inputs. */
 export const MailIcon = () => (
-  <svg
-    width={14}
-    height={14}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <rect x="3" y="5" width="18" height="14" rx="2" />
-    <path d="M3 7l9 6 9-6" />
-  </svg>
+  <Image src={MailIconSrc} alt="" width={18} height={18} className="-scale-y-100" />
 );
 
 const control =
-  "w-full rounded-lg border border-ink-100 bg-white text-xs text-ink-900 placeholder:text-slate-400 transition-colors focus:border-[#0078FF] focus:outline-none focus:ring-2 focus:ring-[#0078FF]/20";
+  "w-full rounded-input border border-ink-200 bg-white text-body font-medium text-ink-900 placeholder:text-[#757575] transition-colors focus:border-blue-pulse focus:outline-none focus:ring-2 focus:ring-blue-pulse/20";
 
 /** Label + control. The control sits inside the <label>, so no ids are needed. */
 export function Field({
   label,
-  required,
   children,
   className,
 }: {
   label: string;
+  /** Kept for the form's own validation; the design shows no marker. */
   required?: boolean;
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <label className={cn("block", className)}>
-      <span className="mb-1.5 block text-[10px] font-semibold text-[#0F1B2D]">
+    <label className={cn("flex flex-col gap-1.5", className)}>
+      <span className="text-body-small font-bold leading-[1.65] text-ink-900">
         <Trans>{label}</Trans>
-        {required && (
-          <span aria-hidden="true" className="text-blue-pulse">
-            {" "}
-            *
-          </span>
-        )}
       </span>
       <Trans>{children}</Trans>
     </label>
@@ -63,17 +48,17 @@ export function TextInput({
   ...props
 }: InputHTMLAttributes<HTMLInputElement> & { icon?: ReactNode }) {
   if (!icon) {
-    return <input className={cn(control, "h-9 px-3", className)} {...props} />;
+    return <input className={cn(control, "h-12 px-4.5", className)} {...props} />;
   }
   return (
     <span className="relative block">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-slate-400"
+        className="pointer-events-none absolute start-4 top-1/2 flex -translate-y-1/2"
       >
         <Trans>{icon}</Trans>
       </span>
-      <input className={cn(control, "h-9 ps-9 px-4", className)} {...props} />
+      <input className={cn(control, "h-12 pe-4.5 ps-11.5", className)} {...props} />
     </span>
   );
 }
@@ -84,7 +69,7 @@ export function TextArea({
 }: TextareaHTMLAttributes<HTMLTextAreaElement>) {
   return (
     <textarea
-      className={cn(control, "resize-none px-3 py-2.5 leading-relaxed", className)}
+      className={cn(control, "resize-none px-4.5 pt-3 leading-[1.65]", className)}
       {...props}
     />
   );
@@ -103,7 +88,7 @@ export function SelectInput({
     <span className="relative block">
       <select
         defaultValue=""
-        className={cn(control, "h-9 appearance-none ps-3 pe-8 invalid:text-slate-400", className)}
+        className={cn(control, "h-12 appearance-none pe-11 ps-4 invalid:text-ink-300", className)}
         {...props}
       >
         <option value="" disabled>
@@ -115,12 +100,13 @@ export function SelectInput({
           </option>
         ))}
       </select>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute end-3 top-1/2 -translate-y-1/2 text-slate-400"
-      >
-        <Icon name="chevron-down" size={14} />
-      </span>
+      <Image
+        src={ChevronIcon}
+        alt=""
+        width={16}
+        height={16}
+        className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 -scale-y-100"
+      />
     </span>
   );
 }
@@ -134,15 +120,15 @@ export function Checkbox({
   hint?: string;
 }) {
   return (
-    <label className="flex items-start gap-2.5">
+    <label className="flex items-start gap-3">
       <input
         type="checkbox"
-        className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded border-ink-100 accent-[#0078FF]"
+        className="mt-0.5 size-5 shrink-0 rounded-checkbox border-ink-200 accent-blue-pulse"
         {...props}
       />
       <span>
-        <span className="block text-[11px] font-medium text-[#0F1B2D]"><Trans>{label}</Trans></span>
-        {hint && <span className="mt-0.5 block text-[10px] text-slate-400"><Trans>{hint}</Trans></span>}
+        <span className="block text-body-small font-semibold leading-[1.65] text-ink-900"><Trans>{label}</Trans></span>
+        {hint && <span className="block text-[13px] font-medium leading-[21.45px] text-ink-500"><Trans>{hint}</Trans></span>}
       </span>
     </label>
   );
@@ -161,11 +147,24 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={disabled || loading}
-      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0078FF] px-6 py-3 text-sm font-semibold text-white shadow-[0px_10px_24px_-6px_#0078FF8C] transition-colors hover:bg-[#005BC2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0078FF] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+      className="inline-flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-blue-pulse px-8 text-base font-bold tracking-[0.16px] text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] transition-colors hover:bg-blue-sovereign focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
     >
       <Trans>{children}</Trans>
-      {loading ? <Icon name="spinner" size={16} /> : <Icon name="arrow-right" size={16} />}
+      {loading ? (
+        <Icon name="spinner" size={19} />
+      ) : (
+        <Image src={ArrowIcon} alt="" width={19} height={19} className="directional-arrow" />
+      )}
     </button>
+  );
+}
+
+/** Small grey note under a form. */
+export function FormNote({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-[13px] font-medium leading-[1.45] text-ink-300">
+      <Trans>{children}</Trans>
+    </p>
   );
 }
 
@@ -181,14 +180,14 @@ export function FormStatus({
 }) {
   if (status === "success") {
     return (
-      <p role="status" className="rounded-lg bg-[#E6F6EE] px-3 py-2 text-[11px] text-[#1B7F4B]">
+      <p role="status" className="rounded-input bg-[#E6F6EE] px-4 py-3 text-body-small text-[#1B7F4B]">
         <Trans>{successMessage}</Trans>
       </p>
     );
   }
   if (status === "error") {
     return (
-      <p role="alert" className="rounded-lg bg-[#FDECEC] px-3 py-2 text-[11px] text-[#B42318]">
+      <p role="alert" className="rounded-input bg-[#FDECEC] px-4 py-3 text-body-small text-[#B42318]">
         <Trans>{errorMessage}</Trans>
       </p>
     );

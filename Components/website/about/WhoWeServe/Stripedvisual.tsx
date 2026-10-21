@@ -1,17 +1,19 @@
 import Image from "next/image";
 import AnalyticBg from "@/public/images/AnalyticalRigorBackGround.png";
 
+/** Abstract striped photo beside "Who We Are". Design size: 471 x 420, radius 28px. */
 export default function StripedVisual() {
   return (
-    <div className="relative h-105 w-full max-w-125 overflow-hidden rounded-2xl md:ms-auto">
-      <Image
-        src={AnalyticBg}
-        alt=""
-        aria-hidden="true"
-        fill
-        sizes="(min-width: 1024px) 500px, 100vw"
-        className="pointer-events-none select-none object-cover object-center"
-      />
+    <div className="relative h-105 w-full overflow-hidden rounded-card shadow-lg">
+      <div aria-hidden="true" className="absolute inset-x-0 top-[-54.25%] h-[208.5%]">
+        <Image
+          src={AnalyticBg}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 472px, 100vw"
+          className="pointer-events-none select-none"
+        />
+      </div>
 
       <div
         aria-hidden="true"
@@ -24,11 +26,7 @@ export default function StripedVisual() {
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 rounded-2xl"
-        style={{
-          background: "#FFFFFF01",
-          boxShadow: "0px 0px 0px 1px #FFFFFF1A inset",
-        }}
+        className="absolute inset-0 rounded-card shadow-[inset_0px_0px_0px_1px_rgba(255,255,255,0.1)]"
       />
     </div>
   );

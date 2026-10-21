@@ -11,11 +11,19 @@ export type { ShowcaseItem } from "./ShowcaseTabs";
 /** label = class for the visible caption above each visual. null = title only for screen readers. */
 const stackStyles: Record<ShowcaseVariant, { box: string; label: string | null }> = {
   cards: {
-    box: "space-y-8 rounded-card border border-[#00000000] bg-white p-5 backdrop-blur-[14px]",
-    label: "mb-4",
+    box: "space-y-8 rounded-input border border-blue-pulse bg-[#F1F4F8] p-6",
+    label: "mb-3.5",
   },
   soft: {
-    box: "space-y-10 rounded-3xl bg-[#F1F5FB] p-5",
+    box: "space-y-10 rounded-panel bg-ink-50 p-6",
+    label: "mb-3",
+  },
+  capabilities: {
+    box: "space-y-10 rounded-panel bg-ink-50 p-6",
+    label: "mb-3",
+  },
+  steps: {
+    box: "space-y-10 rounded-panel bg-ink-50 p-6",
     label: "mb-3",
   },
   plain: {

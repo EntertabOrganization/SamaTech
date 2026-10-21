@@ -3,7 +3,6 @@
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { cn } from "@/Components/website/ui";
-import  MicroLabel  from "@/Components/website/ContactPage/MicroLabel";
 import {
   ApiError,
   bookConsultation,
@@ -13,7 +12,7 @@ import {
   type DayAvailability,
 } from "@/lib/api";
 import Calendar from "./Calendar";
-import { Field, FormStatus, MailIcon, SubmitButton, TextArea, TextInput } from "./fields";
+import { Field, FormNote, FormStatus, MailIcon, SubmitButton, TextArea, TextInput } from "./fields";
 import { useFormSubmit } from "./useFormSubmit";
 
 /** Slots are offered on the backend's consultation clock (CONSULTATION_TIME_ZONE). */
@@ -22,13 +21,16 @@ const CONSULTATION_TIME_ZONE = "Asia/Riyadh";
 const toISODate = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
+/** "Sun 9 August 2026" (no comma, as in the design). */
 const longDate = (d: Date, language: string) =>
-  d.toLocaleDateString(language === "ar" ? "ar-SA-u-ca-gregory" : "en-GB", {
-    weekday: "short",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  d
+    .toLocaleDateString(language === "ar" ? "ar-SA-u-ca-gregory" : "en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+    .replace(",", "");
 
 /** Today's date (YYYY-MM-DD) and minutes since midnight on the consultation clock. */
 function consultationNow() {
@@ -150,11 +152,11 @@ export default function BookingForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div>
-        <h2 className="text-lead font-bold font-heading text-ink-900"><Trans>Choose a 45-minute slot</Trans></h2>
-        <p className="mt-1 text-caption font-medium text-ink-300"><Trans>
-          Sunday to Thursday · all times Arabia Standard Time (UTC+3)
+    <form onSubmit={onSubmit} className="flex flex-col gap-5.5">
+      <div className="flex flex-col gap-1">
+        <h2 className="font-heading text-[19.5px] font-bold leading-[26px] tracking-[-0.01em] text-ink-900"><Trans>Choose a 45-minute slot</Trans></h2>
+        <p className="text-[13px] font-medium leading-[1.45] text-ink-300"><Trans>
+          Sunday to Thursday · all times Arabia Standard Time (GMT+3)
         </Trans></p>
       </div>
 
@@ -162,26 +164,26 @@ export default function BookingForm() {
 
       <div aria-live="polite">
         {availabilityFailed ? (
-          <p role="alert" className="text-[11px] text-[#B42318]"><Trans>
+          <p role="alert" className="text-body-small text-[#B42318]"><Trans>
             We couldn&apos;t load the available times. Please refresh the page, or send us a message instead.
           </Trans></p>
         ) : !availability ? (
-          <p className="text-[11px] text-slate-400"><Trans>Loading available times…</Trans></p>
+          <p className="text-body-small text-ink-300"><Trans>Loading available times…</Trans></p>
         ) : date ? (
           <>
-            <MicroLabel tone="default">{longDate(date, language)}</MicroLabel>
+            <p className="text-[13px] font-bold uppercase leading-[21.45px] tracking-[0.14em] text-ink-300">{longDate(date, language)}</p>
             {bookedFailed ? (
-              <p role="alert" className="mt-2.5 text-[11px] text-[#B42318]"><Trans>
+              <p role="alert" className="mt-3 text-body-small text-[#B42318]"><Trans>
                 We couldn&apos;t load the available times. Please refresh the page, or send us a message instead.
               </Trans></p>
             ) : !booked ? (
-              <p className="mt-2.5 text-[11px] text-slate-400"><Trans>Loading available times…</Trans></p>
+              <p className="mt-3 text-body-small text-ink-300"><Trans>Loading available times…</Trans></p>
             ) : !slots.some((slot) => slot.available) ? (
-              <p className="mt-2.5 text-[11px] text-slate-400"><Trans>
+              <p className="mt-3 text-body-small text-ink-300"><Trans>
                 No times are left on this day. Please choose another date.
               </Trans></p>
             ) : null}
-            {booked && <div className="mt-2.5 grid grid-cols-4 gap-2">
+            {booked && <div className="mt-3 grid grid-cols-4 gap-2.5">
               {slots.map((slot) => {
                 const selected = time === slot.time;
                 return (
@@ -192,12 +194,12 @@ export default function BookingForm() {
                     aria-pressed={selected}
                     onClick={() => setTime(slot.time)}
                     className={cn(
-                      "h-7 rounded-full border text-[11px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse",
+                      "h-10 cursor-pointer rounded-full border px-1.5 text-[13.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse",
                       selected
-                        ? "border-blue-pulse bg-[#E3ECF9] text-blue-sovereign"
+                        ? "border-blue-pulse bg-blue-pulse font-bold text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)]"
                         : slot.available
-                          ? "border-ink-100 bg-white text-[#0F1B2D] hover:border-[#9CC3F5]"
-                          : "cursor-not-allowed border-transparent text-slate-300 line-through",
+                          ? "border-ink-200 bg-white font-bold text-ink-700 hover:border-blue-pulse"
+                          : "cursor-not-allowed border-ink-100 font-semibold text-ink-300 opacity-45",
                     )}
                   >
                     <Trans>{slot.time}</Trans>
@@ -207,11 +209,11 @@ export default function BookingForm() {
             </div>}
           </>
         ) : (
-          <p className="text-[11px] text-slate-400"><Trans>Pick a date to see the available times.</Trans></p>
+          <p className="text-body-small text-ink-300"><Trans>Pick a date to see the available times.</Trans></p>
         )}
       </div>
 
-      <div className="grid gap-3 border-t border-ink-100 pt-4 sm:grid-cols-2">
+      <div className="mt-1 grid gap-x-4 gap-y-5.5 border-t border-ink-100 pt-1.25 sm:grid-cols-2">
         <Field label="Name" required>
           <TextInput name="name" required maxLength={200} autoComplete="name" placeholder={translateText("Full name")} />
         </Field>
@@ -233,8 +235,8 @@ export default function BookingForm() {
           <TextArea
             name="topic"
             maxLength={5000}
-            rows={3}
-            placeholder={translateText("A sentence on the decision in front of you")}
+            className="h-[105.2px]"
+            placeholder={translateText("A sentence on the decision in front of you.")}
           />
         </Field>
       </div>
@@ -249,9 +251,7 @@ export default function BookingForm() {
         errorMessage={errorMessage}
       />
 
-      <p className="text-[10px] leading-relaxed text-slate-400"><Trans>
-        A partner will confirm by email, usually within one business day.
-      </Trans></p>
+      <FormNote>Held provisionally until a partner confirms — usually within one business day.</FormNote>
     </form>
   );
 }

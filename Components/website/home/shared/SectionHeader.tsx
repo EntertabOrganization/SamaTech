@@ -16,21 +16,21 @@ interface SectionHeaderProps {
 const tones = {
   light: {
     eyebrow: "text-blue-sovereign",
-    line: "bg-blue-sovereign",
+    line: "bg-blue-pulse",
     title: "text-ink-900",
     intro: "text-ink-500",
   },
   dark: {
-    eyebrow: "text-blue-precision",
-    line: "bg-blue-precision",
+    eyebrow: "text-blue-pulse",
+    line: "bg-blue-pulse",
     title: "text-white",
     intro: "text-white",
   },
 };
 
 const sizes = {
-  md: "text-3xl sm:text-4xl",
-  lg: "text-4xl sm:text-5xl",
+  md: "mt-[17px] text-3xl leading-h1 tracking-[-0.01em] sm:text-4xl lg:text-h1",
+  lg: "mt-5.5 text-4xl leading-display-2 tracking-[-0.02em] sm:text-5xl lg:text-display-2",
 };
 
 export default function SectionHeader({
@@ -49,16 +49,16 @@ export default function SectionHeader({
     <div className={cn( className)}>
       <p
         className={cn(
-          "flex items-center gap-3 text-[11px] font-semibold uppercase tracking-wider",
+          "flex items-center gap-3.5 text-eyebrow font-bold uppercase leading-[1.2] tracking-eyebrow",
           t.eyebrow,
         )}
       >
-        <span aria-hidden="true" className={cn("h-px w-8", t.line)} />
+        <span aria-hidden="true" className={cn("h-px w-10", t.line)} />
         <Trans>{eyebrow}</Trans>
       </p>
       <Heading
         className={cn(
-          "mt-4 font-bold font-heading leading-tight tracking-tight",
+          "font-bold font-heading lg:whitespace-pre-line",
           sizes[size],
           t.title,
         )}
@@ -66,7 +66,7 @@ export default function SectionHeader({
         <Trans>{title}</Trans>
       </Heading>
       {intro && (
-        <p className={cn("mt-5 text-sm font-medium leading-relaxed", t.intro)}>
+        <p className={cn("mt-5 text-base font-medium leading-[1.55] lg:text-lead", t.intro)}>
           <Trans>{intro}</Trans>
         </p>
       )}

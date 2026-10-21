@@ -2,7 +2,10 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import { useState } from "react";
-import { Icon, IconButton, cn } from "@/Components/website/ui";
+import Image from "next/image";
+import { cn } from "@/Components/website/ui";
+import PrevIcon from "@/public/figma/cal-prev.svg";
+import NextIcon from "@/public/figma/cal-next.svg";
 
 interface CalendarProps {
   value: Date | null;
@@ -43,7 +46,7 @@ const [view, setView] = useState<{ year: number; month: number }>({
     return (
       <div
         aria-hidden="true"
-        className="h-68 rounded-xl border border-ink-100 bg-white/60"
+        className="h-97 rounded-input border border-ink-100 bg-white/60"
       />
     );
   }
@@ -66,35 +69,27 @@ const [view, setView] = useState<{ year: number; month: number }>({
   const isAvailable = (d: Date) => d >= today && availableWeekdays.includes(d.getDay());
 
   return (
-    <div className="rounded-xl border border-ink-100 bg-white p-3">
+    <div className="flex flex-col gap-4 rounded-input border border-ink-100 p-5">
       <div className="flex items-center justify-between">
-        <IconButton
-          label="Previous month"
-          size="sm"
-          icon={<Icon name="chevron-down" size={12} className={language === "ar" ? "-rotate-90" : "rotate-90"} />}
-          disabled={!canGoPrev}
-          onClick={() => shift(-1)}
-        />
-        <p aria-live="polite" className="text-xs font-semibold text-[#0F1B2D]">
+        <MonthButton label="Previous month" icon={PrevIcon} disabled={!canGoPrev} onClick={() => shift(-1)} />
+        <p aria-live="polite" className="font-heading text-body font-bold leading-[1.65] tracking-[-0.01em] text-ink-900">
           {first.toLocaleDateString(language === "ar" ? "ar-SA-u-ca-gregory" : "en-US", { month: "long", year: "numeric" })}
         </p>
-        <IconButton
-          label="Next month"
-          size="sm"
-          icon={<Icon name="chevron-down" size={12} className={language === "ar" ? "rotate-90" : "-rotate-90"} />}
-          onClick={() => shift(1)}
-        />
+        <MonthButton label="Next month" icon={NextIcon} onClick={() => shift(1)} />
       </div>
 
-      <div className="mt-3 grid grid-cols-7 text-center">
+      <div className="grid grid-cols-7 gap-1.5 text-center">
         {WEEKDAYS.map((day) => (
           <span
             key={day}
-            className="pb-2 text-[9px] font-medium uppercase tracking-wider text-slate-400"
+            className="flex h-6 items-center justify-center text-[10.5px] font-bold uppercase tracking-[0.14em] text-ink-300"
           >
             <Trans>{day}</Trans>
           </span>
         ))}
+      </div>
+
+      <div className="grid grid-cols-7 gap-1.5 text-center">
 
         {cells.map((date, i) => {
           if (!date) return <span key={`empty-${i}`} />;
@@ -116,12 +111,12 @@ const [view, setView] = useState<{ year: number; month: number }>({
               })}
               onClick={() => onChange(date)}
               className={cn(
-                "mx-auto mb-1 flex h-7 w-7 items-center justify-center rounded-full text-[11px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse",
+                "flex h-9.5 cursor-pointer items-center justify-center rounded-tooltip border text-[13.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse",
                 selected
-                  ? "bg-blue-pulse font-semibold text-white"
+                  ? "border-blue-pulse bg-blue-pulse font-bold text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)]"
                   : available
-                    ? "text-[#0F1B2D] hover:bg-[#E3ECF9]"
-                    : "cursor-not-allowed text-slate-300",
+                    ? "border-ink-100 bg-white font-semibold text-ink-700 hover:border-blue-pulse"
+                    : "cursor-not-allowed border-transparent font-semibold text-ink-300 opacity-45",
               )}
             >
               {date.getDate()}
@@ -130,5 +125,30 @@ const [view, setView] = useState<{ year: number; month: number }>({
         })}
       </div>
     </div>
+  );
+}
+
+function MonthButton({
+  label,
+  icon,
+  disabled,
+  onClick,
+}: {
+  label: string;
+  icon: typeof PrevIcon;
+  disabled?: boolean;
+  onClick: () => void;
+}) {
+  const { t: translateText, language } = useLanguage();
+  return (
+    <button
+      type="button"
+      aria-label={translateText(label)}
+      disabled={disabled}
+      onClick={onClick}
+      className="flex size-8 cursor-pointer items-center justify-center rounded-full border border-ink-200 bg-white transition-colors hover:border-blue-pulse disabled:cursor-not-allowed disabled:opacity-35"
+    >
+      <Image src={icon} alt="" width={14} height={14} className={cn("-scale-y-100", language === "ar" && "-scale-x-100")} />
+    </button>
   );
 }

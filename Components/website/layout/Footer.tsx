@@ -3,17 +3,13 @@
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
 import Logo from "@/public/horizontal-logo-white 1.svg";
-import Image from "next/image";
-import BrandFooter from "@/public/images/footer-vector.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {
-  faXTwitter,
-  faLinkedin,
-  faInstagram,
-  faFacebook,
-  faSnapchat,
-} from "@fortawesome/free-brands-svg-icons";
+import Image, { type StaticImageData } from "next/image";
+import BrandFooter from "@/public/images/footer-vector.png";
+import LinkedinIcon from "@/public/figma/social-linkedin.svg";
+import XIcon from "@/public/figma/social-x.svg";
+import InstagramIcon from "@/public/figma/social-instagram.svg";
+import FacebookIcon from "@/public/figma/social-facebook.svg";
+import SnapchatIcon from "@/public/figma/social-snapchat.svg";
 
 interface FooterLink {
   label: string;
@@ -28,65 +24,54 @@ const siteLinks: FooterLink[] = [
 ];
 
 const focusAreas: string[] = [
-  "Executive Strategy & Performance",
+  "Enterprise Strategy & Performance",
   "Risk, Governance & Decision Intelligence",
   "Digital Transformation & Cross-Border Growth",
 ];
 
 const contactDetails: string[] = [
-  "[Insert Address Here]",
   "info@samatechs.com",
   "+966 559447225",
 ];
 
 const legalLinks: FooterLink[] = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Use", href: "/terms" },
+  { label: "Privacy policy", href: "/privacy" },
+  { label: "Terms of use", href: "/terms" },
   { label: "Confidentiality", href: "/cookies" },
 ];
 
-const socials: { label: string; href: string; icon: React.ReactNode }[] = [
+const socials: { label: string; href: string; icon: StaticImageData }[] = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/samatechs",
-    icon: (
-      <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4" />
-    ),
+    icon: LinkedinIcon,
   },
   {
     label: "X",
     href: "https://x.com/samatechs_?s=11&t=s6yTAHsZWSPlFLERGjMrMQ",
-    icon: (
-      <FontAwesomeIcon icon={faXTwitter} className="h-4 w-4" />
-    ),
+    icon: XIcon,
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/samatechs/",
-    icon: (
-      <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
-    ),
+    icon: InstagramIcon,
   },
   {
     label: "Facebook",
     href: "https://www.facebook.com/profile.php?id=61592819443552",
-    icon: (
-      <FontAwesomeIcon icon={faFacebook} className="h-4 w-4" />
-    ),
+    icon: FacebookIcon,
   },
   {
     label: "Snapchat",
     href: "https://www.snapchat.com/add/samatechs",
-    icon: (
-      <FontAwesomeIcon icon={faSnapchat} className="h-4 w-4" />
-    ),
+    icon: SnapchatIcon,
   },
 ];
 
 const columnTitle =
-  "text-[11px] font-semibold uppercase tracking-wider text-[#3393FF]";
-const columnLink =
-  "text-sm text-slate-300 transition-colors hover:text-white";
+  "font-body text-eyebrow font-bold uppercase leading-[19.8px] tracking-eyebrow text-blue-precision";
+const columnItem =
+  "text-body-small font-medium leading-[1.65] text-blue-haze";
 
 export default function Footer() {
   const { t: translateText, language } = useLanguage();
@@ -94,49 +79,41 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-linear-to-b from-[#0E1823] to-[#1A2736] text-slate-300 px-4 sm:px-6 lg:px-27">
+    <footer className="relative overflow-hidden bg-gradient-navy px-4 pb-9 pt-14 sm:px-6 lg:px-8 lg:pt-20">
       {/* Faint brand rays, bottom-left */}
-      <div
-  aria-hidden="true"
-  className="pointer-events-none absolute -bottom-40 -left-25 h-105 w-110 opacity-5"
->
-  <Image
-    src={BrandFooter}
-    alt=""
-    fill
-    loading="eager"
-    sizes="440px"
-    quality={100}
-    className="object-contain object-bottom-left"
-  />
-</div>
+      <Image
+        src={BrandFooter}
+        alt=""
+        aria-hidden="true"
+        sizes="440px"
+        className="pointer-events-none absolute -bottom-35 -left-30 h-[431.02px] w-110 max-w-none opacity-5"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr] lg:gap-12">
+      <div className="relative mx-auto max-w-310 sm:px-8">
+        <div className="grid gap-12 border-b border-white/14 pb-12 sm:grid-cols-2 lg:min-h-[256.28px] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)_minmax(0,0.7fr)_minmax(0,1fr)]">
           {/* Brand */}
-          <div>
+          <div className="flex flex-col items-start gap-2.5">
             <Image
               src={Logo}
               alt={translateText("SAMATECHS logo")}
               width={1267}
               height={289}
-              style={{ width: 200, height: "auto" }}
+              className="h-auto w-[285px]"
               loading="eager"
             />
-            {language === "ar" && <p className="mt-2 text-2xl font-bold text-white">ساماتكس</p>}
-            <p className="mt-4 w-67.5 text-sm leading-relaxed text-slate-400"><Trans>
-              A Saudi-led strategic advisory and analytics firm. Partner-led,
-              evidence-based, built for execution.
-            </Trans></p>
-            <ul className="mt-5 flex gap-2">
+            {language === "ar" && <p className="text-2xl font-bold text-white">ساماتكس</p>}
+            <p className={`max-w-[286px] lg:whitespace-pre-line ${columnItem}`}>
+              <Trans>{"A boutique strategic advisory and analytics\nfirm. Senior-led, evidence-based, built\nfor execution."}</Trans>
+            </p>
+            <ul className="flex flex-wrap gap-2.5">
               {socials.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}
                     aria-label={translateText(s.label)}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-colors hover:border-white/40 hover:text-white"
+                    className="flex size-9.5 items-center justify-center rounded-full border border-white/14 transition-colors hover:border-white/40"
                   >
-                    <Trans>{s.icon}</Trans>
+                    <Image src={s.icon} alt="" width={17} height={17} className="-scale-y-100" />
                   </a>
                 </li>
               ))}
@@ -144,48 +121,40 @@ export default function Footer() {
           </div>
 
           {/* Site */}
-          <nav aria-label={translateText("Site")}>
+          <nav aria-label={translateText("Site")} className="flex flex-col gap-3.25">
             <h3 className={columnTitle}><Trans>Site</Trans></h3>
-            <ul className="mt-4 space-y-3">
-              {siteLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className={columnLink}>
-                    <Trans>{l.label}</Trans>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {siteLinks.map((l) => (
+              <Link key={l.href} href={l.href} className={`${columnItem} transition-colors hover:text-white`}>
+                <Trans>{l.label}</Trans>
+              </Link>
+            ))}
           </nav>
 
           {/* Focus */}
-          <div>
+          <div className="flex flex-col gap-3.25">
             <h3 className={columnTitle}><Trans>Pillars</Trans></h3>
-            <ul className="mt-4 space-y-3">
-              {focusAreas.map((item) => (
-                <li key={item} className="max-w-47 text-sm leading-snug text-slate-300">
-                  <Trans>{item}</Trans>
-                </li>
-              ))}
-            </ul>
+            {focusAreas.map((item) => (
+              <Link key={item} href="/services" className={`${columnItem} transition-colors hover:text-white`}>
+                <Trans>{item}</Trans>
+              </Link>
+            ))}
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="flex flex-col gap-3.25">
             <h3 className={columnTitle}><Trans>Get in touch</Trans></h3>
-            <ul className="mt-4 space-y-3">
-              {contactDetails.map((item) => (
-                <li key={item} className="text-sm text-slate-300">
-                  <Trans>{item}</Trans>
-                </li>
-              ))}
-            </ul>
+            {contactDetails.map((item) => (
+              <p key={item} className={columnItem}>
+                <Trans>{item}</Trans>
+              </p>
+            ))}
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 pt-7 text-[13px] font-medium leading-[21.45px] text-ink-300 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between">
           <p>© <Trans>{year}</Trans><Trans> SAMATECHS. All rights reserved.</Trans></p>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          <ul className="flex flex-wrap gap-x-6.5 gap-y-2">
             {legalLinks.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="transition-colors hover:text-white">

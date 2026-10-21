@@ -6,6 +6,7 @@ import { sendContactMessage } from "@/lib/api";
 import {
   Checkbox,
   Field,
+  FormNote,
   FormStatus,
   MailIcon,
   SelectInput,
@@ -45,12 +46,12 @@ export default function MessageForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <h2 className="font-semibold text-lead text-ink-900"><Trans>
-        Tell us about your objectives
-      </Trans></h2>
+    <form onSubmit={onSubmit} className="flex flex-col gap-4.5">
+      <h2 className="pb-1 font-heading text-h4 font-semibold leading-h4 tracking-[-0.01em] text-ink-900">
+        <Trans>Tell us about your objectives</Trans>
+      </h2>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-x-4 gap-y-3.75 sm:grid-cols-2">
         <Field label="Name" required>
           <TextInput name="name" required maxLength={200} autoComplete="name" placeholder={translateText("Full name")} />
         </Field>
@@ -81,8 +82,8 @@ export default function MessageForm() {
         <TextArea
           name="message"
           maxLength={5000}
-          rows={5}
           required
+          className="h-[158px]"
           placeholder={translateText("What are you trying to decide, and by when?")}
         />
       </Field>
@@ -102,7 +103,7 @@ export default function MessageForm() {
         errorMessage={errorMessage}
       />
 
-      <p className="text-[10px] text-slate-400"><Trans>Fields marked * are required.</Trans></p>
+      <FormNote>Fields marked Name, Email and Message are required.</FormNote>
     </form>
   );
 }

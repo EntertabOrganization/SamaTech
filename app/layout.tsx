@@ -20,7 +20,7 @@ const montserrat = Montserrat({
 const quicksand = Quicksand({
   subsets: ["latin"],
   variable: "--font-quicksand",
-  weight: ["500", "700"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata = {

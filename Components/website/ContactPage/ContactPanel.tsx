@@ -28,7 +28,7 @@ export default function ContactPanel() {
   };
 
   return (
-    <div className="rounded-3xl max-w-125 p-11.25 border flex flex-col gap-4.5 border-ink-100 bg-white  shadow-[0px_30px_60px_-30px_#0B3C8A40] ">
+    <div className="flex flex-col gap-4.5 rounded-panel border border-ink-100 bg-white p-6 drop-shadow-[0px_20px_24px_rgba(18,26,35,0.1)] sm:p-11">
       <div
         role="tablist"
         aria-label={translateText("How would you like to reach us?")}
@@ -48,8 +48,10 @@ export default function ContactPanel() {
               tabIndex={selected ? 0 : -1}
               onClick={() => setTab(t.id)}
               className={cn(
-                "rounded-full py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse focus-visible:ring-offset-2",
-                selected ? "bg-blue-pulse text-white" : "text-slate-600 hover:text-[#0F1B2D]",
+                "h-9.5 cursor-pointer rounded-full px-5 text-body-small font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-pulse focus-visible:ring-offset-2",
+                selected
+                  ? "bg-blue-pulse text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)]"
+                  : "text-ink-500 hover:text-ink-900",
               )}
             >
               <Trans>{t.label}</Trans>
@@ -57,14 +59,13 @@ export default function ContactPanel() {
           );
         })}
       </div>
-      <div className="w-full border-t pt-5 border-ink-100"></div>
+      <div aria-hidden="true" className="h-5.5 border-t border-ink-100" />
 
       <div
         role="tabpanel"
         id={`${uid}-panel-message`}
         aria-labelledby={`${uid}-tab-message`}
         hidden={tab !== "message"}
-        className="mt-5"
       >
         <MessageForm />
       </div>
@@ -73,7 +74,6 @@ export default function ContactPanel() {
         id={`${uid}-panel-booking`}
         aria-labelledby={`${uid}-tab-booking`}
         hidden={tab !== "booking"}
-        className="mt-5"
       >
         <BookingForm />
       </div>

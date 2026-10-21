@@ -60,6 +60,9 @@ async function waitForAssets(content: HTMLElement, signal: AbortSignal) {
   ]);
 }
 
+/** Longest the loader stays up, however slow the page's assets are. */
+const MAX_WAIT_MS = 4000;
+
 function PageReadiness({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const content = useRef<HTMLDivElement>(null);
@@ -80,7 +83,12 @@ function PageReadiness({ children }: { children: ReactNode }) {
     }
 
     void preparePage().catch(() => undefined);
-    return () => controller.abort();
+    // An image that never settles (stalled request, browser quirk) must not keep the loader up forever.
+    const fallback = window.setTimeout(() => setReady(true), MAX_WAIT_MS);
+    return () => {
+      controller.abort();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (

@@ -5,6 +5,8 @@ export interface Partner {
   bio: string;
   /** Path under /public. Initials are shown until it is set. */
   photo?: string;
+  /** Where the photo sits inside its 467 x 286 frame, as in the design (px). */
+  photoFrame?: { width: number; height: number; left: number; top: number };
   linkedin: string;
   x: string;
   instagram: string;
@@ -15,8 +17,9 @@ export const partners: Partner[] = [
     name: "Farraj Alghusaib",
     role: "Co-Founder & Managing Partner, Global Strategy & Market Expansion",
     tagline: "17+ years in cross-border growth",
-    bio: "Farraj Alghusaib is an international business executive with over 17 years of experience advising organizations on cross-border growth, strategic partnerships, and U.S.-GCC market expansion. He has built and led ventures across healthcare, education, logistics, and technology, structuring high-impact initiatives and facilitating entry into competitive markets. His experience operating across both regions enables him to advise leadership teams on commercially rigorous, culturally intelligent expansion strategies. Educated in the United States and experienced across global markets, Farraj brings a dual-market perspective grounded in competitive standards and executive-level discipline.",
+    bio: "Farraj Alghusaib is an international business executive with over 17 years of experience advising organizations on cross-border growth, strategic partnerships, and U.S.–GCC market expansion. He has built and led ventures across healthcare, education, logistics, and technology, structuring high-impact initiatives and facilitating entry into competitive markets. His experience operating across both regions enables him to advise leadership teams on commercially rigorous, culturally intelligent expansion strategies. Educated in the United States and experienced across global markets, Farraj brings a dual-market perspective grounded in competitive standards and executive-level discipline.",
     photo: "/Partners/Farraj.jpg",
+    photoFrame: { width: 553.64, height: 395, left: -44.5, top: -57 },
     linkedin: "#",
     x: "#",
     instagram: "#",
@@ -27,6 +30,7 @@ export const partners: Partner[] = [
     tagline: "15+ years in strategy and analytics",
     bio: "Turki Alghusoon is a strategy and analytics executive with over 15 years of experience advising organizations on enterprise performance, decision intelligence, and technology-enabled transformation. He has spent the past 14 years at the World Bank Group supporting complex institutional initiatives across global markets. Specializing in translating complex data into executive-level insight, he designs performance architectures that inform high-stakes strategic decisions. His experience across complex, high-accountability environments informs a disciplined and quantitatively rigorous approach, grounded in globally competitive standards for strategic decision-making.",
     photo: "/Partners/Turki.jpg",
+    photoFrame: { width: 468, height: 349, left: -0.5, top: -11 },
     linkedin: "#",
     x: "#",
     instagram: "#",
@@ -37,11 +41,14 @@ export const partners: Partner[] = [
     tagline: "Doctorate, Computational Science & Engineering, MIT",
     bio: "Fahad Alhasoun is an artificial intelligence and data science leader with extensive experience developing advanced applications across urban planning, healthcare, transportation, mining, and other complex domains. He specializes in translating emerging AI technologies and scientific research into practical, scalable solutions that improve decision-making and operational performance. Fahad has led the development of significant AI capabilities at Hudhud Maps in Saudi Arabia and held technical roles as an Applied Scientist at Amazon and Data Scientist at IBM and Foursquare. He also serves as an Assistant Professor at King Abdulaziz City for Science and Technology, with research published in peer-reviewed conferences and journals internationally. Fahad holds a doctorate in Computational Science and Engineering and dual master's degrees in computational and computer science from the Massachusetts Institute of Technology.",
     photo: "/Partners/Fahd.jpg",
+    photoFrame: { width: 518.3, height: 387, left: -25.5, top: -30 },
     linkedin: "#",
     x: "#",
     instagram: "#",
   },
 ];
 
-export const disclaimer =
-  "Professional Background Disclaimer: Information about partners' prior experience and affiliations is provided for biographical purposes only and does not imply endorsement by, or affiliation with, those organizations.";
+export const disclaimer = {
+  label: "Professional Background Disclaimer:",
+  text: "Institutional affiliations and professional experience are presented for biographical purposes only and do not imply endorsement of or affiliation with SAMATECHS.",
+};
