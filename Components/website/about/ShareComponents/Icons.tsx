@@ -37,7 +37,7 @@ export const CloudIcon = (p: IconProps) => (
 export const LinkedInIcon = () => (
   <Image
     src={linkdin}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
@@ -46,7 +46,7 @@ export const LinkedInIcon = () => (
 export const XIcon = (p: IconProps) => (
   <Image
     src={twitter}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
@@ -55,7 +55,7 @@ export const XIcon = (p: IconProps) => (
 export const InstagramIcon = (p: IconProps) => (
   <Image
     src={instagram}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />

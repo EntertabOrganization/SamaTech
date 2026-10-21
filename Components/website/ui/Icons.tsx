@@ -33,7 +33,7 @@ function Svg({ children, ...props }: IconProps & { children: ReactNode }) {
 export const Target = () => (
   <Image
     src={TargetIcon}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
@@ -73,7 +73,7 @@ export const Gauge = (p: IconProps) => (
 export const LineChart = () => (
   <Image
     src={LineChartIcon}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
@@ -94,7 +94,7 @@ export const Shield = (p: IconProps) => (
 export const ShieldCheck = () => (
   <Image
     src={shieldcheckIcon}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
@@ -151,7 +151,7 @@ export const Minus = (p: IconProps) => (
 export const Close = () => (
   <Image
     src={close}
-    alt="Line chart"
+    alt=""
     width={24}
     height={24}
   />
