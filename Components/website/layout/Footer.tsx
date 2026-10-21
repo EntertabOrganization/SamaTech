@@ -37,7 +37,6 @@ const contactDetails: string[] = [
 const legalLinks: FooterLink[] = [
   { label: "Privacy policy", href: "/privacy" },
   { label: "Terms of use", href: "/terms" },
-  { label: "Confidentiality", href: "/cookies" },
 ];
 
 const socials: { label: string; href: string; icon: StaticImageData }[] = [
@@ -74,7 +73,7 @@ const columnItem =
   "text-body-small font-medium leading-[1.65] text-blue-haze";
 
 export default function Footer() {
-  const { t: translateText, language } = useLanguage();
+  const { t: translateText } = useLanguage();
 
   const year = new Date().getFullYear();
 
@@ -101,7 +100,6 @@ export default function Footer() {
               className="h-auto w-[285px]"
               loading="eager"
             />
-            {language === "ar" && <p className="text-2xl font-bold text-white">ساماتكس</p>}
             <p className={`max-w-[286px] lg:whitespace-pre-line ${columnItem}`}>
               <Trans>{"A boutique strategic advisory and analytics\nfirm. Senior-led, evidence-based, built\nfor execution."}</Trans>
             </p>
@@ -143,9 +141,10 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col gap-3.25">
             <h3 className={columnTitle}><Trans>Get in touch</Trans></h3>
+            {/* Email and phone stay in Latin digits, left to right, in both languages. */}
             {contactDetails.map((item) => (
               <p key={item} className={columnItem}>
-                <Trans>{item}</Trans>
+                <bdi dir="ltr" lang="en" translate="no">{item}</bdi>
               </p>
             ))}
           </div>
@@ -162,6 +161,7 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li><Trans>Designed and developed by Entertab</Trans></li>
           </ul>
         </div>
       </div>

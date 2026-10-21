@@ -57,7 +57,8 @@ function IntelligenceVisual() {
         <p className="font-heading text-[15px] font-bold leading-[1.65] text-ink-900"><Trans>Executive dashboard</Trans></p>
         <span className="text-[11px] font-bold uppercase leading-[18.15px] tracking-[0.14em] text-ink-300"><Trans>Live</Trans></span>
       </div>
-      <div className="flex h-29.5 items-end gap-3.5" role="img" aria-label="Bar chart: Q3 is the highest quarter">
+      <span id="executive-dashboard-chart" className="sr-only"><Trans>Bar chart: Q3 is the highest quarter</Trans></span>
+      <div className="flex h-29.5 items-end gap-3.5" role="img" aria-labelledby="executive-dashboard-chart">
         {bars.map((b) => (
           <div key={b.label} className="flex h-full flex-1 flex-col items-center gap-2.5">
             <div className="flex w-full flex-1 items-end">

@@ -25,7 +25,7 @@ const links: NavLink[] = [
 ];
 
 export default function Navbar() {
-  const { t: translateText, language } = useLanguage();
+  const { t: translateText } = useLanguage();
 
   const [open, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
@@ -39,7 +39,7 @@ export default function Navbar() {
       <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 -bottom-px h-0.5 bg-blue-pulse" />
       <nav
         aria-label={translateText("Main navigation")}
-        className="mx-auto flex h-19 items-center justify-between gap-20 px-4 sm:px-6 lg:justify-center lg:px-8"
+        className="mx-auto flex h-19 max-w-[1440px] items-center justify-around gap-4 px-4 sm:px-6 lg:gap-8 lg:px-8"
       >
         {/* Logo */}
         <Link
@@ -55,10 +55,9 @@ export default function Navbar() {
             className="h-auto w-[150px] lg:w-[201.68px]"
             loading="eager"
           />
-          {language === "ar" && <span className="text-xl font-bold text-blue-sovereign">ساماتكس</span>}
         </Link>
 
-        <div className="hidden w-full max-w-310 items-center justify-end gap-10 lg:flex xl:gap-[245.3px]">
+        <div className="hidden lg:contents">
           {/* Desktop links */}
           <ul className="flex items-center gap-7.5">
             {links.map((link) => (

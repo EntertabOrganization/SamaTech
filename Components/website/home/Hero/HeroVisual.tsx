@@ -1,3 +1,4 @@
+import { Trans } from "@/lib/i18n/LanguageProvider";
 import Image from "next/image";
 import ovelayBackground from '@/public/images/overlayBackGround.png'
 
@@ -82,10 +83,10 @@ export default function HeroVisual({
 
       <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-9 sm:bottom-8">
         <span className="max-w-[317.77px] text-start font-heading text-xl font-bold leading-[1.2] tracking-[-0.01em] text-white sm:text-h3">
-          {caption}
+          <Trans>{caption}</Trans>
         </span>
         <span className="whitespace-nowrap text-[13px] font-bold uppercase leading-[21.45px] tracking-[0.14em] text-blue-haze">
-          {location}
+          <Trans>{location}</Trans>
         </span>
       </figcaption>
     </figure>

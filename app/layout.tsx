@@ -24,7 +24,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata = {
-  title: "SAMATECHS | ساماتكس",
+  title: "SAMATECHS",
   description: "Strategic advisory and analytics | الاستشارات الاستراتيجية والتحليلات",
 };
 

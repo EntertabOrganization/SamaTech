@@ -21,9 +21,10 @@ const caption = "text-[13px] font-bold uppercase leading-[21.45px] tracking-[0.1
 
 /* ---------- Data ---------- */
 
-const details: Array<{ label: string; value: string; icon: StaticImageData }> = [
-  { label: "Email", value: "info@samatechs.com", icon: MailIcon },
-  { label: "Phone", value: "+966 559447225", icon: PhoneIcon },
+/** `ltr`: email and phone keep Latin digits and left-to-right order in Arabic too. */
+const details: Array<{ label: string; value: string; icon: StaticImageData; ltr?: boolean }> = [
+  { label: "Email", value: "info@samatechs.com", icon: MailIcon, ltr: true },
+  { label: "Phone", value: "+966 559447225", icon: PhoneIcon, ltr: true },
   { label: "Response time", value: "Within one business day", icon: ClockIcon },
 ];
 
@@ -73,7 +74,9 @@ export default function ContactInfo() {
                 <dt className={caption}>
                   <Trans>{item.label}</Trans>
                 </dt>
-                <dd className="text-body font-semibold leading-[1.65] text-ink-900"><Trans>{item.value}</Trans></dd>
+                <dd className="text-body font-semibold leading-[1.65] text-ink-900">
+                  {item.ltr ? <bdi dir="ltr" lang="en" translate="no">{item.value}</bdi> : <Trans>{item.value}</Trans>}
+                </dd>
               </div>
             </div>
           ))}
