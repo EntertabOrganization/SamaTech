@@ -161,7 +161,11 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
-            <li><Trans>Designed and developed by Entertab</Trans></li>
+            <li className="text-[11px]">
+              <a href="https://entertab.net" className="transition-colors hover:text-white">
+                <Trans>Designed and developed by Entertab</Trans>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
