@@ -25,7 +25,13 @@ export default function MissionVisionWhy() {
       </section>
 
       {/* Why SAMATECHS */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-28">
+      <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-28">
+        <Image
+          src={Pattern}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-30 h-[1321px] w-[2186.08px] max-w-none -translate-x-1/2 -translate-y-1/2"
+        />
         <div className="mx-auto flex max-w-310 flex-col gap-6 sm:px-8">
           <SectionHeader eyebrow="Differentiators" title="Why SAMATECHS" />
           <div className="lg:pt-8">

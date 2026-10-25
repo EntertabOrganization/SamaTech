@@ -44,7 +44,7 @@ export default function AdvisoryPillars() {
           </p>
         </div>
 
-        <div className="grid items-stretch gap-6 md:grid-cols-3">
+        <div className="grid items-stretch gap-6 md:grid-cols-3 justify-center">
           {pillars.map((pillar) => (
             <PillarCard key={pillar.title} pillar={pillar} />
           ))}

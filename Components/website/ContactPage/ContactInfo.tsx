@@ -12,7 +12,6 @@ import LinkedinIcon from "@/public/figma/contact-linkedin.svg";
 import XIcon from "@/public/figma/contact-x.svg";
 import InstagramIcon from "@/public/figma/contact-instagram.svg";
 import FacebookIcon from "@/public/figma/contact-facebook.svg";
-import SnapchatIcon from "@/public/figma/contact-snapchat.svg";
 
 const IMAGE_OVERLAY =
   "linear-gradient(163.36deg, rgba(18, 26, 35, 0.9) 0%, rgba(18, 26, 35, 0.78) 46%, rgba(18, 26, 35, 0.95) 100%)";
@@ -33,7 +32,6 @@ const socials: { label: string; href: string; icon: StaticImageData }[] = [
   { label: "X", href: "https://x.com/samatechs_?s=11&t=s6yTAHsZWSPlFLERGjMrMQ", icon: XIcon },
   { label: "Instagram", href: "https://www.instagram.com/samatechs/", icon: InstagramIcon },
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61592819443552", icon: FacebookIcon },
-  { label: "Snapchat", href: "https://www.snapchat.com/add/samatechs", icon: SnapchatIcon },
 ];
 
 /* ---------- Component ---------- */

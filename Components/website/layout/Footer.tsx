@@ -9,7 +9,6 @@ import LinkedinIcon from "@/public/figma/social-linkedin.svg";
 import XIcon from "@/public/figma/social-x.svg";
 import InstagramIcon from "@/public/figma/social-instagram.svg";
 import FacebookIcon from "@/public/figma/social-facebook.svg";
-import SnapchatIcon from "@/public/figma/social-snapchat.svg";
 
 interface FooterLink {
   label: string;
@@ -59,11 +58,6 @@ const socials: { label: string; href: string; icon: StaticImageData }[] = [
     label: "Facebook",
     href: "https://www.facebook.com/profile.php?id=61592819443552",
     icon: FacebookIcon,
-  },
-  {
-    label: "Snapchat",
-    href: "https://www.snapchat.com/add/samatechs",
-    icon: SnapchatIcon,
   },
 ];
 
@@ -163,7 +157,7 @@ export default function Footer() {
             ))}
             <li className="text-[11px]">
               <a href="https://entertab.net" className="transition-colors hover:text-white">
-                <Trans>Designed and developed by Entertab</Trans>
+                <Trans>Designed and developed by entertab</Trans>
               </a>
             </li>
           </ul>
