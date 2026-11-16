@@ -12,10 +12,10 @@ export default function PartnerSocials({ partner }: { partner: Partner }) {
   const { t: translateText, language } = useLanguage();
 
   const items = [
-    { label: language === "ar" ? `${translateText(partner.name)} على لينكدإن` : `${partner.name} on LinkedIn`, href: partner.linkedin, icon: LinkedInIcon },
-    { label: language === "ar" ? `${translateText(partner.name)} على إكس` : `${partner.name} on X`, href: partner.x, icon: XIcon },
-    { label: language === "ar" ? `${translateText(partner.name)} على إنستغرام` : `${partner.name} on Instagram`, href: partner.instagram, icon: InstagramIcon },
-  ];
+    partner.linkedin ? { label: language === "ar" ? `${translateText(partner.name)} على لينكدإن` : `${partner.name} on LinkedIn`, href: partner.linkedin, icon: LinkedInIcon } : null,
+    partner.x ? { label: language === "ar" ? `${translateText(partner.name)} على إكس` : `${partner.name} on X`, href: partner.x, icon: XIcon } : null,
+    partner.instagram ? { label: language === "ar" ? `${translateText(partner.name)} على إنستغرام` : `${partner.name} on Instagram`, href: partner.instagram, icon: InstagramIcon } : null,
+  ].filter(Boolean) as { label: string; href: string; icon: any }[];
 
   return (
     <ul className="flex gap-[24.67px]">
@@ -23,6 +23,8 @@ export default function PartnerSocials({ partner }: { partner: Partner }) {
         <li key={label}>
           <Link
             href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={label}
             className="block transition-opacity hover:opacity-75"
           >
