@@ -2,7 +2,7 @@
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
 import Link from "next/link";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { sendContactMessage } from "@/lib/api";
 import {
   Checkbox,
@@ -26,11 +26,13 @@ const AREAS = [
 
 export default function MessageForm() {
   const { t: translateText } = useLanguage();
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
 
   const { status, errorMessage, submit } = useFormSubmit(sendContactMessage);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!agreedToPrivacy) return;
     const form = event.currentTarget;
     const data = new FormData(form);
     const text = (field: string) => String(data.get(field) ?? "").trim();
@@ -43,7 +45,10 @@ export default function MessageForm() {
       service: text("area") || undefined,
       message: text("message"),
     });
-    if (ok) form.reset();
+    if (ok) {
+      form.reset();
+      setAgreedToPrivacy(false);
+    }
   };
 
   return (
@@ -92,11 +97,13 @@ export default function MessageForm() {
       <Checkbox
         name="privacy"
         required
+        checked={agreedToPrivacy}
+        onChange={(e) => setAgreedToPrivacy(e.target.checked)}
         label={<>{translateText("I agree to the")} <Link href="/privacy" target="_blank" className="text-blue-sovereign underline">{translateText("Privacy policy")}</Link></>}
         hint="We use your details only to respond to this enquiry."
       />
 
-      <SubmitButton loading={status === "submitting"}><Trans>Send message</Trans></SubmitButton>
+      <SubmitButton loading={status === "submitting"} disabled={!agreedToPrivacy}><Trans>Send message</Trans></SubmitButton>
 
       <FormStatus
         status={status}
