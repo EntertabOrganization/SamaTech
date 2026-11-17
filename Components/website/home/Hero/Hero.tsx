@@ -48,7 +48,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <Link
               href="/contact"
-              className="inline-flex h-14 items-center gap-2 rounded-full bg-blue-pulse px-8 text-base font-bold tracking-[0.16px] text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] transition-colors hover:bg-blue-sovereign"
+              className="inline-flex h-14 items-center gap-2 rounded-full bg-blue-pulse px-8 text-base font-bold tracking-[0.16px] text-white drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] cursor-pointer transition-all active:scale-95 hover:bg-blue-sovereign"
             >
               <Trans>Schedule a Consultation</Trans>
               <Image src={ArrowIcon} alt="" width={19} height={19} className="directional-arrow" />

@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import Logo from "@/public/horizontal-logo 1.svg";
 import ArrowIcon from "@/public/figma/nav-arrow.svg";
 import Image from "next/image";
-import Button from "../ui/Button";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
@@ -79,11 +78,8 @@ export default function Navbar() {
           <div className="flex items-center gap-3.5">
             <LanguageSwitcher />
 
-            <Link href="/contact">
-              <Button
-                size="sm"
-                className="gap-2 tracking-[0.14px] drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] lg:min-w-[222px]"
-              ><Trans>
+            <Link href="/contact" className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full bg-blue-pulse px-4 text-sm font-bold text-white transition-transform active:scale-95 hover:bg-blue-sovereign gap-2 tracking-[0.14px] drop-shadow-[0px_12px_16px_rgba(0,120,255,0.24)] lg:min-w-[222px]">
+              <Trans>
                 Schedule a consultation
                 </Trans><Image
                   src={ArrowIcon}
@@ -92,7 +88,6 @@ export default function Navbar() {
                   height={15}
                   className="directional-arrow"
                 />
-              </Button>
             </Link>
           </div>
         </div>
@@ -154,17 +149,14 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
+              className="inline-flex h-9 cursor-pointer items-center justify-center gap-4 rounded-full bg-blue-pulse px-4 text-sm font-bold text-white transition-transform active:scale-95 hover:bg-blue-sovereign"
             >
-              <Button
-                size="sm"
-                className="flex items-center gap-4"
-              ><Trans>
+              <Trans>
                 Schedule a consultation
                 </Trans><FontAwesomeIcon
                   icon={faArrowRightLong}
                   className="h-4 w-4"
                 />
-              </Button>
             </Link>
           </div>
         </div>

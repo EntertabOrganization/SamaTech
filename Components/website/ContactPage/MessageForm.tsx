@@ -1,6 +1,7 @@
 "use client";
 
 import { Trans, useLanguage } from "@/lib/i18n/LanguageProvider";
+import Link from "next/link";
 import type { FormEvent } from "react";
 import { sendContactMessage } from "@/lib/api";
 import {
@@ -91,7 +92,7 @@ export default function MessageForm() {
       <Checkbox
         name="privacy"
         required
-        label="I agree to the privacy policy"
+        label={<>{translateText("I agree to the")} <Link href="/privacy" target="_blank" className="text-blue-sovereign underline">{translateText("Privacy policy")}</Link></>}
         hint="We use your details only to respond to this enquiry."
       />
 

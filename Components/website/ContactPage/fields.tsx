@@ -116,21 +116,22 @@ export function Checkbox({
   hint,
   ...props
 }: Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
-  label: string;
+  label: ReactNode;
   hint?: string;
 }) {
   return (
-    <label className="flex items-start gap-3">
+    <div className="flex items-start gap-3">
       <input
         type="checkbox"
+        id={props.name}
         className="mt-0.5 size-5 shrink-0 rounded-checkbox border-ink-200 accent-blue-pulse"
         {...props}
       />
       <span>
-        <span className="block text-body-small font-semibold leading-[1.65] text-ink-900"><Trans>{label}</Trans></span>
+        <label htmlFor={props.name} className="block text-body-small font-semibold leading-[1.65] text-ink-900"><Trans>{label}</Trans></label>
         {hint && <span className="block text-[13px] font-medium leading-[21.45px] text-ink-500"><Trans>{hint}</Trans></span>}
       </span>
-    </label>
+    </div>
   );
 }
 
